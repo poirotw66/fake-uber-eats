@@ -153,6 +153,53 @@ function hashCode(text) {
     return Math.abs(hash);
 }
 
+function getAnchorLocation() {
+    return (
+        state.userLocation || {
+            lat: CONFIG.defaultLat,
+            lng: CONFIG.defaultLng,
+        }
+    );
+}
+
+function spreadRestaurantCoordinates(storeId, anchor) {
+    const hash = hashCode(`ue-spread:${storeId}`);
+    const angle = ((hash % 360) * Math.PI) / 180;
+    const radiusKm = 0.35 + (hash % 15) * 0.07;
+    const latRad = (anchor.lat * Math.PI) / 180;
+    return {
+        lat: anchor.lat + (radiusKm / 111) * Math.cos(angle),
+        lng: anchor.lng + (radiusKm / (111 * Math.cos(latRad))) * Math.sin(angle),
+    };
+}
+
+function resolveRestaurantLocation(restaurant, anchor = getAnchorLocation()) {
+    const distKm = distanceKm(
+        { lat: restaurant.lat, lng: restaurant.lng },
+        anchor
+    );
+    if (distKm > 0.05) {
+        return { lat: restaurant.lat, lng: restaurant.lng };
+    }
+    return spreadRestaurantCoordinates(restaurant.id || restaurant.name, anchor);
+}
+
+function decorateRestaurantLocations() {
+    const anchor = getAnchorLocation();
+    for (const restaurant of state.restaurants) {
+        const resolved = resolveRestaurantLocation(restaurant, anchor);
+        restaurant.mapLat = resolved.lat;
+        restaurant.mapLng = resolved.lng;
+    }
+}
+
+function getRestaurantMapLocation(restaurant) {
+    if (restaurant.mapLat != null && restaurant.mapLng != null) {
+        return { lat: restaurant.mapLat, lng: restaurant.mapLng };
+    }
+    return resolveRestaurantLocation(restaurant);
+}
+
 function isLocalAssetPath(path) {
     return Boolean(path) && !String(path).startsWith("http");
 }
@@ -520,6 +567,7 @@ function renderFeedCategories() {
 async function refreshRestaurants() {
     const seed = await loadSeedRestaurants();
     state.restaurants = seed.map(applyRestaurantImages);
+    decorateRestaurantLocations();
     applyCategoryFilter();
     renderFeedCategories();
     renderRestaurantList();
@@ -554,7 +602,8 @@ function updateMapMarkers() {
     }
 
     state.restaurants.slice(0, 12).forEach((r) => {
-        const m = L.circleMarker([r.lat, r.lng], {
+        const loc = getRestaurantMapLocation(r);
+        const m = L.circleMarker([loc.lat, loc.lng], {
             radius: 5,
             color: "#000",
             fillColor: "#000",
@@ -647,8 +696,9 @@ function renderRestaurantList() {
 
     container.innerHTML = list
         .map((r) => {
+            const loc = getRestaurantMapLocation(r);
             const dist = state.userLocation
-                ? `${(distanceKm(state.userLocation, r) * 1000).toFixed(0)} 公尺`
+                ? `${(distanceKm(state.userLocation, loc) * 1000).toFixed(0)} 公尺`
                 : "";
             const fee = r.deliveryFee ?? 49;
             const previews = (r.menu || [])
@@ -875,7 +925,12 @@ function delay(ms) {
 
 function startTracking() {
     const restaurant = state.selectedRestaurant;
-    const destination = state.userLocation || { lat: restaurant.lat + 0.008, lng: restaurant.lng + 0.006 };
+    const destination = state.userLocation || {
+        lat: CONFIG.defaultLat,
+        lng: CONFIG.defaultLng,
+    };
+    const restaurantLoc = getRestaurantMapLocation(restaurant);
+    const restaurantForMap = { ...restaurant, lat: restaurantLoc.lat, lng: restaurantLoc.lng };
     const vehicle = getVehicle();
 
     state.driverName = CONFIG.driverNames[Math.floor(Math.random() * CONFIG.driverNames.length)];
@@ -893,7 +948,7 @@ function startTracking() {
     setTimelineStep(0);
     showScreen("#screenTracking");
 
-    setTimeout(() => initTrackingMap(restaurant, destination, vehicle), 400);
+    setTimeout(() => initTrackingMap(restaurantForMap, destination, vehicle), 400);
 }
 
 function createDriverMarker(vehicle, lat, lng) {
@@ -946,7 +1001,12 @@ async function initTrackingMap(restaurant, destination, vehicle) {
     L.marker([restaurant.lat, restaurant.lng]).addTo(state.trackingMap).bindPopup(restaurant.name);
 
     L.marker([destination.lat, destination.lng], {
-        icon: L.divIcon({ className: "home-marker", html: "🏠", iconSize: [32, 32] }),
+        icon: L.divIcon({
+            className: "home-marker",
+            html: "🏠",
+            iconSize: [32, 32],
+            iconAnchor: [16, 28],
+        }),
     })
         .addTo(state.trackingMap)
         .bindPopup("你的地址");
@@ -1166,12 +1226,18 @@ function animateAlongPath(marker, path, vehicle) {
     const inner = () => document.getElementById("driverMarkerInner");
     const isTeleport = vehicle.movement === "teleport";
     let lastSegment = -1;
+    let lastPanAt = 0;
 
     function frame(now) {
         const progress = Math.min((now - t0) / duration, 1);
         const eased = isTeleport ? progress : easeInOut(progress);
         const pos = pointAtDistance(path, totalKm * eased);
         marker.setLatLng([pos.lat, pos.lng]);
+
+        if (state.trackingMap && now - lastPanAt > 800) {
+            state.trackingMap.panTo([pos.lat, pos.lng], { animate: true, duration: 0.6 });
+            lastPanAt = now;
+        }
 
         const segIdx = Math.floor(eased * (path.length - 1));
         if (segIdx !== lastSegment && segIdx < path.length - 1) {

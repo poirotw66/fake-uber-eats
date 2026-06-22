@@ -3,8 +3,11 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import math
 import os
+import random
 import re
 import shutil
 import sys
@@ -244,6 +247,108 @@ def deep_find_menu_sections(payload: Any) -> list[dict[str, Any]]:
     return sections
 
 
+def extract_store_coordinates(
+    store: dict[str, Any],
+    fallback_lat: float,
+    fallback_lng: float,
+) -> tuple[float, float]:
+    for key in ("location", "mapMarker", "storeLocation"):
+        block = store.get(key)
+        if not isinstance(block, dict):
+            continue
+        lat = block.get("latitude", block.get("lat"))
+        lng = block.get("longitude", block.get("lng"))
+        if lat is not None and lng is not None:
+            try:
+                return float(lat), float(lng)
+            except (TypeError, ValueError):
+                continue
+    return fallback_lat, fallback_lng
+
+
+def spread_store_coordinates(
+    store_id: str,
+    anchor_lat: float,
+    anchor_lng: float,
+) -> tuple[float, float]:
+    digest = int(hashlib.md5(f"ue-spread:{store_id}".encode()).hexdigest()[:8], 16)
+    angle = (digest % 360) * math.pi / 180
+    radius_km = 0.35 + (digest % 15) * 0.07
+    lat_rad = math.radians(anchor_lat)
+    dlat = radius_km / 111.0 * math.cos(angle)
+    dlng = radius_km / (111.0 * math.cos(lat_rad)) * math.sin(angle)
+    return anchor_lat + dlat, anchor_lng + dlng
+
+
+def store_has_real_coords(
+    store: dict[str, Any],
+    anchor_lat: float,
+    anchor_lng: float,
+) -> bool:
+    if store.get("coordsSource") == "api":
+        return True
+    lat = store.get("lat")
+    lng = store.get("lng")
+    if lat is None or lng is None:
+        return False
+    lat_f, lng_f = float(lat), float(lng)
+    if abs(lat_f - anchor_lat) < 1e-6 and abs(lng_f - anchor_lng) < 1e-6:
+        return False
+    store_id = str(store.get("id") or store.get("ueStoreId") or store.get("name"))
+    spread_lat, spread_lng = spread_store_coordinates(store_id, anchor_lat, anchor_lng)
+    if abs(lat_f - spread_lat) < 1e-5 and abs(lng_f - spread_lng) < 1e-5:
+        return False
+    return True
+
+
+def assign_store_coordinates(
+    store: dict[str, Any],
+    anchor_lat: float,
+    anchor_lng: float,
+) -> None:
+    lat, lng = extract_store_coordinates(store, anchor_lat, anchor_lng)
+    if abs(lat - anchor_lat) < 1e-6 and abs(lng - anchor_lng) < 1e-6:
+        lat, lng = spread_store_coordinates(
+            str(store.get("id") or store.get("ueStoreId") or store.get("name")),
+            anchor_lat,
+            anchor_lng,
+        )
+    store["lat"] = lat
+    store["lng"] = lng
+
+
+def extract_store_location_from_payload(payload: dict[str, Any]) -> dict[str, Any] | None:
+    data = payload.get("data")
+    if not isinstance(data, dict):
+        return None
+    location = data.get("location")
+    if not isinstance(location, dict):
+        lat, lng = extract_store_coordinates(data, 0.0, 0.0)
+        if lat == 0.0 and lng == 0.0:
+            return None
+        return {"lat": lat, "lng": lng, "address": str(data.get("address") or "").strip()}
+    lat = location.get("latitude", location.get("lat"))
+    lng = location.get("longitude", location.get("lng"))
+    if lat is None or lng is None:
+        return None
+    address = str(
+        location.get("streetAddress")
+        or location.get("address")
+        or data.get("address")
+        or ""
+    ).strip()
+    return {"lat": float(lat), "lng": float(lng), "address": address}
+
+
+def apply_store_location_from_payload(store: dict[str, Any], payload: dict[str, Any]) -> bool:
+    meta = extract_store_location_from_payload(payload)
+    if not meta:
+        return False
+    store["lat"] = meta["lat"]
+    store["lng"] = meta["lng"]
+    if meta.get("address"):
+        store["address"] = meta["address"]
+    return True
 def parse_store_card(store: dict[str, Any]) -> dict[str, Any] | None:
     store_id = store.get("uuid") or store.get("storeUuid") or store.get("id")
     name = store.get("title") or store.get("name") or store.get("storeName")
@@ -292,6 +397,7 @@ def parse_store_card(store: dict[str, Any]) -> dict[str, Any] | None:
 
     categories = store.get("categories") or store.get("cuisineList") or []
     category = categories[0] if categories else "美食"
+    lat, lng = extract_store_coordinates(store, DEFAULT_LOCATION["lat"], DEFAULT_LOCATION["lng"])
 
     return {
         "id": f"ue-{store_id}",
@@ -301,8 +407,8 @@ def parse_store_card(store: dict[str, Any]) -> dict[str, Any] | None:
         "category": str(category),
         "emoji": "🍽️",
         "address": store.get("location", {}).get("address") if isinstance(store.get("location"), dict) else "",
-        "lat": DEFAULT_LOCATION["lat"],
-        "lng": DEFAULT_LOCATION["lng"],
+        "lat": lat,
+        "lng": lng,
         "rating": round(float(rating), 1),
         "deliveryMinutes": delivery_minutes,
         "deliveryFee": delivery_fee,
@@ -1115,13 +1221,13 @@ def resolve_store_uuid_session(
     return None
 
 
-def fetch_store_menu_with_post(
+def fetch_store_payload_with_post(
     post: Callable[[str, dict[str, Any]], dict[str, Any]],
     store_uuid: str,
-    max_items: int,
     log_prefix: str = "",
-) -> list[dict[str, Any]]:
-    max_retries = int(os.environ.get("UBEREATS_MENU_RETRIES", "5"))
+    rate_limiter: ApiRateLimiter | None = None,
+) -> dict[str, Any]:
+    max_retries = int(os.environ.get("UBEREATS_MENU_RETRIES", "8"))
     for attempt in range(max_retries):
         payload = post(
             "getStoreV1",
@@ -1132,20 +1238,40 @@ def fetch_store_menu_with_post(
             },
         )
         if payload.get("status") == "success":
-            return parse_menu_from_store_payload(payload, max_items)
+            return payload
 
         message = str((payload.get("data") or {}).get("message", "unknown"))
-        if "too_many_requests" in message and attempt < max_retries - 1:
-            wait_sec = int(os.environ.get("UBEREATS_RATE_LIMIT_WAIT", "20")) * (attempt + 1)
+        transient = (
+            not payload
+            or message == "unknown"
+            or "too_many_requests" in message
+            or message.startswith("bd.error")
+        )
+        if transient and attempt < max_retries - 1:
+            wait_sec = int(os.environ.get("UBEREATS_RATE_LIMIT_WAIT", "25")) * (attempt + 1)
+            reason = message if message != "unknown" else "empty or transient response"
             print(
-                f"{log_prefix}rate limited — waiting {wait_sec}s "
+                f"{log_prefix}rate limited ({reason}) — waiting {wait_sec}s "
                 f"(retry {attempt + 2}/{max_retries})",
                 flush=True,
             )
-            time.sleep(wait_sec)
+            if rate_limiter is not None:
+                rate_limiter.backoff(wait_sec)
+            else:
+                time.sleep(wait_sec)
             continue
         raise RuntimeError(f"getStoreV1 failed: {message}")
-    return []
+    return {}
+
+
+def fetch_store_menu_with_post(
+    post: Callable[[str, dict[str, Any]], dict[str, Any]],
+    store_uuid: str,
+    max_items: int,
+    log_prefix: str = "",
+) -> tuple[list[dict[str, Any]], dict[str, Any]]:
+    payload = fetch_store_payload_with_post(post, store_uuid, log_prefix=log_prefix)
+    return parse_menu_from_store_payload(payload, max_items), payload
 
 
 def fetch_store_menu_via_api(
@@ -1153,11 +1279,12 @@ def fetch_store_menu_via_api(
     store_uuid: str,
     max_items: int,
 ) -> list[dict[str, Any]]:
-    return fetch_store_menu_with_post(
+    menu, _payload = fetch_store_menu_with_post(
         lambda endpoint, body: api_post(page, endpoint, body),
         store_uuid,
         max_items,
     )
+    return menu
 
 
 def fetch_store_menu_via_session(
@@ -1166,12 +1293,13 @@ def fetch_store_menu_via_session(
     max_items: int,
     log_prefix: str = "",
 ) -> list[dict[str, Any]]:
-    return fetch_store_menu_with_post(
+    menu, _payload = fetch_store_menu_with_post(
         lambda endpoint, body: api_post_session(session, endpoint, body),
         store_uuid,
         max_items,
         log_prefix=log_prefix,
     )
+    return menu
 
 
 def scrape_store_menu(
@@ -1573,6 +1701,176 @@ def run_covers_only(max_stores: int, headless: bool) -> int:
     return 0
 
 
+def scrape_coords_job(
+    store: dict[str, Any],
+    api_template: requests.Session,
+    uuid_map: dict[str, str],
+    uuid_lock: threading.Lock,
+    rate_limiter: ApiRateLimiter,
+) -> CoordsJobResult:
+    name = str(store.get("name", store["id"]))
+    session = clone_api_session(api_template)
+    log_prefix = f"  [{name}] "
+    try:
+        store_uuid = str(store.get("storeUuid") or "").strip()
+        if not store_uuid:
+            store_uuid = resolve_store_uuid_session(session, store, uuid_map, uuid_lock)
+        if not store_uuid:
+            return CoordsJobResult(
+                store_id=store["id"],
+                name=name,
+                lat=None,
+                lng=None,
+                address=None,
+                error="missing storeUuid",
+            )
+
+        rate_limiter.wait()
+        payload = fetch_store_payload_with_post(
+            lambda endpoint, body: api_post_session(session, endpoint, body),
+            store_uuid,
+            log_prefix=log_prefix,
+            rate_limiter=rate_limiter,
+        )
+        location = extract_store_location_from_payload(payload)
+        if not location:
+            return CoordsJobResult(
+                store_id=store["id"],
+                name=name,
+                lat=None,
+                lng=None,
+                address=None,
+                store_uuid=store_uuid,
+                error="no location in payload",
+            )
+        return CoordsJobResult(
+            store_id=store["id"],
+            name=name,
+            lat=location["lat"],
+            lng=location["lng"],
+            address=location.get("address"),
+            store_uuid=store_uuid,
+        )
+    except Exception as exc:
+        return CoordsJobResult(
+            store_id=store["id"],
+            name=name,
+            lat=None,
+            lng=None,
+            address=None,
+            error=str(exc),
+        )
+
+
+def run_coords_only(max_stores: int, headless: bool) -> int:
+    source_path = ENRICHED_PATH if ENRICHED_PATH.exists() else OUTPUT_PATH
+    if not source_path.exists():
+        print(f"no restaurant list at {source_path}")
+        return 1
+
+    restaurants: list[dict[str, Any]] = load_json(source_path, [])
+    restaurants = [store for store in restaurants if len(store.get("menu") or []) > 0]
+    anchor_lat = float(os.environ.get("UBEREATS_LAT", DEFAULT_LOCATION["lat"]))
+    anchor_lng = float(os.environ.get("UBEREATS_LNG", DEFAULT_LOCATION["lng"]))
+    skip_existing = os.environ.get("UBEREATS_COORDS_SKIP_EXISTING", "1") == "1"
+    pending = list(restaurants)
+    if skip_existing:
+        before = len(pending)
+        pending = [
+            store
+            for store in pending
+            if not store_has_real_coords(store, anchor_lat, anchor_lng)
+        ]
+        skipped = before - len(pending)
+        if skipped:
+            print(
+                f"coords-only: skipping {skipped} stores with real coordinates already",
+                flush=True,
+            )
+    if max_stores > 0:
+        pending = pending[:max_stores]
+
+    feed_url = os.environ.get("UBEREATS_FEED_URL", DEFAULT_FEED_URL).strip()
+    workers = int(os.environ.get("UBEREATS_MENU_WORKERS", "1"))
+    checkpoint_every = int(os.environ.get("UBEREATS_CHECKPOINT_EVERY", "10"))
+    api_interval = float(os.environ.get("UBEREATS_API_INTERVAL", "2.0"))
+    restaurant_index = {store["id"]: index for index, store in enumerate(restaurants)}
+    uuid_map = load_uuid_map()
+    rate_limiter = ApiRateLimiter(api_interval)
+    uuid_lock = threading.Lock()
+    state_lock = threading.Lock()
+    updated = 0
+    failed = 0
+
+    print(f"coords-only: updating {len(pending)} / {len(restaurants)} stores", flush=True)
+    print(f"parallel coords: {workers} workers, api interval {api_interval}s", flush=True)
+    api_template, warmed_map = warm_menu_api_session(feed_url, headless)
+    uuid_map.update(warmed_map)
+    save_uuid_map(uuid_map)
+
+    def apply_result(result: CoordsJobResult, index: int, total: int) -> None:
+        nonlocal updated, failed
+        print(f"[{index}/{total}] coords: {result.name}", flush=True)
+        if result.error:
+            print(f"  warn: {result.error}", flush=True)
+            failed += 1
+            return
+        if result.lat is None or result.lng is None:
+            print("  -> no coordinates", flush=True)
+            failed += 1
+            return
+
+        with state_lock:
+            store_ref = restaurants[restaurant_index[result.store_id]]
+            store_ref["lat"] = result.lat
+            store_ref["lng"] = result.lng
+            store_ref["coordsSource"] = "api"
+            if result.address:
+                store_ref["address"] = result.address
+            if result.store_uuid:
+                store_ref["storeUuid"] = result.store_uuid
+            updated += 1
+            if updated % checkpoint_every == 0:
+                save_json(OUTPUT_PATH, restaurants)
+                save_json(ENRICHED_PATH, restaurants)
+                print(f"  checkpoint saved ({updated} coords written)", flush=True)
+        print(f"  -> {result.lat:.5f}, {result.lng:.5f}", flush=True)
+        if result.address:
+            print(f"  -> {result.address[:80]}", flush=True)
+
+    total = len(pending)
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = {
+            executor.submit(
+                scrape_coords_job,
+                store,
+                api_template,
+                uuid_map,
+                uuid_lock,
+                rate_limiter,
+            ): (index, store)
+            for index, store in enumerate(pending, start=1)
+        }
+        for future in as_completed(futures):
+            index, _store = futures[future]
+            apply_result(future.result(), index, total)
+
+    save_json(OUTPUT_PATH, restaurants)
+    save_json(ENRICHED_PATH, restaurants)
+    save_json(
+        META_PATH,
+        {
+            "scrapedAt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+            "mode": "coords-only",
+            "storeCount": len(restaurants),
+            "coordsUpdated": updated,
+            "coordsFailed": failed,
+        },
+    )
+    print(f"wrote {ENRICHED_PATH} ({updated} stores with real coordinates)", flush=True)
+    return 0 if updated else 1
+
+
 @dataclass
 class MenuJobResult:
     store_id: str
@@ -1580,22 +1878,47 @@ class MenuJobResult:
     menu: list[dict[str, Any]]
     store_uuid: str | None
     short_id: str | None
+    lat: float | None = None
+    lng: float | None = None
+    address: str | None = None
+    error: str | None = None
+
+
+@dataclass
+class CoordsJobResult:
+    store_id: str
+    name: str
+    lat: float | None
+    lng: float | None
+    address: str | None
+    store_uuid: str | None = None
     error: str | None = None
 
 
 class ApiRateLimiter:
-    """Serialize API calls across workers to reduce rate-limit errors."""
+    """Serialize API calls across workers and pause all workers on rate limits."""
 
     def __init__(self, min_interval: float) -> None:
         self.min_interval = min_interval
         self.lock = threading.Lock()
         self.last_call = 0.0
+        self.pause_until = 0.0
+
+    def backoff(self, seconds: float) -> None:
+        with self.lock:
+            self.pause_until = max(self.pause_until, time.time() + seconds)
 
     def wait(self) -> None:
         with self.lock:
-            elapsed = time.time() - self.last_call
-            if elapsed < self.min_interval:
-                time.sleep(self.min_interval - elapsed)
+            now = time.time()
+            if now < self.pause_until:
+                time.sleep(self.pause_until - now)
+                now = time.time()
+            jitter = random.uniform(0.0, self.min_interval * 0.25)
+            elapsed = now - self.last_call
+            gap = self.min_interval + jitter - elapsed
+            if gap > 0:
+                time.sleep(gap)
             self.last_call = time.time()
 
 
@@ -1631,7 +1954,7 @@ def scrape_menu_job(
                 short_id=short_id,
             )
 
-        menu = fetch_store_menu_with_post(
+        menu, payload = fetch_store_menu_with_post(
             lambda endpoint, body: (
                 rate_limiter.wait(),
                 api_post_session(session, endpoint, body),
@@ -1640,12 +1963,16 @@ def scrape_menu_job(
             max_menu_items,
             log_prefix=log_prefix,
         )
+        location = extract_store_location_from_payload(payload)
         return MenuJobResult(
             store_id=store["id"],
             name=name,
             menu=menu,
             store_uuid=store_uuid,
             short_id=short_id,
+            lat=location.get("lat") if location else None,
+            lng=location.get("lng") if location else None,
+            address=location.get("address") if location else None,
         )
     except Exception as exc:
         return MenuJobResult(
@@ -1718,6 +2045,11 @@ def run_menus_only_parallel(
             store_ref["menu"] = result.menu
             if result.store_uuid:
                 store_ref["storeUuid"] = result.store_uuid
+            if result.lat is not None and result.lng is not None:
+                store_ref["lat"] = result.lat
+                store_ref["lng"] = result.lng
+            if result.address:
+                store_ref["address"] = result.address
             if result.short_id and result.store_uuid:
                 uuid_map[result.short_id] = result.store_uuid
             http = clone_api_session(api_template)
@@ -1864,6 +2196,7 @@ def main() -> int:
     skip_menu = os.environ.get("UBEREATS_SKIP_MENU", "").strip() in ("1", "true", "yes")
     menus_only = os.environ.get("UBEREATS_MENUS_ONLY", "").strip() in ("1", "true", "yes")
     covers_only = os.environ.get("UBEREATS_COVERS_ONLY", "").strip() in ("1", "true", "yes")
+    coords_only = os.environ.get("UBEREATS_COORDS_ONLY", "").strip() in ("1", "true", "yes")
 
     address = os.environ.get("UBEREATS_ADDRESS", DEFAULT_LOCATION["address"])
     lat = float(os.environ.get("UBEREATS_LAT", DEFAULT_LOCATION["lat"]))
@@ -1883,6 +2216,9 @@ def main() -> int:
 
     if covers_only:
         return run_covers_only(max_stores, headless)
+
+    if coords_only:
+        return run_coords_only(max_stores, headless)
 
     print(f"feed: {feed_url[:160]}...")
     restaurants: list[dict[str, Any]] = []
@@ -1996,8 +2332,7 @@ def main() -> int:
                     store["menu"] = []
             if not store.get("address"):
                 store["address"] = address
-            store["lat"] = lat
-            store["lng"] = lng
+            assign_store_coordinates(store, lat, lng)
             restaurants.append(enrich_assets(store))
             if not skip_menu:
                 time.sleep(1.2)
