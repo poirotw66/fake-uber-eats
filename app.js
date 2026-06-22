@@ -1,9 +1,11 @@
 const CONFIG = {
-    overpassUrl: "https://overpass-api.de/api/interpreter",
     nominatimUrl: "https://nominatim.openstreetmap.org",
     osrmUrl: "https://router.project-osrm.org/route/v1",
-    osmSearchRadiusM: 900,
     driverNames: ["王建國", "李志明", "陳俊宇", "張雅婷", "林冠廷"],
+    defaultAddress: "松仁路7-1號",
+    defaultLat: 25.0382477,
+    defaultLng: 121.5691055,
+    deliveryLabel: "立刻",
 };
 
 const VEHICLES = [
@@ -71,6 +73,8 @@ const state = {
     tip: 30,
     paymentMethod: "visa",
     restaurants: [],
+    filteredRestaurants: [],
+    activeCategory: "全部",
     selectedRestaurant: null,
     userLocation: null,
     addressLine: "",
@@ -273,29 +277,37 @@ function setRestaurantHero(restaurant) {
     hero.innerHTML = `<div class="restaurant-hero-emoji">${restaurant.emoji}</div>`;
 }
 
-async function loadSeedRestaurants() {
-    let data;
+async function loadSiteConfig() {
     try {
-        const enrichedRes = await fetch("data/restaurants.enriched.json");
-        if (enrichedRes.ok) {
-            data = await enrichedRes.json();
-        }
+        const res = await fetch("data/config.json");
+        if (!res.ok) return;
+        const config = await res.json();
+        CONFIG.defaultAddress = config.defaultAddress || CONFIG.defaultAddress;
+        CONFIG.defaultLat = config.defaultLat ?? CONFIG.defaultLat;
+        CONFIG.defaultLng = config.defaultLng ?? CONFIG.defaultLng;
+        CONFIG.deliveryLabel = config.deliveryLabel || CONFIG.deliveryLabel;
     } catch {
-        data = null;
+        /* keep defaults */
     }
-    if (!data) {
-        const res = await fetch("data/restaurants.json");
-        data = await res.json();
+}
+
+async function loadSeedRestaurants() {
+    const enrichedRes = await fetch("data/restaurants.enriched.json");
+    if (!enrichedRes.ok) {
+        throw new Error("restaurant data missing: data/restaurants.enriched.json");
     }
-    return data.map((r) => ({
-        ...r,
-        menu: r.menu.map((m) => ({
-            ...m,
-            desc: m.desc || "人氣餐點",
-            category: m.category || "精選",
-        })),
-        deliveryFee: r.deliveryFee ?? 49,
-    }));
+    const data = await enrichedRes.json();
+    return data
+        .filter((restaurant) => (restaurant.menu || []).length > 0)
+        .map((r) => ({
+            ...r,
+            menu: (r.menu || []).map((m) => ({
+                ...m,
+                desc: m.desc || "人氣餐點",
+                category: m.category || "精選",
+            })),
+            deliveryFee: r.deliveryFee ?? 49,
+        }));
 }
 
 function groupMenuByCategory(menu) {
@@ -438,30 +450,84 @@ function distanceKm(a, b) {
     return R * 2 * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
 }
 
+const FEED_CATEGORY_RULES = [
+    { label: "咖啡甜點", keywords: ["咖啡", "甜點", "蛋糕", "烘焙", "可頌", "星巴克", "路易莎"] },
+    { label: "日式料理", keywords: ["寿司", "壽司", "拉麵", "日式", "丼", "居酒屋", "便當"] },
+    { label: "韓式", keywords: ["韓式", "韓國", "炸雞", "部隊鍋", "泡菜"] },
+    { label: "中式料理", keywords: ["中式", "滷味", "水餃", "麵店", "熱炒", "便當"] },
+    { label: "西式快餐", keywords: ["漢堡", "披薩", "炸雞", "McDonald", "肯德基", "必勝客"] },
+    { label: "健康輕食", keywords: ["Poke", "沙拉", "輕食", "健康", "優格"] },
+    { label: "鍋物燒烤", keywords: ["火鍋", "燒肉", "燒烤", "鍋", "麻辣"] },
+    { label: "飲料冰品", keywords: ["飲料", "茶", "手搖", "冰品", "珍珠奶茶"] },
+];
+
+function inferFeedCategory(restaurant) {
+    const text = `${restaurant.name} ${restaurant.tagline || ""}`;
+    for (const rule of FEED_CATEGORY_RULES) {
+        if (rule.keywords.some((kw) => text.includes(kw))) return rule.label;
+    }
+    return restaurant.category || "其他";
+}
+
+function getFeedCategories() {
+    const counts = new Map();
+    for (const restaurant of state.restaurants) {
+        const key = inferFeedCategory(restaurant);
+        counts.set(key, (counts.get(key) || 0) + 1);
+    }
+    const sorted = [...counts.entries()]
+        .filter(([, count]) => count >= 3)
+        .sort((a, b) => b[1] - a[1])
+        .map(([name]) => name);
+    return ["全部", ...sorted];
+}
+
+function applyCategoryFilter() {
+    if (state.activeCategory === "全部") {
+        state.filteredRestaurants = state.restaurants;
+        return;
+    }
+    state.filteredRestaurants = state.restaurants.filter(
+        (restaurant) => inferFeedCategory(restaurant) === state.activeCategory
+    );
+}
+
+function renderFeedCategories() {
+    const container = $("#feedCategories");
+    if (!container) return;
+    const categories = getFeedCategories();
+    if (!categories.includes(state.activeCategory)) {
+        state.activeCategory = "全部";
+    }
+    container.innerHTML = categories
+        .map(
+            (cat) =>
+                `<button type="button" class="feed-category-btn${
+                    cat === state.activeCategory ? " active" : ""
+                }" data-category="${cat}">${cat}</button>`
+        )
+        .join("");
+    container.querySelectorAll(".feed-category-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            state.activeCategory = btn.dataset.category;
+            renderFeedCategories();
+            applyCategoryFilter();
+            renderRestaurantList();
+        });
+    });
+}
+
 async function refreshRestaurants() {
     const seed = await loadSeedRestaurants();
-    if (state.userLocation) {
-        const osm = await fetchOsmRestaurants(state.userLocation.lat, state.userLocation.lng);
-        const merged = [...seed];
-        for (const place of osm) {
-            const dup = merged.some(
-                (s) =>
-                    distanceKm(s, place) < 0.05 ||
-                    s.name.includes(place.name) ||
-                    place.name.includes(s.name)
-            );
-            if (!dup) merged.push(place);
-        }
-        merged.sort(
-            (a, b) =>
-                distanceKm(state.userLocation, a) - distanceKm(state.userLocation, b)
-        );
-        state.restaurants = merged.map(applyRestaurantImages);
-    } else {
-        state.restaurants = seed.map(applyRestaurantImages);
-    }
+    state.restaurants = seed.map(applyRestaurantImages);
+    applyCategoryFilter();
+    renderFeedCategories();
     renderRestaurantList();
     updateMapMarkers();
+    const subtitle = $("#feedSubtitle");
+    if (subtitle) {
+        subtitle.textContent = `${state.addressLine || CONFIG.defaultAddress} · ${state.restaurants.length} 家餐廳`;
+    }
 }
 
 function initMap() {
@@ -520,9 +586,10 @@ async function reverseGeocode(lat, lng) {
 }
 
 function updateAddressDisplay() {
-    const text = state.addressLine || "設定外送地址";
-    $("#addressDisplay").textContent =
-        text.length > 28 ? `${text.slice(0, 28)}…` : text;
+    const text = state.addressLine || CONFIG.defaultAddress;
+    $("#addressDisplay").textContent = text.length > 22 ? `${text.slice(0, 22)}…` : text;
+    const label = $("#deliveryTimeLabel");
+    if (label) label.textContent = CONFIG.deliveryLabel;
 }
 
 function openAddressSheet() {
@@ -571,12 +638,14 @@ async function useGps() {
 
 function renderRestaurantList() {
     const container = $("#restaurantList");
-    if (!state.restaurants.length) {
-        container.innerHTML = '<p style="text-align:center;padding:24px;color:#757575">載入中...</p>';
+    const list = state.filteredRestaurants.length ? state.filteredRestaurants : state.restaurants;
+    if (!list.length) {
+        container.innerHTML =
+            '<p class="feed-empty">尚無餐廳資料。請執行 <code>./scripts/run_scrape.sh</code> 從 Uber Eats 匯入。</p>';
         return;
     }
 
-    container.innerHTML = state.restaurants
+    container.innerHTML = list
         .map((r) => {
             const dist = state.userLocation
                 ? `${(distanceKm(state.userLocation, r) * 1000).toFixed(0)} 公尺`
@@ -1169,7 +1238,6 @@ function bindEvents() {
     $("#overlay").addEventListener("click", closeAddressSheet);
     $("#saveAddress").addEventListener("click", saveAddress);
     $("#useGps").addEventListener("click", useGps);
-    $("#locateBtn").addEventListener("click", openAddressSheet);
 
     $("#backHome").addEventListener("click", () => {
         state.selectedRestaurant = null;
@@ -1220,7 +1288,10 @@ function onViewportResize() {
 }
 
 async function init() {
+    await loadSiteConfig();
     await loadDishImageRules();
+    state.addressLine = CONFIG.defaultAddress;
+    state.userLocation = { lat: CONFIG.defaultLat, lng: CONFIG.defaultLng };
     bindEvents();
     initMap();
     await refreshRestaurants();

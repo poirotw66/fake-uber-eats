@@ -10,6 +10,7 @@
 <body>
     <header class="site-header">
         <div class="site-header-inner">
+            <button class="ue-menu-btn" type="button" aria-label="選單">☰</button>
             <div class="ue-logo">
                 <span class="ue-logo-uber">Uber</span>
                 <span class="ue-logo-eats">Eats</span>
@@ -17,13 +18,15 @@
             <button class="address-chip" id="addressChip" type="button">
                 <span class="address-chip-icon">📍</span>
                 <span class="address-chip-body">
-                    <span class="address-chip-label">外送至</span>
-                    <span class="address-chip-text" id="addressDisplay">設定外送地址</span>
+                    <span class="address-chip-text" id="addressDisplay">松仁路7-1號</span>
+                    <span class="address-chip-sub" id="deliveryTimeLabel">立刻</span>
                 </span>
                 <span class="address-chip-chevron">▾</span>
             </button>
+            <div class="header-search ue-search" role="search">搜尋 Uber Eats</div>
             <div class="header-actions">
-                <button class="btn-ghost" id="locateBtn" type="button">使用目前位置</button>
+                <button class="btn-ghost" type="button">登入</button>
+                <button class="btn-ghost btn-signup" type="button">註冊</button>
             </div>
         </div>
     </header>
@@ -31,29 +34,19 @@
     <main id="app">
         <!-- Home -->
         <div class="screen screen-active" id="screenHome">
-            <div class="page-container">
+            <div class="page-container feed-page">
                 <div class="page-toolbar">
                     <div class="delivery-tabs">
                         <button class="delivery-tab active" type="button">外送</button>
                         <button class="delivery-tab disabled" type="button">自取</button>
                     </div>
-                    <div class="ue-search">搜尋餐廳或料理</div>
+                    <div class="ue-search ue-search-mobile" role="search">搜尋 Uber Eats</div>
                 </div>
-
-                <div class="home-layout">
-                    <aside class="home-map-panel card">
-                        <h2 class="panel-title">配送範圍</h2>
-                        <div class="map-wrap">
-                            <div id="map"></div>
-                        </div>
-                    </aside>
-
-                    <section class="home-list-panel">
-                        <h2 class="section-label">附近餐廳</h2>
-                        <div class="restaurant-list" id="restaurantList"></div>
-                    </section>
-                </div>
+                <div class="feed-categories" id="feedCategories" aria-label="餐廳分類"></div>
+                <p class="feed-subtitle" id="feedSubtitle">附近餐廳</p>
+                <div class="restaurant-grid" id="restaurantList"></div>
             </div>
+            <div id="map" class="visually-hidden-map" aria-hidden="true"></div>
         </div>
 
         <!-- Restaurant -->
@@ -171,9 +164,9 @@
         </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer site-footer-minimal">
         <div class="site-footer-inner">
-            <p>© 2026 Uber Eats 風格示範頁 · 餐點不會來 · 不會扣款</p>
+            <p>示範頁面 · 餐點不會送達 · 不會扣款</p>
         </div>
     </footer>
 
