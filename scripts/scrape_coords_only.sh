@@ -21,8 +21,13 @@ export UBEREATS_MAX_STORES=0
 export PYTHONUNBUFFERED=1
 # Force slow settings — .env values are too aggressive and trigger rate limits.
 export UBEREATS_MENU_WORKERS=1
-export UBEREATS_API_INTERVAL=2.0
+export UBEREATS_API_INTERVAL=3.0
 export UBEREATS_COORDS_SKIP_EXISTING=1
+export UBEREATS_EMPTY_RETRIES=2
+export UBEREATS_EMPTY_RETRY_WAIT=60
+export UBEREATS_RATE_LIMIT_WAIT_MAX=90
+export UBEREATS_SESSION_REFRESH_EVERY=35
+export UBEREATS_COORDS_RETRY_ROUNDS=2
 
 if [[ -z "${CONDA_DEFAULT_ENV:-}" ]]; then
   if [[ -f "${HOME}/miniconda3/etc/profile.d/conda.sh" ]]; then

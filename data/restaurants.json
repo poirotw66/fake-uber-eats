@@ -17575,291 +17575,6 @@
     "coverImage": "assets/images/restaurants/ue-S1OHp0LeRY2lHtKwu0PikQ.jpg"
   },
   {
-    "id": "ue-qLhYJ5ytQ9KcoEF1dhXrJA",
-    "ueStoreId": "qLhYJ5ytQ9KcoEF1dhXrJA",
-    "slug": "綠逗薏人-八德店",
-    "name": "綠逗薏人 八德店",
-    "category": "美食",
-    "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041483025680108,
-    "lng": 121.57891646511547,
-    "rating": 4.6,
-    "deliveryMinutes": 25,
-    "deliveryFee": 49,
-    "tagline": "買一送一 · 綠逗薏人 八德店 · •",
-    "storeUrl": "https://www.ubereats.com/tw/store/%E7%B6%A0%E9%80%97%E8%96%8F%E4%BA%BA-%E5%85%AB%E5%BE%B7%E5%BA%97/qLhYJ5ytQ9KcoEF1dhXrJA",
-    "menu": [
-      {
-        "id": 1,
-        "name": "喜歡我們的產品的話~歡迎留下五星好評喔,我們也將提供神秘優惠喔🤭🤭🤭",
-        "emoji": "🍽️",
-        "price": 99,
-        "category": "🔥公告🔥",
-        "desc": "Uber Eats 菜單品項",
-        "badge": null,
-        "soldCount": 117
-      },
-      {
-        "id": 2,
-        "name": "綠豆冰糕Mung bean cake",
-        "emoji": "🍽️",
-        "price": 60,
-        "category": "⭐️新品上市⭐️",
-        "desc": "口感介於雪糕和冰淇淋之間的美味冷凍糕點，綠豆的香氣入口即化，綿密絲滑，帶來絕妙享受",
-        "badge": null,
-        "soldCount": 134,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-2.jpg"
-      },
-      {
-        "id": 3,
-        "name": "綠豆冰糕(六入禮盒裝)Mung bean cake",
-        "emoji": "🍽️",
-        "price": 380,
-        "category": "⭐️新品上市⭐️",
-        "desc": "口感介於雪糕和冰淇淋之間的美味冷凍糕點，綠豆的香氣入口即化，綿密絲滑，帶來絕妙享受",
-        "badge": null,
-        "soldCount": 151,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-3.jpg"
-      },
-      {
-        "id": 4,
-        "name": "蒟蒻牛奶剉冰 Konjac Milk Shaved Ice",
-        "emoji": "🍽️",
-        "price": 90,
-        "category": "蒟蒻牛奶剉冰系列 Konjac Milk Shaved Ice",
-        "desc": "Uber Eats 菜單品項",
-        "badge": null,
-        "soldCount": 168,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-4.jpg"
-      },
-      {
-        "id": 5,
-        "name": "剉冰綜合1(綠豆+薏仁+花生) Assorted Konjac Milk Shaved Ice 1",
-        "emoji": "🍽️",
-        "price": 110,
-        "category": "蒟蒻牛奶剉冰系列 Konjac Milk Shaved Ice",
-        "desc": "內含綠豆, 薏仁及花生。",
-        "badge": null,
-        "soldCount": 185,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-5.jpg"
-      },
-      {
-        "id": 6,
-        "name": "剉冰綜合3(紅豆+綠豆+花生) Assorted Konjac Milk Shaved Ice 3",
-        "emoji": "🍽️",
-        "price": 110,
-        "category": "蒟蒻牛奶剉冰系列 Konjac Milk Shaved Ice",
-        "desc": "內含紅豆, 綠豆及花生。",
-        "badge": null,
-        "soldCount": 202,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-6.jpg"
-      },
-      {
-        "id": 7,
-        "name": "剉冰綜合2(紅豆+薏仁+花生) Assorted Konjac Milk Shaved Ice 2",
-        "emoji": "🍽️",
-        "price": 110,
-        "category": "蒟蒻牛奶剉冰系列 Konjac Milk Shaved Ice",
-        "desc": "內含紅豆, 薏仁及花生。",
-        "badge": null,
-        "soldCount": 219,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-7.jpg"
-      },
-      {
-        "id": 8,
-        "name": "綜合仙草露剉冰",
-        "emoji": "🍽️",
-        "price": 130,
-        "category": "蒟蒻牛奶剉冰系列 Konjac Milk Shaved Ice",
-        "desc": "煉奶剉冰淋上古法熬煉關西仙草汁\n仙草汁可選：有糖/無糖\n可選三種配料",
-        "badge": null,
-        "soldCount": 236,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-8.jpg"
-      },
-      {
-        "id": 9,
-        "name": "冰-豆花綜合3(綠豆+仙草凍+薏仁湯)Hot Tofu Pudding with Mung Beans, Grass Jelly & Barley",
-        "emoji": "🍽️",
-        "price": 85,
-        "category": "豆花系列 Tofu Pudding",
-        "desc": "Uber Eats 菜單品項",
-        "badge": null,
-        "soldCount": 253,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-9.jpg"
-      },
-      {
-        "id": 10,
-        "name": "冰-原味冰糖豆花 ced Tofu Pudding with Rock Sugar Syrup",
-        "emoji": "🍽️",
-        "price": 75,
-        "category": "豆花系列 Tofu Pudding",
-        "desc": "建議最多三種料。",
-        "badge": null,
-        "soldCount": 270,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-10.jpg"
-      },
-      {
-        "id": 11,
-        "name": "冰-豆花綜合1(蒟蒻+綠豆+薏仁湯) Assorted Iced Original Crystal Sugar Tofu Pudding",
-        "emoji": "🍽️",
-        "price": 85,
-        "category": "豆花系列 Tofu Pudding",
-        "desc": "內含蒟蒻, 綠豆及薏仁。",
-        "badge": null,
-        "soldCount": 287,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-11.jpg"
-      },
-      {
-        "id": 12,
-        "name": "冰-豆花綜合2(湯圓+綠豆+薏仁湯) Warm Tofu Pudding with Rice Balls, Mung Beans & Barley",
-        "emoji": "🍽️",
-        "price": 85,
-        "category": "豆花系列 Tofu Pudding",
-        "desc": "以綿密香甜的綠豆與柔滑豆花為主角，搭配Q彈湯圓與潤喉薏仁湯，溫熱入口、香氣四溢。每一口都充滿穀物與豆香的自然甜味，帶來暖心又飽足的滋味。適合天氣微涼時細細品嚐，感受純粹食材的療癒溫度",
-        "badge": null,
-        "soldCount": 304,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-12.jpg"
-      },
-      {
-        "id": 13,
-        "name": "冰-薏仁湯豆花",
-        "emoji": "🍽️",
-        "price": 75,
-        "category": "豆花系列 Tofu Pudding",
-        "desc": "薏仁湯豆花是一道結合傳統豆花與薏仁湯的健康甜品。綿滑的豆花與煮得軟糯的薏仁搭配，口感豐富，香甜清爽，適合喜愛低糖、養生甜品的人。",
-        "badge": null,
-        "soldCount": 321,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-13.jpg"
-      },
-      {
-        "id": 14,
-        "name": "豆腐冰淇淋 Tofu Ice Cream",
-        "emoji": "🍽️",
-        "price": 80,
-        "category": "薏層層冰淇淋及蒟蒻系列 Ice Cream with Barley and Konjac",
-        "desc": "Uber Eats 菜單品項",
-        "badge": null,
-        "soldCount": 338,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-14.jpg"
-      },
-      {
-        "id": 15,
-        "name": "蒟蒻綠豆薏仁湯  Pearl Barley Soup with Konjac and Green Bean",
-        "emoji": "🍽️",
-        "price": 80,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊",
-        "badge": null,
-        "soldCount": 355,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-15.jpg"
-      },
-      {
-        "id": 16,
-        "name": "蒟蒻紅豆薏仁湯  Pearl Barley Soup with Konjac and Red Bean",
-        "emoji": "🍽️",
-        "price": 80,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊。",
-        "badge": null,
-        "soldCount": 372,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-16.jpg"
-      },
-      {
-        "id": 17,
-        "name": "蒟蒻薏仁湯  Pearl Barley Soup with Konjac",
-        "emoji": "🍽️",
-        "price": 70,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊。",
-        "badge": null,
-        "soldCount": 389,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-17.jpg"
-      },
-      {
-        "id": 18,
-        "name": "蒟蒻綠豆湯 Mung Bean Soup with Konjac",
-        "emoji": "🍽️",
-        "price": 70,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊。",
-        "badge": null,
-        "soldCount": 406,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-18.jpg"
-      },
-      {
-        "id": 19,
-        "name": "蒟蒻花生薏仁湯 Pearl Barley Soup with Konjac and Peanut",
-        "emoji": "🍽️",
-        "price": 80,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊。",
-        "badge": null,
-        "soldCount": 423,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-19.jpg"
-      },
-      {
-        "id": 20,
-        "name": "蒟蒻美白薏仁漿 Pearl Barley Drink with Konjac",
-        "emoji": "🍽️",
-        "price": 65,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊。",
-        "badge": null,
-        "soldCount": 440,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-20.jpg"
-      },
-      {
-        "id": 21,
-        "name": "蒟蒻抹茶露 Matcha Drink with Konjac",
-        "emoji": "🍽️",
-        "price": 75,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "Uber Eats 菜單品項",
-        "badge": null,
-        "soldCount": 457,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-21.jpg"
-      },
-      {
-        "id": 22,
-        "name": "蒟蒻冬瓜露 White Gourd Drink with Konjac",
-        "emoji": "🍽️",
-        "price": 70,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "原汁原味不加冰塊。",
-        "badge": null,
-        "soldCount": 474,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-22.jpg"
-      },
-      {
-        "id": 23,
-        "name": "蒟蒻薏仁鮮奶 Fresh Milk with Pearl Barley and Konjac",
-        "emoji": "🍽️",
-        "price": 90,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "Uber Eats 菜單品項",
-        "badge": null,
-        "soldCount": 491,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-23.jpg"
-      },
-      {
-        "id": 24,
-        "name": "仙草凍薏仁湯",
-        "emoji": "🍽️",
-        "price": 75,
-        "category": "冷飲系列 Cold Drinks",
-        "desc": "關西仙草 古法熬煉  口感鮮 仙草香\n原汁 原味 不加冰塊",
-        "badge": null,
-        "soldCount": 108,
-        "image": "assets/images/menu/ue-qLhYJ5ytQ9KcoEF1dhXrJA-24.jpg"
-      }
-    ],
-    "dataSource": "ubereats",
-    "scrapedAt": "2026-06-10T13:36:54Z",
-    "storeUuid": "a8b85827-9cad-43d2-9ca0-41757615eb24",
-    "coverImage": "assets/images/restaurants/ue-qLhYJ5ytQ9KcoEF1dhXrJA.jpg"
-  },
-  {
     "id": "ue-H2Kq1jILTSCFtXkCOj-GEA",
     "ueStoreId": "H2Kq1jILTSCFtXkCOj-GEA",
     "slug": "太朗-沖繩飯糰-ポークたまご専門店-大安店",
@@ -34507,9 +34222,9 @@
     "name": "饒河夜市 連家小吃 十全排骨",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04047666317183,
-    "lng": 121.55753138025084,
+    "address": "No. 164, Raohe Street",
+    "lat": 25.05069,
+    "lng": 121.5760134,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -34767,7 +34482,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:56:59Z",
     "storeUuid": "aa92bfaf-9299-4d5c-83e4-cbe771d1c8d6",
-    "coverImage": "assets/images/restaurants/ue-qpK_r5KZTVyD5MvncdHI1g.jpg"
+    "coverImage": "assets/images/restaurants/ue-qpK_r5KZTVyD5MvncdHI1g.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-3lZNYarTRg2KoLqYKIWH6A",
@@ -39472,9 +39188,9 @@
     "name": "週末炸雞俱樂部 WEEKEND CHICKEN 信義店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.042906759813274,
-    "lng": 121.57568735099531,
+    "address": "Sec 2, Kee Lung Rd. 74",
+    "lat": 25.0306581,
+    "lng": 121.5578525,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -39746,7 +39462,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:43:55Z",
     "storeUuid": "39a4167b-77c0-5720-85be-3739e1ec2fd1",
-    "coverImage": "assets/images/restaurants/ue-OaQWe3fAVyCFvjc54ewv0Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-OaQWe3fAVyCFvjc54ewv0Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-T3AqIh5bXkuO4Rp026LSpw",
@@ -44573,9 +44290,9 @@
     "name": "Mister Donut 松山門市",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0415665139455,
-    "lng": 121.58108678714812,
+    "address": "台北市信義區永吉里松山路11號",
+    "lat": 25.0494099,
+    "lng": 121.5790576,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -44845,7 +44562,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:03Z",
     "storeUuid": "aa290fdd-273b-4e47-8b6b-bfcb44f9e2ae",
-    "coverImage": "assets/images/restaurants/ue-qikP3Sc7TkeLa7_LRPnirg.jpg"
+    "coverImage": "assets/images/restaurants/ue-qikP3Sc7TkeLa7_LRPnirg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-kMEqoTukS4a9W7tjZ3QkQQ",
@@ -46550,9 +46268,9 @@
     "name": "極 黃燜雞米飯 延吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04307861090255,
-    "lng": 121.56463143640673,
+    "address": "Yanji Street 12",
+    "lat": 25.0473017,
+    "lng": 121.5533829,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -46827,7 +46545,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:09Z",
     "storeUuid": "bc546755-0147-5bbd-95eb-ceaa9d63dcad",
-    "coverImage": "assets/images/restaurants/ue-vFRnVQFHW72V686qnWPcrQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-vFRnVQFHW72V686qnWPcrQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-mfGrluVLRzanuuH3UB4tYA",
@@ -46836,9 +46555,9 @@
     "name": "搖滾披薩 Pizza Rock 台北八德店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039332876018747,
-    "lng": 121.57666768448757,
+    "address": "台北市松山區八德路三段216號",
+    "lat": 25.0480231,
+    "lng": 121.5568237,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -47113,7 +46832,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:26Z",
     "storeUuid": "99f1ab96-e54b-4736-a7ba-e1f7501e2d60",
-    "coverImage": "assets/images/restaurants/ue-mfGrluVLRzanuuH3UB4tYA.jpg"
+    "coverImage": "assets/images/restaurants/ue-mfGrluVLRzanuuH3UB4tYA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ou1G4pf5SGOEdNFBVZLkyQ",
@@ -47122,9 +46842,9 @@
     "name": "她的餐酒x義大利麵",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03493481510535,
-    "lng": 121.55785194072166,
+    "address": "No. 4, Alley 22, Lane 553, Section 4, Zhongxiao East Road",
+    "lat": 25.0432111,
+    "lng": 121.5630875,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -47398,7 +47118,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:29Z",
     "storeUuid": "a2ed46e2-97f9-4863-8474-d1415592e4c9",
-    "coverImage": "assets/images/restaurants/ue-ou1G4pf5SGOEdNFBVZLkyQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-ou1G4pf5SGOEdNFBVZLkyQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ZXYaeZeaRh-bU6nOJ_7ynQ",
@@ -47407,9 +47128,9 @@
     "name": "ZAC ZAG 一樂炸雞",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.027187283048384,
-    "lng": 121.56628714825642,
+    "address": "台北市大安區光復南路562號",
+    "lat": 25.0343531,
+    "lng": 121.5573507,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -47682,7 +47403,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:31Z",
     "storeUuid": "65761a79-979a-461f-9b53-a9ce27fef29d",
-    "coverImage": "assets/images/restaurants/ue-ZXYaeZeaRh-bU6nOJ_7ynQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-ZXYaeZeaRh-bU6nOJ_7ynQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-THBDexP7SQ-5aodYrc1VMQ",
@@ -47691,9 +47413,9 @@
     "name": "Little New York Pizzeria 小紐約披薩店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.037325445509367,
-    "lng": 121.57739573061698,
+    "address": "Zhongxiao East Road Section 4 Lane 216 Alley 32 10",
+    "lat": 25.0398582,
+    "lng": 121.5523731,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -47963,7 +47685,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:34Z",
     "storeUuid": "4c70437b-13fb-490f-b96a-8758adcd5531",
-    "coverImage": "assets/images/restaurants/ue-THBDexP7SQ-5aodYrc1VMQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-THBDexP7SQ-5aodYrc1VMQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-QgFxTa3bXnClskJhD7xfdA",
@@ -47972,9 +47695,9 @@
     "name": "Gaia Flow I 全植料理",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.037254672823167,
-    "lng": 121.5643580912179,
+    "address": "台北市中正區林森南路61巷9號 Taipei",
+    "lat": 25.0398345,
+    "lng": 121.5225109,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -48244,7 +47967,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:21Z",
     "storeUuid": "4201714d-addb-5e70-a5b2-42610fbc5f74",
-    "coverImage": "assets/images/restaurants/ue-QgFxTa3bXnClskJhD7xfdA.jpg"
+    "coverImage": "assets/images/restaurants/ue-QgFxTa3bXnClskJhD7xfdA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-n9r5t_e5XI2lSHClM_UVVg",
@@ -48253,9 +47977,9 @@
     "name": "酷嗑斯美式炸雞 永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04156058489465,
-    "lng": 121.58035905927835,
+    "address": "台北市信義區永吉路429號 Taipei",
+    "lat": 25.0456,
+    "lng": 121.57753,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -48526,7 +48250,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:46:24Z",
     "storeUuid": "9fdaf9b7-f7b9-5c8d-a548-70a533f51556",
-    "coverImage": "assets/images/restaurants/ue-n9r5t_e5XI2lSHClM_UVVg.jpg"
+    "coverImage": "assets/images/restaurants/ue-n9r5t_e5XI2lSHClM_UVVg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-8ZCoqmN3UFGM8xlMyXSiVA",
@@ -48535,9 +48260,9 @@
     "name": "品豐小食",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.02822505164863,
-    "lng": 121.56322361604352,
+    "address": "台北市信義區忠孝東路五段372巷27弄75之2號 Taipei",
+    "lat": 25.0396106,
+    "lng": 121.5765288,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -48811,7 +48536,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:36Z",
     "storeUuid": "f190a8aa-6377-5051-8cf3-194cc974a254",
-    "coverImage": "assets/images/restaurants/ue-8ZCoqmN3UFGM8xlMyXSiVA.jpg"
+    "coverImage": "assets/images/restaurants/ue-8ZCoqmN3UFGM8xlMyXSiVA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-3nTBMOnFUR-5iZ2Rd50qUw",
@@ -48820,9 +48546,9 @@
     "name": "福德涼麵 延吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.042030907495185,
-    "lng": 121.56917838551468,
+    "address": "延吉街40號",
+    "lat": 25.04573,
+    "lng": 121.55355,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -49087,7 +48813,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:22Z",
     "storeUuid": "de74c130-e9c5-511f-b989-9d91779d2a53",
-    "coverImage": "assets/images/restaurants/ue-3nTBMOnFUR-5iZ2Rd50qUw.jpg"
+    "coverImage": "assets/images/restaurants/ue-3nTBMOnFUR-5iZ2Rd50qUw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-CFclg0hWTYWYaagUT5QYsg",
@@ -49096,9 +48823,9 @@
     "name": "Burger & co. 大安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.038181663867533,
-    "lng": 121.57328110833872,
+    "address": "No. 49",
+    "lat": 25.0312411,
+    "lng": 121.5533398,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -49370,7 +49097,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:38Z",
     "storeUuid": "08572583-4856-4d85-9869-a8144f9418b2",
-    "coverImage": "assets/images/restaurants/ue-CFclg0hWTYWYaagUT5QYsg.jpg"
+    "coverImage": "assets/images/restaurants/ue-CFclg0hWTYWYaagUT5QYsg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-zq1hPvFERMqX8r0rAZ_F3Q",
@@ -49379,9 +49107,9 @@
     "name": "頂好紫琳蒸餃館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.048518263152555,
-    "lng": 121.56229423789068,
+    "address": "台北市大安區忠孝東路四段97號B1樓",
+    "lat": 25.0417988,
+    "lng": 121.547901,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -49656,7 +49384,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:14Z",
     "storeUuid": "cead613e-f144-44ca-97f2-bd2b019fc5dd",
-    "coverImage": "assets/images/restaurants/ue-zq1hPvFERMqX8r0rAZ_F3Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-zq1hPvFERMqX8r0rAZ_F3Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-maBDeWv-QXav1o-gO1rfyg",
@@ -49665,9 +49394,9 @@
     "name": "戰鬥雞 油雞/醉雞 輕食 信義永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.035019201677535,
-    "lng": 121.57242839047146,
+    "address": "信義區忠孝東路5段165巷5號",
+    "lat": 25.0418229,
+    "lng": 121.5686677,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -49942,7 +49671,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:46:42Z",
     "storeUuid": "99a04379-6bfe-4176-afd6-8fa03b5adfca",
-    "coverImage": "assets/images/restaurants/ue-maBDeWv-QXav1o-gO1rfyg.jpg"
+    "coverImage": "assets/images/restaurants/ue-maBDeWv-QXav1o-gO1rfyg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-rH-y7TnwV2mXh744lbeo4A",
@@ -49951,9 +49681,9 @@
     "name": "50嵐 永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030280651871006,
-    "lng": 121.5611878833131,
+    "address": "106, Lane 30, Yong Ji Rd.",
+    "lat": 25.0433994,
+    "lng": 121.5688275,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -50204,7 +49934,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:46:46Z",
     "storeUuid": "ac7fb2ed-39f0-5769-9787-be3895b7a8e0",
-    "coverImage": "assets/images/restaurants/ue-rH-y7TnwV2mXh744lbeo4A.jpg"
+    "coverImage": "assets/images/restaurants/ue-rH-y7TnwV2mXh744lbeo4A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ygoL0-9QQOOH7NnGAtA6pg",
@@ -50213,9 +49944,9 @@
     "name": "盛記脆皮臭豆腐",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04099542846494,
-    "lng": 121.56443550898183,
+    "address": "Anju Street 78",
+    "lat": 25.0196405,
+    "lng": 121.553306,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -50484,7 +50215,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:41Z",
     "storeUuid": "ca0a0bd3-ef50-40e3-87ec-d9c602d03aa6",
-    "coverImage": "assets/images/restaurants/ue-ygoL0-9QQOOH7NnGAtA6pg.jpg"
+    "coverImage": "assets/images/restaurants/ue-ygoL0-9QQOOH7NnGAtA6pg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-L8-54fcwWvOQCLQWYDkwbw",
@@ -50493,9 +50225,9 @@
     "name": "老哥 雞肉飯 乾拌麵",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.027392348716095,
-    "lng": 121.57276854708455,
+    "address": "台北市信義區忠孝東路四段559巷8-1號",
+    "lat": 25.0420136,
+    "lng": 121.5635978,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -50770,7 +50502,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:48Z",
     "storeUuid": "2fcfb9e1-f730-5af3-9008-b4166039306f",
-    "coverImage": "assets/images/restaurants/ue-L8-54fcwWvOQCLQWYDkwbw.jpg"
+    "coverImage": "assets/images/restaurants/ue-L8-54fcwWvOQCLQWYDkwbw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ViDrwfcfRqKS9bttFrc5cA",
@@ -50779,9 +50512,9 @@
     "name": "順園小館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.048518263152555,
-    "lng": 121.56229423789068,
+    "address": "No. 281",
+    "lat": 25.0123999,
+    "lng": 121.5355156,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -51056,7 +50789,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:50Z",
     "storeUuid": "5620ebc1-f71f-46a2-92f5-bb6d16b73970",
-    "coverImage": "assets/images/restaurants/ue-ViDrwfcfRqKS9bttFrc5cA.jpg"
+    "coverImage": "assets/images/restaurants/ue-ViDrwfcfRqKS9bttFrc5cA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-qWoaMim8Wrm-m8yyNUKZKw",
@@ -51065,9 +50799,9 @@
     "name": "三隻猴子美式廚房 信義店 3 Monkeys Pizza",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04106920644296,
-    "lng": 121.5761000133546,
+    "address": "台北市信義區松山路449號 Taipei",
+    "lat": 25.0399975,
+    "lng": 121.577979,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -51342,7 +51076,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:40Z",
     "storeUuid": "a96a1a32-29bc-5ab9-be9b-ccb23542992b",
-    "coverImage": "assets/images/restaurants/ue-qWoaMim8Wrm-m8yyNUKZKw.jpg"
+    "coverImage": "assets/images/restaurants/ue-qWoaMim8Wrm-m8yyNUKZKw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-3uZ-SRaXXZuLpRP_i8PLYg",
@@ -51351,9 +51086,9 @@
     "name": "梨谷韓式鐵炭燒肉",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04649012178349,
-    "lng": 121.56561335833354,
+    "address": "台北市信義區忠孝東路五段699號",
+    "lat": 25.0424141,
+    "lng": 121.5801292,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -51625,7 +51360,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:54Z",
     "storeUuid": "dee67e49-1697-5d9b-8ba5-13ff8bc3cb62",
-    "coverImage": "assets/images/restaurants/ue-3uZ-SRaXXZuLpRP_i8PLYg.jpg"
+    "coverImage": "assets/images/restaurants/ue-3uZ-SRaXXZuLpRP_i8PLYg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-BoxT9jRJVsu2zMt9KyC0_w",
@@ -51634,9 +51370,9 @@
     "name": "烤頂雞 韓式正宗烤雞",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.037254672823167,
-    "lng": 121.5643580912179,
+    "address": "台北市大安區復興南路一段107巷5弄6號 Taipei",
+    "lat": 25.044090790571225,
+    "lng": 121.54458778347312,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -51911,7 +51647,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:58:59Z",
     "storeUuid": "068c53f6-3449-56cb-b6cc-cb7d2b20b4ff",
-    "coverImage": "assets/images/restaurants/ue-BoxT9jRJVsu2zMt9KyC0_w.jpg"
+    "coverImage": "assets/images/restaurants/ue-BoxT9jRJVsu2zMt9KyC0_w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-FjGXoQx2WPujlHU6wU8P_Q",
@@ -51920,9 +51657,9 @@
     "name": "罪惡雞排 台北松江店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.036688695343692,
-    "lng": 121.57440129260158,
+    "address": "松江路36號",
+    "lat": 25.04751,
+    "lng": 121.53273,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -52180,7 +51917,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:10:24Z",
     "storeUuid": "163197a1-0c76-58fb-a394-753ac14f0ffd",
-    "coverImage": "assets/images/restaurants/ue-FjGXoQx2WPujlHU6wU8P_Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-FjGXoQx2WPujlHU6wU8P_Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7fi4dZbJTUK2Aym7EKiqXQ",
@@ -52189,9 +51927,9 @@
     "name": "來塊披薩專門店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04253118680667,
-    "lng": 121.56499570573023,
+    "address": "No. 1",
+    "lat": 25.0321953,
+    "lng": 121.560536,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -52466,7 +52204,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:47:19Z",
     "storeUuid": "edf8b875-96c9-4d42-b603-29bb10a8aa5d",
-    "coverImage": "assets/images/restaurants/ue-7fi4dZbJTUK2Aym7EKiqXQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-7fi4dZbJTUK2Aym7EKiqXQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-B1sygHkTWuaWimbkgRWxgw",
@@ -52475,9 +52214,9 @@
     "name": "松屋 台北南京三民店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04328583098615,
-    "lng": 121.56939692365897,
+    "address": "台北市松山區東興路25號 Taipei",
+    "lat": 25.04948,
+    "lng": 121.56561,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -52747,7 +52486,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:47:25Z",
     "storeUuid": "075b3280-7913-5ae6-968a-66e48115b183",
-    "coverImage": "assets/images/restaurants/ue-B1sygHkTWuaWimbkgRWxgw.jpg"
+    "coverImage": "assets/images/restaurants/ue-B1sygHkTWuaWimbkgRWxgw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-6-H8ESY3QKSQuk5Dzaar6w",
@@ -52756,9 +52496,9 @@
     "name": "御膳煲養生雞湯館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030110609927984,
-    "lng": 121.57020823835327,
+    "address": "No. 17",
+    "lat": 25.049685,
+    "lng": 121.5570858,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -53032,7 +52772,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:47:32Z",
     "storeUuid": "ebe1fc11-2637-40a4-90ba-4e43cda6abeb",
-    "coverImage": "assets/images/restaurants/ue-6-H8ESY3QKSQuk5Dzaar6w.jpg"
+    "coverImage": "assets/images/restaurants/ue-6-H8ESY3QKSQuk5Dzaar6w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-gshO1f5NU8KbUZGP2tbX4g",
@@ -53041,9 +52782,9 @@
     "name": "五分埔雞肉飯專賣店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.028182188862242,
-    "lng": 121.56988235355442,
+    "address": "台北市信義區松山路145號",
+    "lat": 25.0467975,
+    "lng": 121.5776512,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -53311,7 +53052,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:47:37Z",
     "storeUuid": "82c84ed5-fe4d-53c2-9b51-918fdad6d7e2",
-    "coverImage": "assets/images/restaurants/ue-gshO1f5NU8KbUZGP2tbX4g.jpg"
+    "coverImage": "assets/images/restaurants/ue-gshO1f5NU8KbUZGP2tbX4g.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-eVUeSIEmUjeHcw3ANZ3eAg",
@@ -53320,9 +53062,9 @@
     "name": "森波 Simple Food 小巨蛋店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04686681652658,
-    "lng": 121.57829219991235,
+    "address": "105台北市松山區南京東路四段133巷4弄26號1樓Taipei",
+    "lat": 25.0522598,
+    "lng": 121.5541717,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -53590,7 +53332,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:53:32Z",
     "storeUuid": "79551e48-8126-5237-8773-0dc0359dde02",
-    "coverImage": "assets/images/restaurants/ue-eVUeSIEmUjeHcw3ANZ3eAg.jpg"
+    "coverImage": "assets/images/restaurants/ue-eVUeSIEmUjeHcw3ANZ3eAg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-lsp1h7fuWBWaJKr4tkD6lw",
@@ -53599,9 +53342,9 @@
     "name": "青山 青茶專業製作 大安通化店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.040586983238505,
-    "lng": 121.5649735678678,
+    "address": "台北市大安區通化街7號 Taipei",
+    "lat": 25.0322127,
+    "lng": 121.5541699,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -53876,7 +53619,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:01Z",
     "storeUuid": "96ca7587-b7ee-5815-9a24-aaf8b640fa97",
-    "coverImage": "assets/images/restaurants/ue-lsp1h7fuWBWaJKr4tkD6lw.jpg"
+    "coverImage": "assets/images/restaurants/ue-lsp1h7fuWBWaJKr4tkD6lw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-hjGhzXw-SJWBhFpwi_iAIQ",
@@ -53885,9 +53629,9 @@
     "name": "小吉咖哩",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.038951549104446,
-    "lng": 121.58021502341201,
+    "address": "105台灣台北市松山區八德路三段158巷20弄1號",
+    "lat": 25.0472862,
+    "lng": 121.5552397,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -54158,7 +53902,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:53:39Z",
     "storeUuid": "8631a1cd-7c3e-4895-8184-5a708bf88021",
-    "coverImage": "assets/images/restaurants/ue-hjGhzXw-SJWBhFpwi_iAIQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-hjGhzXw-SJWBhFpwi_iAIQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-t7-10kF9U-iBSKZ9ZolifA",
@@ -54167,9 +53912,9 @@
     "name": "DON DON DONKI 唐吉訶德 忠孝新生店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041532712008937,
-    "lng": 121.57963541108629,
+    "address": "八德路一段 55",
+    "lat": 25.0445467,
+    "lng": 121.5320917,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -54444,7 +54189,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:47:52Z",
     "storeUuid": "b7bfb5d2-417d-53e8-8148-a67d6689627c",
-    "coverImage": "assets/images/restaurants/ue-t7-10kF9U-iBSKZ9ZolifA.jpg"
+    "coverImage": "assets/images/restaurants/ue-t7-10kF9U-iBSKZ9ZolifA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-L9IGNIY0Wz-HfYdrkWKbTg",
@@ -54453,9 +54199,9 @@
     "name": "Zero Sense無味定律 東區微醺豆花店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044291428184142,
-    "lng": 121.57413215324172,
+    "address": "台北市大安區敦化南路一段160巷4號 Taipei",
+    "lat": 25.0436898,
+    "lng": 121.5484029,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -54684,7 +54430,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:47:58Z",
     "storeUuid": "2fd20634-8634-5b3f-877d-876b91629b4e",
-    "coverImage": "assets/images/restaurants/ue-L9IGNIY0Wz-HfYdrkWKbTg.jpg"
+    "coverImage": "assets/images/restaurants/ue-L9IGNIY0Wz-HfYdrkWKbTg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ps-25PifTJeRYcD8xyKBmQ",
@@ -54693,9 +54440,9 @@
     "name": "很牛炭燒牛排 台北小巨蛋店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0416234940501,
-    "lng": 121.57324357255534,
+    "address": "No. 10, Alley 6, Lane 303, Section 3, Nanjing East Road",
+    "lat": 25.0523606,
+    "lng": 121.5476504,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -54856,7 +54603,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:53:39Z",
     "storeUuid": "a6cfb6e4-f89f-4c97-9161-c0fcc7228199",
-    "coverImage": "assets/images/restaurants/ue-ps-25PifTJeRYcD8xyKBmQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-ps-25PifTJeRYcD8xyKBmQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-zUxpvC28R126NsBNCPeUUw",
@@ -54865,9 +54613,9 @@
     "name": "誠記河粉公司慶城店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030129286103108,
-    "lng": 121.56784618808543,
+    "address": "台北市松山區慶城街1號b1",
+    "lat": 25.0528404,
+    "lng": 121.5447071,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -55142,7 +54890,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:53:43Z",
     "storeUuid": "cd4c69bc-2dbc-475d-ba36-c04d08f79453",
-    "coverImage": "assets/images/restaurants/ue-zUxpvC28R126NsBNCPeUUw.jpg"
+    "coverImage": "assets/images/restaurants/ue-zUxpvC28R126NsBNCPeUUw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-h6tW_98AXj6uk70TUg3kcw",
@@ -55151,9 +54900,9 @@
     "name": "ODD ONE OUT TEA",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04872737757203,
-    "lng": 121.57551699762995,
+    "address": "台北市大安區敦化南路一段187巷48號",
+    "lat": 25.0424874,
+    "lng": 121.55166,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -55425,7 +55174,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:53:48Z",
     "storeUuid": "87ab56ff-df00-5e3e-ae93-bd13520de473",
-    "coverImage": "assets/images/restaurants/ue-h6tW_98AXj6uk70TUg3kcw.jpg"
+    "coverImage": "assets/images/restaurants/ue-h6tW_98AXj6uk70TUg3kcw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-i3_U7vrGRMq0gfljerQAbQ",
@@ -55434,9 +55184,9 @@
     "name": "京華無骨鹽酥雞",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03785178487875,
-    "lng": 121.57535460691926,
+    "address": "No. 8, Lane 36, Section 4, Bade Road",
+    "lat": 25.0474045,
+    "lng": 121.5593041,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -55701,7 +55451,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:48:12Z",
     "storeUuid": "8b7fd4ee-fac6-44ca-b481-f9637ab4006d",
-    "coverImage": "assets/images/restaurants/ue-i3_U7vrGRMq0gfljerQAbQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-i3_U7vrGRMq0gfljerQAbQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-vpFcDMjLSLeOl20WlCwKoA",
@@ -55710,9 +55461,9 @@
     "name": "韓國大叔 基隆路",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033882144134157,
-    "lng": 121.56315532230451,
+    "address": "Keelung Road Section 2 185",
+    "lat": 25.0249654,
+    "lng": 121.5534307,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -55972,7 +55723,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:17Z",
     "storeUuid": "be915c0c-c8cb-48b7-8e97-6d16942c0aa0",
-    "coverImage": "assets/images/restaurants/ue-vpFcDMjLSLeOl20WlCwKoA.jpg"
+    "coverImage": "assets/images/restaurants/ue-vpFcDMjLSLeOl20WlCwKoA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-CMIDlnisStS8ALjhm2N_bg",
@@ -55981,9 +55733,9 @@
     "name": "依鼎越式美食",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044530008906886,
-    "lng": 121.56971213947111,
+    "address": "No. 140號, Wuxing Street",
+    "lat": 25.0297037,
+    "lng": 121.5615941,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -56257,7 +56009,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:02Z",
     "storeUuid": "08c20396-78ac-4ad4-bc00-b8e19b637f6e",
-    "coverImage": "assets/images/restaurants/ue-CMIDlnisStS8ALjhm2N_bg.jpg"
+    "coverImage": "assets/images/restaurants/ue-CMIDlnisStS8ALjhm2N_bg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-X-XbBayETziXxjBRt_d_Jw",
@@ -56266,9 +56019,9 @@
     "name": "GG季吉韓國餐飲房",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.035582539790823,
-    "lng": 121.5627972286314,
+    "address": "Dunhua North Road Lane 145 10",
+    "lat": 25.0537813,
+    "lng": 121.5497326,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -56543,7 +56296,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:15Z",
     "storeUuid": "5fe5db05-ac84-4f38-97c6-3051b7f77f27",
-    "coverImage": "assets/images/restaurants/ue-X-XbBayETziXxjBRt_d_Jw.jpg"
+    "coverImage": "assets/images/restaurants/ue-X-XbBayETziXxjBRt_d_Jw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7HvFSlsWVrKctGEOH9SpBw",
@@ -56552,9 +56306,9 @@
     "name": "pokeworks 夏威夷拌飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03541283929307,
-    "lng": 121.5768497927626,
+    "address": "Lane 107, Sec 1, Fu Xing S. Rd. 45",
+    "lat": 25.0436461,
+    "lng": 121.546028,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -56825,7 +56579,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:53:53Z",
     "storeUuid": "ec7bc54a-5b16-56b2-9cb4-610e1fd4a907",
-    "coverImage": "assets/images/restaurants/ue-7HvFSlsWVrKctGEOH9SpBw.jpg"
+    "coverImage": "assets/images/restaurants/ue-7HvFSlsWVrKctGEOH9SpBw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-N5Dz-ijXW8Ogn-BD1Gst7w",
@@ -56834,9 +56589,9 @@
     "name": "Macho Tacos 瑪丘墨式餅舖 延吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.02776802242797,
-    "lng": 121.56269400237007,
+    "address": "台北市大安區延吉街126巷3號",
+    "lat": 25.0403296,
+    "lng": 121.5543535,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -57111,7 +56866,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:25Z",
     "storeUuid": "3790f3fa-28d7-5bc3-a09f-e043d46b2def",
-    "coverImage": "assets/images/restaurants/ue-N5Dz-ijXW8Ogn-BD1Gst7w.jpg"
+    "coverImage": "assets/images/restaurants/ue-N5Dz-ijXW8Ogn-BD1Gst7w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-C8V1Qy08UvuicKnYd43y7A",
@@ -57120,9 +56876,9 @@
     "name": "大茗本位製茶堂 信義永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04047666317183,
-    "lng": 121.55753138025084,
+    "address": "110台北市信義區永吉路30巷121號 Taipei",
+    "lat": 25.0429845,
+    "lng": 121.5687122,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -57397,7 +57153,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:27Z",
     "storeUuid": "0bc57543-2d3c-52fb-a270-a9d8778df2ec",
-    "coverImage": "assets/images/restaurants/ue-C8V1Qy08UvuicKnYd43y7A.jpg"
+    "coverImage": "assets/images/restaurants/ue-C8V1Qy08UvuicKnYd43y7A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-0s6zt19kTROsAfmHvXEa7A",
@@ -57406,9 +57163,9 @@
     "name": "東區粉圓 總店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.035582539790823,
-    "lng": 121.5627972286314,
+    "address": "No. 38, Lane 216, Section 4, Zhongxiao East Road, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0394895,
+    "lng": 121.5530429,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -57560,7 +57317,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:28Z",
     "storeUuid": "d2ceb3b7-5f64-4d13-ac01-f987bd711aec",
-    "coverImage": "assets/images/restaurants/ue-0s6zt19kTROsAfmHvXEa7A.jpg"
+    "coverImage": "assets/images/restaurants/ue-0s6zt19kTROsAfmHvXEa7A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-bbx5REOnXEWXKK4Ww3UR6Q",
@@ -57569,9 +57327,9 @@
     "name": "老麵攤 光復店｜傳承自 Kanokan 好味道",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033081876297278,
-    "lng": 121.56511317436528,
+    "address": "台北市松山區光復北路154號 Taipei",
+    "lat": 25.0526856,
+    "lng": 121.5567604,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -57846,7 +57604,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:30Z",
     "storeUuid": "6dbc7944-43a7-5c45-9728-ae16c37511e9",
-    "coverImage": "assets/images/restaurants/ue-bbx5REOnXEWXKK4Ww3UR6Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-bbx5REOnXEWXKK4Ww3UR6Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-k7FpLFNGTDee-l2g3WWVag",
@@ -57855,9 +57614,9 @@
     "name": "五福小館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030280651871006,
-    "lng": 121.5611878833131,
+    "address": "Yanji Street, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0359955,
+    "lng": 121.5556011,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -58132,7 +57891,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:34Z",
     "storeUuid": "93b1692c-5346-4c37-9efa-5da0dd65956a",
-    "coverImage": "assets/images/restaurants/ue-k7FpLFNGTDee-l2g3WWVag.jpg"
+    "coverImage": "assets/images/restaurants/ue-k7FpLFNGTDee-l2g3WWVag.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-5qC1vHwyRSmxFr92ctz1UQ",
@@ -58141,9 +57901,9 @@
     "name": "芝香雞肉飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.036671123423424,
-    "lng": 121.57211944478638,
+    "address": "143",
+    "lat": 25.0412355,
+    "lng": 121.568033,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -58418,7 +58178,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:49:00Z",
     "storeUuid": "e6a0b5bc-7c32-4529-b116-bf7672dcf551",
-    "coverImage": "assets/images/restaurants/ue-5qC1vHwyRSmxFr92ctz1UQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-5qC1vHwyRSmxFr92ctz1UQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-iN_2ofSWWV6824bM_BCbsw",
@@ -58427,9 +58188,9 @@
     "name": "Greek Yogurt Day 希臘優格杯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04047666317183,
-    "lng": 121.55753138025084,
+    "address": "67, Lane 161, Sec 1, Dun Hua S. Rd.",
+    "lat": 25.0434576,
+    "lng": 121.5523647,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -58699,7 +58460,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:19Z",
     "storeUuid": "88dff6a1-f496-595e-bcdb-86ccfc109bb3",
-    "coverImage": "assets/images/restaurants/ue-iN_2ofSWWV6824bM_BCbsw.jpg"
+    "coverImage": "assets/images/restaurants/ue-iN_2ofSWWV6824bM_BCbsw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-HQaslgsuVq6p27780zjicg",
@@ -58708,9 +58470,9 @@
     "name": "韓式 豬豬 JUJU POCHA 韓國食堂",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.040912860209176,
-    "lng": 121.57541377136862,
+    "address": "台北市大安區延吉街160巷5-1號 Taipei",
+    "lat": 25.03934,
+    "lng": 121.55458,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -58985,7 +58747,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:29Z",
     "storeUuid": "1d06ac96-0b2e-56ae-a9db-befcd338e272",
-    "coverImage": "assets/images/restaurants/ue-HQaslgsuVq6p27780zjicg.jpg"
+    "coverImage": "assets/images/restaurants/ue-HQaslgsuVq6p27780zjicg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-t3IMWQhuT42WaEV2CvvOVA",
@@ -58994,9 +58757,9 @@
     "name": "牛角燒肉 南港車站店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.042325129227613,
-    "lng": 121.56291130339609,
+    "address": "台北市南港區忠孝東路七段369號",
+    "lat": 25.0528225,
+    "lng": 121.604445,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -59269,7 +59032,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:44Z",
     "storeUuid": "b7720c59-086e-4f8d-9668-45760afbce54",
-    "coverImage": "assets/images/restaurants/ue-t3IMWQhuT42WaEV2CvvOVA.jpg"
+    "coverImage": "assets/images/restaurants/ue-t3IMWQhuT42WaEV2CvvOVA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7qA5eq1qWBi0ZesCVwJYkA",
@@ -59278,9 +59042,9 @@
     "name": "Mr Beans豆花挫冰專賣|民生社區人氣豆花專賣店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.046571084078472,
-    "lng": 121.55959239375709,
+    "address": "台北市松山區新東街1巷2號 Taipei",
+    "lat": 25.0573107,
+    "lng": 121.5661852,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -59477,7 +59241,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:45Z",
     "storeUuid": "eea0397a-ad6a-5818-b465-eb0257025890",
-    "coverImage": "assets/images/restaurants/ue-7qA5eq1qWBi0ZesCVwJYkA.jpg"
+    "coverImage": "assets/images/restaurants/ue-7qA5eq1qWBi0ZesCVwJYkA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-F8iYnjKoRe-vsA9_kP8RXg",
@@ -59486,9 +59251,9 @@
     "name": "胖老爹 吉祥店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03724859096848,
-    "lng": 121.56012441683161,
+    "address": "Sec 4, Ba De Rd. 69",
+    "lat": 25.0483195,
+    "lng": 121.5599605,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -59759,7 +59524,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:49:21Z",
     "storeUuid": "17c8989e-32a8-45ef-afb0-0f7f90ff115e",
-    "coverImage": "assets/images/restaurants/ue-F8iYnjKoRe-vsA9_kP8RXg.jpg"
+    "coverImage": "assets/images/restaurants/ue-F8iYnjKoRe-vsA9_kP8RXg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-PtzuCY9kSNuTglso__gd4w",
@@ -59768,9 +59534,9 @@
     "name": "Yumsem Gimbap 宴先韓式紫菜包飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04186484869771,
-    "lng": 121.5634038681025,
+    "address": "Fuxing South Road Section 1 Lane 107 25",
+    "lat": 25.0436975,
+    "lng": 121.5455954,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -60040,7 +59806,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:34Z",
     "storeUuid": "3edcee09-8f64-48db-9382-5b28fff81de3",
-    "coverImage": "assets/images/restaurants/ue-PtzuCY9kSNuTglso__gd4w.jpg"
+    "coverImage": "assets/images/restaurants/ue-PtzuCY9kSNuTglso__gd4w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-HcgwGkEuVnSbjUJroD7iwg",
@@ -60049,9 +59816,9 @@
     "name": "喝果汁 水果原汁 蔬果汁",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041991335739787,
-    "lng": 121.5716874177536,
+    "address": "臺北市松山區復興北路35 TAIPEI",
+    "lat": 25.0501503,
+    "lng": 121.544225,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -60318,7 +60085,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:48Z",
     "storeUuid": "1dc8301a-412e-5674-9b8d-426ba03ee2c2",
-    "coverImage": "assets/images/restaurants/ue-HcgwGkEuVnSbjUJroD7iwg.jpg"
+    "coverImage": "assets/images/restaurants/ue-HcgwGkEuVnSbjUJroD7iwg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-a3W3lHuxX0OLahC7762puw",
@@ -60327,9 +60095,9 @@
     "name": "相家鷄 內湖星雲店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029527568704655,
-    "lng": 121.56758111336293,
+    "address": "台北市內湖區星雲街72號 Taipei",
+    "lat": 25.078870495277783,
+    "lng": 121.59262440245956,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -60596,7 +60364,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:55Z",
     "storeUuid": "6b75b794-7bb1-5f43-8b6a-10bbefada9bb",
-    "coverImage": "assets/images/restaurants/ue-a3W3lHuxX0OLahC7762puw.jpg"
+    "coverImage": "assets/images/restaurants/ue-a3W3lHuxX0OLahC7762puw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-31Z6vfwJX3qoBShGMWFOhQ",
@@ -60605,9 +60374,9 @@
     "name": "新采粵式小館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04631323647288,
-    "lng": 121.57306897379941,
+    "address": "106台北市大安區市民大道四段60-1號",
+    "lat": 25.0448803,
+    "lng": 121.546699,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -60862,7 +60631,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:49:36Z",
     "storeUuid": "df567abd-fc09-5f7a-a805-284631614e85",
-    "coverImage": "assets/images/restaurants/ue-31Z6vfwJX3qoBShGMWFOhQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-31Z6vfwJX3qoBShGMWFOhQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-3XEIo1q8VbWK2aZfwmTvjA",
@@ -60871,9 +60641,9 @@
     "name": "兩隻小魚咖哩飯甜不辣",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03375253195004,
-    "lng": 121.57163346704351,
+    "address": "Alley 2, Lane 553, Sec 4, Zhong Xiao E. Rd. 11",
+    "lat": 25.0416984,
+    "lng": 121.563294,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -61137,7 +60907,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:54:53Z",
     "storeUuid": "dd7108a3-5abc-55b5-8ad9-a65fc264ef8c",
-    "coverImage": "assets/images/restaurants/ue-3XEIo1q8VbWK2aZfwmTvjA.jpg"
+    "coverImage": "assets/images/restaurants/ue-3XEIo1q8VbWK2aZfwmTvjA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-LvZ2mRKIW56fgXDHdOWM6g",
@@ -61146,9 +60917,9 @@
     "name": "雲之南滇緬料理-遠企店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041483025680108,
-    "lng": 121.57891646511547,
+    "address": "台北市大安區敦化南路二段203號B2 Taipei",
+    "lat": 25.0262201,
+    "lng": 121.5497568,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -61423,7 +61194,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:08Z",
     "storeUuid": "2ef67699-1288-5b9e-9f81-70c774e58cea",
-    "coverImage": "assets/images/restaurants/ue-LvZ2mRKIW56fgXDHdOWM6g.jpg"
+    "coverImage": "assets/images/restaurants/ue-LvZ2mRKIW56fgXDHdOWM6g.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-1raHpXcMUb28zS78B74slA",
@@ -61432,9 +61204,9 @@
     "name": "日日升元気ご膳 x 輕食餐盒 南京店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04486739470693,
-    "lng": 121.56070056224331,
+    "address": "台北市中山區遼寧街155巷41號 Taipei",
+    "lat": 25.05253,
+    "lng": 121.54337,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -61706,7 +61478,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:11Z",
     "storeUuid": "d6b687a5-770c-51bd-bccd-2efc07be2c94",
-    "coverImage": "assets/images/restaurants/ue-1raHpXcMUb28zS78B74slA.jpg"
+    "coverImage": "assets/images/restaurants/ue-1raHpXcMUb28zS78B74slA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Z06pui_zV_G2iBkub_xzdA",
@@ -61715,9 +61488,9 @@
     "name": "牛丁次郎坊 南京支店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.026729879679298,
-    "lng": 121.5727507417191,
+    "address": "南京東路五段25之1號",
+    "lat": 25.05190303077071,
+    "lng": 121.55810687760192,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -61991,7 +61764,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:36Z",
     "storeUuid": "674ea9ba-2ff3-57f1-b688-192e6ffc7374",
-    "coverImage": "assets/images/restaurants/ue-Z06pui_zV_G2iBkub_xzdA.jpg"
+    "coverImage": "assets/images/restaurants/ue-Z06pui_zV_G2iBkub_xzdA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-VnlYE06LVMq9XmXSRf0fMA",
@@ -62000,9 +61774,9 @@
     "name": "螺螄福Rose food正宗柳州螺螄粉 台北信義店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033416789097448,
-    "lng": 121.57357956359328,
+    "address": "110台北市信義區忠孝東路五段175號 Taipei",
+    "lat": 25.0411846,
+    "lng": 121.5689589,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -62275,7 +62049,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:50:04Z",
     "storeUuid": "56795813-4e8b-54ca-bd5e-65d245fd1f30",
-    "coverImage": "assets/images/restaurants/ue-VnlYE06LVMq9XmXSRf0fMA.jpg"
+    "coverImage": "assets/images/restaurants/ue-VnlYE06LVMq9XmXSRf0fMA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-MnSwIpO4Rr6cqNo47aPe_g",
@@ -62284,9 +62059,9 @@
     "name": "NUTTEA 堅果奶茶 台北大安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.049308116951615,
-    "lng": 121.57192385174359,
+    "address": "No. 11-1",
+    "lat": 25.0326158,
+    "lng": 121.5437711,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -62561,7 +62336,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:12Z",
     "storeUuid": "3274b022-93b8-46be-9ca8-da38eda3defe",
-    "coverImage": "assets/images/restaurants/ue-MnSwIpO4Rr6cqNo47aPe_g.jpg"
+    "coverImage": "assets/images/restaurants/ue-MnSwIpO4Rr6cqNo47aPe_g.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GfsQdhREXWOWAWOf-E3S_Q",
@@ -62570,9 +62346,9 @@
     "name": "老墨廚房 合江店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041318799099177,
-    "lng": 121.57749515049282,
+    "address": "10491台北市中山區合江街102巷2-3號 Taipei",
+    "lat": 25.0586124,
+    "lng": 121.5392649,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -62842,7 +62618,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:50:26Z",
     "storeUuid": "19fb1076-1444-5d63-9601-639ff84dd2fd",
-    "coverImage": "assets/images/restaurants/ue-GfsQdhREXWOWAWOf-E3S_Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-GfsQdhREXWOWAWOf-E3S_Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-DNO8PfbNTiCYP50gj9IYtg",
@@ -62851,9 +62628,9 @@
     "name": "京星港式飲茶 PART 1",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.037204747842853,
-    "lng": 121.57311996377553,
+    "address": "No. 216, Section 1, Dunhua South Road, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0411777,
+    "lng": 121.5484946,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -63127,7 +62904,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:50:35Z",
     "storeUuid": "0cd3bc3d-f6cd-4e20-983f-9d208fd218b6",
-    "coverImage": "assets/images/restaurants/ue-DNO8PfbNTiCYP50gj9IYtg.jpg"
+    "coverImage": "assets/images/restaurants/ue-DNO8PfbNTiCYP50gj9IYtg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Kr9WJ5J8RkGDPyDO8ku1Og",
@@ -63136,9 +62914,9 @@
     "name": "米食미식 韓國餐廳",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.047671163360327,
-    "lng": 121.56819554079335,
+    "address": "Rui-an Street 252",
+    "lat": 25.0269343,
+    "lng": 121.5397058,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -63243,7 +63021,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:38Z",
     "storeUuid": "2abf5627-927c-4641-833f-20cef24bb53a",
-    "coverImage": "assets/images/restaurants/ue-Kr9WJ5J8RkGDPyDO8ku1Og.jpg"
+    "coverImage": "assets/images/restaurants/ue-Kr9WJ5J8RkGDPyDO8ku1Og.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ClJp3ZD0Stya8TFOjDP6uQ",
@@ -63252,9 +63031,9 @@
     "name": "Hala Chicken 大安創始店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04844371130082,
-    "lng": 121.56544899693775,
+    "address": "106台灣台北市大安區延吉街131巷4號",
+    "lat": 25.0426488,
+    "lng": 121.5544309,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -63528,7 +63307,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:50:47Z",
     "storeUuid": "0a5269dd-90f4-4adc-9af1-314e8c33fab9",
-    "coverImage": "assets/images/restaurants/ue-ClJp3ZD0Stya8TFOjDP6uQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-ClJp3ZD0Stya8TFOjDP6uQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Is2kYqAkUkaGREaUsZI0UQ",
@@ -63537,9 +63317,9 @@
     "name": "Flare Taipei ATT Valley 松仁店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041476198322464,
-    "lng": 121.56578260952855,
+    "address": "台北市信義區松仁路101號B2 Taipei",
+    "lat": 25.0364208,
+    "lng": 121.5688308,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -63809,7 +63589,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:44Z",
     "storeUuid": "22cda462-a024-5246-8644-4694b1923451",
-    "coverImage": "assets/images/restaurants/ue-Is2kYqAkUkaGREaUsZI0UQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-Is2kYqAkUkaGREaUsZI0UQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-wr561sjtXdKDci5FdEzXLA",
@@ -63818,9 +63599,9 @@
     "name": "ThreePugs 三巴漢堡",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03493481510535,
-    "lng": 121.55785194072166,
+    "address": "台北市大安區復興南路一段107巷5弄15-2號",
+    "lat": 25.0443539,
+    "lng": 121.544906,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -64095,7 +63876,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:49Z",
     "storeUuid": "c2be7ad6-c8ed-5dd2-8372-2e45744cd72c",
-    "coverImage": "assets/images/restaurants/ue-wr561sjtXdKDci5FdEzXLA.jpg"
+    "coverImage": "assets/images/restaurants/ue-wr561sjtXdKDci5FdEzXLA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-pe-58e0bTC2RMb0othzLYQ",
@@ -64104,9 +63886,9 @@
     "name": "老賴茶棧 台北松山店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029674518230735,
-    "lng": 121.56469310712666,
+    "address": "No. 3, Guangfu South Road",
+    "lat": 25.0479577,
+    "lng": 121.5579583,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -64381,7 +64163,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T03:59:51Z",
     "storeUuid": "a5efb9f1-ed1b-4c2d-9131-bd28b61ccb61",
-    "coverImage": "assets/images/restaurants/ue-pe-58e0bTC2RMb0othzLYQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-pe-58e0bTC2RMb0othzLYQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-qrYM92WvWRWDD-b-grC5dg",
@@ -64390,9 +64173,9 @@
     "name": "好湯研究所 大安安居店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04311480535757,
-    "lng": 121.55856249381105,
+    "address": "106台北市大安區安居街46巷9號 Taipei",
+    "lat": 25.0207302,
+    "lng": 121.5538335,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -64667,7 +64450,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:03Z",
     "storeUuid": "aab60cf7-65af-5915-830f-e6fe82b0b976",
-    "coverImage": "assets/images/restaurants/ue-qrYM92WvWRWDD-b-grC5dg.jpg"
+    "coverImage": "assets/images/restaurants/ue-qrYM92WvWRWDD-b-grC5dg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-sz3YSyLiWmmdoLEkWvQfWA",
@@ -64676,9 +64460,9 @@
     "name": "食徒 麻辣火鍋 金字牛尾牛肉麵",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04472388854417,
-    "lng": 121.5718493255951,
+    "address": "Sec 1, Fu Xing S. Rd. 20",
+    "lat": 25.0467035,
+    "lng": 121.5437015,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -64949,7 +64733,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:17Z",
     "storeUuid": "b33dd84b-22e2-5a69-9da0-b1245af41f58",
-    "coverImage": "assets/images/restaurants/ue-sz3YSyLiWmmdoLEkWvQfWA.jpg"
+    "coverImage": "assets/images/restaurants/ue-sz3YSyLiWmmdoLEkWvQfWA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ysomMViwQpua2LOgABOykw",
@@ -64958,9 +64743,9 @@
     "name": "福德涼麵 總店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03660508210315,
-    "lng": 121.57938749466136,
+    "address": "Xing-an Street 76",
+    "lat": 25.0561747,
+    "lng": 121.5412289,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -65193,7 +64978,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:18Z",
     "storeUuid": "caca2631-58b0-429b-9ad8-b3a00013b293",
-    "coverImage": "assets/images/restaurants/ue-ysomMViwQpua2LOgABOykw.jpg"
+    "coverImage": "assets/images/restaurants/ue-ysomMViwQpua2LOgABOykw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-sW54pLhgToySC_NHpNOL3w",
@@ -65202,9 +64988,9 @@
     "name": "星馬快餐 Sin Ma Express 台北大安店 原星馬海南雞飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041991335739787,
-    "lng": 121.5716874177536,
+    "address": "Fuxing South Road Section 1 Lane 107 25",
+    "lat": 25.0436979,
+    "lng": 121.5455763,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -65479,7 +65265,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:21Z",
     "storeUuid": "b16e78a4-b860-4e8c-920b-f347a4d38bdf",
-    "coverImage": "assets/images/restaurants/ue-sW54pLhgToySC_NHpNOL3w.jpg"
+    "coverImage": "assets/images/restaurants/ue-sW54pLhgToySC_NHpNOL3w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7M3-QUitSf2cW7ZtkNYJ-Q",
@@ -65488,9 +65275,9 @@
     "name": "韓華園 韓式中華料理 八德店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029674518230735,
-    "lng": 121.56469310712666,
+    "address": "Bade Road Section 3 209",
+    "lat": 25.048178,
+    "lng": 121.5565886,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -65765,7 +65552,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:36Z",
     "storeUuid": "eccdfe41-48ad-49fd-9c5b-b66d90d609f9",
-    "coverImage": "assets/images/restaurants/ue-7M3-QUitSf2cW7ZtkNYJ-Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-7M3-QUitSf2cW7ZtkNYJ-Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-2o0AVKLJSROEKo2f1pVZiQ",
@@ -65774,9 +65562,9 @@
     "name": "台北泰 民生店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030701218768993,
-    "lng": 121.56556995784346,
+    "address": "台北市松山區民生東路五段164號",
+    "lat": 25.0584966,
+    "lng": 121.5629204,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -66051,7 +65839,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:17Z",
     "storeUuid": "da8d0054-a2c9-4913-842a-8d9fd6955989",
-    "coverImage": "assets/images/restaurants/ue-2o0AVKLJSROEKo2f1pVZiQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-2o0AVKLJSROEKo2f1pVZiQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-o0c9pf3zUTerd0X_DlmhAQ",
@@ -66060,9 +65849,9 @@
     "name": "七號 CHi HAO",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04361415678043,
-    "lng": 121.57114497827328,
+    "address": "16, Alley 4, Lane 345, Section 4, Ren ai Rd, Da'an District",
+    "lat": 25.0389985,
+    "lng": 121.553164,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -66329,7 +66118,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:22Z",
     "storeUuid": "a3473da5-fdf3-5137-ab77-45ff0e59a101",
-    "coverImage": "assets/images/restaurants/ue-o0c9pf3zUTerd0X_DlmhAQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-o0c9pf3zUTerd0X_DlmhAQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-TfvjodBxRzqb6GfrA6_CCw",
@@ -66338,9 +66128,9 @@
     "name": "玉莊越南河粉",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.043295014797714,
-    "lng": 121.56197516142176,
+    "address": "Nanjing East Road Section 5 Lane 250 11",
+    "lat": 25.04991,
+    "lng": 121.566098,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -66615,7 +66405,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:31Z",
     "storeUuid": "4dfbe3a1-d071-473a-9be8-67eb03afc20b",
-    "coverImage": "assets/images/restaurants/ue-TfvjodBxRzqb6GfrA6_CCw.jpg"
+    "coverImage": "assets/images/restaurants/ue-TfvjodBxRzqb6GfrA6_CCw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-gp0l9krBXzy5r0qNYxT7oQ",
@@ -66624,9 +66415,9 @@
     "name": "樂富冰室",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030280651871006,
-    "lng": 121.5611878833131,
+    "address": "100台北市中正區羅斯福路四段132號2樓 Taipei",
+    "lat": 25.012998284512925,
+    "lng": 121.53582235913393,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -66898,7 +66689,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:39Z",
     "storeUuid": "829d25f6-4ac1-5f3c-b9af-4a8d6314fba1",
-    "coverImage": "assets/images/restaurants/ue-gp0l9krBXzy5r0qNYxT7oQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-gp0l9krBXzy5r0qNYxT7oQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-dqjlIO_QRZ-HdYjv7tgkqQ",
@@ -66907,9 +66699,9 @@
     "name": "吉星港式飲茶",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029628583473418,
-    "lng": 121.55991880008766,
+    "address": "台北市中山區南京東路一段92號2樓",
+    "lat": 25.0519179,
+    "lng": 121.5259603,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -67184,7 +66976,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:52:18Z",
     "storeUuid": "76a8e520-efd0-459f-8775-88efeed824a9",
-    "coverImage": "assets/images/restaurants/ue-dqjlIO_QRZ-HdYjv7tgkqQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-dqjlIO_QRZ-HdYjv7tgkqQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-DGL-dWkJQDaiUbzStKGrCQ",
@@ -67193,9 +66986,9 @@
     "name": "秧米 Yumeat",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041971278272648,
-    "lng": 121.57383327748815,
+    "address": "10491台灣台北市中山區市民大道三段25號",
+    "lat": 25.0453841,
+    "lng": 121.5338664,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -67470,7 +67263,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:52:25Z",
     "storeUuid": "0c62fe75-6909-4036-a251-bcd2b4a1ab09",
-    "coverImage": "assets/images/restaurants/ue-DGL-dWkJQDaiUbzStKGrCQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-DGL-dWkJQDaiUbzStKGrCQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ilM5W49dVhixfrHCxh1yPg",
@@ -67479,9 +67273,9 @@
     "name": "港都鍋燒排骨飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04155038183096,
-    "lng": 121.5818179686225,
+    "address": "Alley 16, Lane 559, Sec 4, Zhong Xiao E. Rd. 24",
+    "lat": 25.0424838,
+    "lng": 121.5645106,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -67739,7 +67533,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:42Z",
     "storeUuid": "8a53395b-8f5d-5618-b17e-b1c2c61d723e",
-    "coverImage": "assets/images/restaurants/ue-ilM5W49dVhixfrHCxh1yPg.jpg"
+    "coverImage": "assets/images/restaurants/ue-ilM5W49dVhixfrHCxh1yPg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-PKcIYgkfQTWCXx0BtC5p2w",
@@ -67748,9 +67543,9 @@
     "name": "Peeta TakeTake 永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033449577034908,
-    "lng": 121.56738479267659,
+    "address": "No. 64, Yongji Road",
+    "lat": 25.0455291,
+    "lng": 121.569856,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -68024,7 +67819,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:45Z",
     "storeUuid": "3ca70862-091f-4135-825f-1d01b42e69db",
-    "coverImage": "assets/images/restaurants/ue-PKcIYgkfQTWCXx0BtC5p2w.jpg"
+    "coverImage": "assets/images/restaurants/ue-PKcIYgkfQTWCXx0BtC5p2w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-0lnHkUziX6643UpHoxneFw",
@@ -68033,9 +67829,9 @@
     "name": "CIAO！麵麵 大份量義大利麵 大安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04631323647288,
-    "lng": 121.57306897379941,
+    "address": "大安路一段223號",
+    "lat": 25.034682,
+    "lng": 121.5460641,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -68305,7 +68101,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:21Z",
     "storeUuid": "d259c791-4ce2-5fae-b8dd-4a47a319de17",
-    "coverImage": "assets/images/restaurants/ue-0lnHkUziX6643UpHoxneFw.jpg"
+    "coverImage": "assets/images/restaurants/ue-0lnHkUziX6643UpHoxneFw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-e3gelRpmWweOStMIQWVnOA",
@@ -68314,9 +68111,9 @@
     "name": "AJ TACO 墨式餐館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.047788067609652,
-    "lng": 121.56547976084751,
+    "address": "台北市松山區延吉街30巷6-1號 Taipei",
+    "lat": 25.0460944,
+    "lng": 121.5530788,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -68587,7 +68384,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:49Z",
     "storeUuid": "7b781e95-1a66-5b07-8e4a-d30841656738",
-    "coverImage": "assets/images/restaurants/ue-e3gelRpmWweOStMIQWVnOA.jpg"
+    "coverImage": "assets/images/restaurants/ue-e3gelRpmWweOStMIQWVnOA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-enOwwBgXQLq6ZZDdb1yMtg",
@@ -68596,9 +68394,9 @@
     "name": "泰純小吃部",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0389728073578,
-    "lng": 121.56149099475519,
+    "address": "復興南路一段107巷27號",
+    "lat": 25.0436955,
+    "lng": 121.5456997,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -68861,7 +68659,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:24Z",
     "storeUuid": "7a73b0c0-1817-40ba-ba65-90dd6f5c8cb6",
-    "coverImage": "assets/images/restaurants/ue-enOwwBgXQLq6ZZDdb1yMtg.jpg"
+    "coverImage": "assets/images/restaurants/ue-enOwwBgXQLq6ZZDdb1yMtg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-5cVhRXDbRQyAPw2dqZ5HXA",
@@ -68870,9 +68669,9 @@
     "name": "彩樂亭日本料理",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04261325586584,
-    "lng": 121.5750556776955,
+    "address": "No. 26, Section 1, Da'an Road, Da’an District, Taipei City, Taiwan",
+    "lat": 25.043766,
+    "lng": 121.5461452,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -69141,7 +68940,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:53:03Z",
     "storeUuid": "e5c56145-70db-450c-803f-0d9da99e475c",
-    "coverImage": "assets/images/restaurants/ue-5cVhRXDbRQyAPw2dqZ5HXA.jpg"
+    "coverImage": "assets/images/restaurants/ue-5cVhRXDbRQyAPw2dqZ5HXA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-9GkvndB1QS-Ilo9NDhJV9A",
@@ -69150,9 +68950,9 @@
     "name": "龜記茗品 信義莊敬店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04470796834038,
-    "lng": 121.57467633104332,
+    "address": "No. 314, Zhuangjing Road",
+    "lat": 25.028217,
+    "lng": 121.5632895,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -69427,7 +69227,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:00:50Z",
     "storeUuid": "f4692f9d-d075-412f-8896-8f4d0e1255f4",
-    "coverImage": "assets/images/restaurants/ue-9GkvndB1QS-Ilo9NDhJV9A.jpg"
+    "coverImage": "assets/images/restaurants/ue-9GkvndB1QS-Ilo9NDhJV9A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7tbqYQVeXeOApU9y6SrJzg",
@@ -69436,9 +69237,9 @@
     "name": "炸雞大獅 信義永吉門市 台式炸雞",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0415665139455,
-    "lng": 121.58108678714812,
+    "address": "台北市信義區永吉路30巷119號1樓 Taipei",
+    "lat": 25.0432,
+    "lng": 121.5688211,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -69713,7 +69514,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:12:49Z",
     "storeUuid": "eed6ea61-055e-5de3-80a5-4f72e92ac9ce",
-    "coverImage": "assets/images/restaurants/ue-7tbqYQVeXeOApU9y6SrJzg.jpg"
+    "coverImage": "assets/images/restaurants/ue-7tbqYQVeXeOApU9y6SrJzg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Ur1lC8ETTfuE3rwWpsWhGw",
@@ -69722,9 +69524,9 @@
     "name": "Mamak檔星馬料理 忠孝店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039296623845566,
-    "lng": 121.57455214458786,
+    "address": "台北市大安區敦化南路一段187巷72號1樓",
+    "lat": 25.0424258,
+    "lng": 121.552909,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -69999,7 +69801,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:09Z",
     "storeUuid": "52bd650b-c113-4dfb-84de-bc16a6c5a11b",
-    "coverImage": "assets/images/restaurants/ue-Ur1lC8ETTfuE3rwWpsWhGw.jpg"
+    "coverImage": "assets/images/restaurants/ue-Ur1lC8ETTfuE3rwWpsWhGw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-RY6-6ksqUu-4p6T8GcQO3g",
@@ -70008,9 +69811,9 @@
     "name": "老哥 雞肉飯 乾拌麵 大安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04106920644296,
-    "lng": 121.5761000133546,
+    "address": "台北市大安區和平東路2段118巷36號 Taipei",
+    "lat": 25.0231453,
+    "lng": 121.5428314,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -70285,7 +70088,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:12:51Z",
     "storeUuid": "458ebeea-4b2a-52ef-b8a7-a4fc19c40ede",
-    "coverImage": "assets/images/restaurants/ue-RY6-6ksqUu-4p6T8GcQO3g.jpg"
+    "coverImage": "assets/images/restaurants/ue-RY6-6ksqUu-4p6T8GcQO3g.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-5jAXmw_xR_6SnMkn0rSFKg",
@@ -70294,9 +70098,9 @@
     "name": "火山一鍋",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039890317896848,
-    "lng": 121.55882350533865,
+    "address": "160",
+    "lat": 25.0291585,
+    "lng": 121.5618964,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -70553,7 +70357,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:53:47Z",
     "storeUuid": "e630179b-0ff1-47fe-929c-c927d2b4852a",
-    "coverImage": "assets/images/restaurants/ue-5jAXmw_xR_6SnMkn0rSFKg.jpg"
+    "coverImage": "assets/images/restaurants/ue-5jAXmw_xR_6SnMkn0rSFKg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-wWzwz8qTV_uNx67rih3N5w",
@@ -70562,9 +70367,9 @@
     "name": "廣安樓港式粵菜",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.040978410732652,
-    "lng": 121.56736539816627,
+    "address": "台北市信義區光復南路447之16號 Taipei",
+    "lat": 25.03523,
+    "lng": 121.55811,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -70838,7 +70643,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:00Z",
     "storeUuid": "c16cf0cf-ca93-57fb-8dc7-aeeb8a1dcde7",
-    "coverImage": "assets/images/restaurants/ue-wWzwz8qTV_uNx67rih3N5w.jpg"
+    "coverImage": "assets/images/restaurants/ue-wWzwz8qTV_uNx67rih3N5w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-tT1xvRGlQwGcc5B09lkRxw",
@@ -70847,9 +70653,9 @@
     "name": "坪林手",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.045989303006113,
-    "lng": 121.55994256459547,
+    "address": "Wuxing Street 92",
+    "lat": 25.0305722,
+    "lng": 121.5607633,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -71117,7 +70923,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:10Z",
     "storeUuid": "b53d71bd-11a5-4301-9c73-9074f65911c7",
-    "coverImage": "assets/images/restaurants/ue-tT1xvRGlQwGcc5B09lkRxw.jpg"
+    "coverImage": "assets/images/restaurants/ue-tT1xvRGlQwGcc5B09lkRxw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-1YtkXpCpQBK3libkDFM6kg",
@@ -71126,9 +70933,9 @@
     "name": "Green&Safe 真食物專賣店 永春店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03494501816904,
-    "lng": 121.55639303137751,
+    "address": "台北市信義區忠孝東路五段439號",
+    "lat": 25.0410424,
+    "lng": 121.5758972,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -71403,7 +71210,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:13Z",
     "storeUuid": "d58b645e-90a9-4012-b796-26e40c533a92",
-    "coverImage": "assets/images/restaurants/ue-1YtkXpCpQBK3libkDFM6kg.jpg"
+    "coverImage": "assets/images/restaurants/ue-1YtkXpCpQBK3libkDFM6kg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-fI7QAOYBUeiSGr-HBspZdg",
@@ -71412,9 +71220,9 @@
     "name": "芮馥軒Renfinea",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03768662082947,
-    "lng": 121.5572890238244,
+    "address": "台北市中正區北平東路36號1樓 Taipei city",
+    "lat": 25.04549,
+    "lng": 121.52685,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -71689,7 +71497,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:24Z",
     "storeUuid": "7c8ed000-e601-51e8-921a-bf8706ca5976",
-    "coverImage": "assets/images/restaurants/ue-fI7QAOYBUeiSGr-HBspZdg.jpg"
+    "coverImage": "assets/images/restaurants/ue-fI7QAOYBUeiSGr-HBspZdg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-C9oOh4eaV0moYpxVeIyvCA",
@@ -71698,9 +71507,9 @@
     "name": "UG 信義永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03496268799106,
-    "lng": 121.55857558891373,
+    "address": "臺北市信義區敦厚里永吉路30巷114號 Taipei",
+    "lat": 25.04322,
+    "lng": 121.56869,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -71975,7 +71784,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:26Z",
     "storeUuid": "0bda0e87-879a-5749-a862-9c55788caf08",
-    "coverImage": "assets/images/restaurants/ue-C9oOh4eaV0moYpxVeIyvCA.jpg"
+    "coverImage": "assets/images/restaurants/ue-C9oOh4eaV0moYpxVeIyvCA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-YCS9PhyfVaW7WGM1ZkPWwA",
@@ -71984,9 +71794,9 @@
     "name": "菜鳥 POKÉ",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03075377947979,
-    "lng": 121.5702679417673,
+    "address": "台北市松山區民生東路三段 130 巷 14 號 Taipei",
+    "lat": 25.0566641,
+    "lng": 121.5462894,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -72261,7 +72071,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:12:59Z",
     "storeUuid": "6024bd3e-1c9f-55a5-bb58-63356643d6c0",
-    "coverImage": "assets/images/restaurants/ue-YCS9PhyfVaW7WGM1ZkPWwA.jpg"
+    "coverImage": "assets/images/restaurants/ue-YCS9PhyfVaW7WGM1ZkPWwA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-hOOHPHxBR2ioa17qYQ0YiQ",
@@ -72270,9 +72081,9 @@
     "name": "清奈媽媽印度廚房",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.034194084443417,
-    "lng": 121.56377351863922,
+    "address": "Heping East Road Section 2 Lane 357 2",
+    "lat": 25.0249725,
+    "lng": 121.5462779,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -72528,7 +72339,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:28Z",
     "storeUuid": "84e3873c-7c41-4768-a86b-5eea610d1889",
-    "coverImage": "assets/images/restaurants/ue-hOOHPHxBR2ioa17qYQ0YiQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-hOOHPHxBR2ioa17qYQ0YiQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GQFJeaw0SI6V2numFlwV8A",
@@ -72537,9 +72349,9 @@
     "name": "Texas Roadhouse BREEZE 微風松高店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029924315921527,
-    "lng": 121.57861860624293,
+    "address": "台北市信義區松高路16號3F(微風松高百貨3F)",
+    "lat": 25.0387723,
+    "lng": 121.5674601,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -72814,7 +72626,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:33Z",
     "storeUuid": "19014979-ac34-488e-95da-7ba6165c15f0",
-    "coverImage": "assets/images/restaurants/ue-GQFJeaw0SI6V2numFlwV8A.jpg"
+    "coverImage": "assets/images/restaurants/ue-GQFJeaw0SI6V2numFlwV8A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GK_k4NYrQ_aow9qhwimopg",
@@ -72823,9 +72636,9 @@
     "name": "吉比鮮釀餐廳 敦北店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03110502743705,
-    "lng": 121.57483321469401,
+    "address": "No. 102, DunHua N Rd",
+    "lat": 25.0534328,
+    "lng": 121.5484404,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -73099,7 +72912,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:36Z",
     "storeUuid": "18afe4e0-d62b-43f6-a8c3-daa1c229a8a6",
-    "coverImage": "assets/images/restaurants/ue-GK_k4NYrQ_aow9qhwimopg.jpg"
+    "coverImage": "assets/images/restaurants/ue-GK_k4NYrQ_aow9qhwimopg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-uLXvOl1ZXICaJJKVaIcYHw",
@@ -73108,9 +72922,9 @@
     "name": "饒河那煎銅鑼燒",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039824276576574,
-    "lng": 121.56609155521363,
+    "address": "台北市松山區八德路四段679號(捷運松山站2號出口",
+    "lat": 25.05035,
+    "lng": 121.576,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -73385,7 +73199,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:55:04Z",
     "storeUuid": "b8b5ef3a-5d59-5c80-9a24-92956887181f",
-    "coverImage": "assets/images/restaurants/ue-uLXvOl1ZXICaJJKVaIcYHw.jpg"
+    "coverImage": "assets/images/restaurants/ue-uLXvOl1ZXICaJJKVaIcYHw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-D5OWFvfNRhKkzfIe5VjMkQ",
@@ -73394,9 +73209,9 @@
     "name": "一日樂食 輕便當 南京店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04142149756024,
-    "lng": 121.56391210471915,
+    "address": "No. 5",
+    "lat": 25.0521598,
+    "lng": 121.5548803,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -73671,7 +73486,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:16Z",
     "storeUuid": "0f939616-f7cd-4612-a4cd-f21ee558cc91",
-    "coverImage": "assets/images/restaurants/ue-D5OWFvfNRhKkzfIe5VjMkQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-D5OWFvfNRhKkzfIe5VjMkQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-4eUnvPQAWZW6DT1pvTf06Q",
@@ -73680,9 +73496,9 @@
     "name": "香旬餐飲有限公司",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04472388854417,
-    "lng": 121.5718493255951,
+    "address": "110台北市信義區信安街186號",
+    "lat": 25.0231602,
+    "lng": 121.5552626,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -73957,7 +73773,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:40Z",
     "storeUuid": "e1e527bc-f400-5995-ba0d-3d69bd37f4e9",
-    "coverImage": "assets/images/restaurants/ue-4eUnvPQAWZW6DT1pvTf06Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-4eUnvPQAWZW6DT1pvTf06Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Q0H6NM30TW6KLUWu_dh7Bg",
@@ -73966,9 +73783,9 @@
     "name": "香米泰國料理 信義遠百店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033835974727573,
-    "lng": 121.56893545970102,
+    "address": "Song Ren Rd. 58",
+    "lat": 25.0374162,
+    "lng": 121.5679675,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -74226,7 +74043,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:39Z",
     "storeUuid": "4341fa34-cdf4-4d6e-8a2d-45aefdd87b06",
-    "coverImage": "assets/images/restaurants/ue-Q0H6NM30TW6KLUWu_dh7Bg.jpg"
+    "coverImage": "assets/images/restaurants/ue-Q0H6NM30TW6KLUWu_dh7Bg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-xgpaUGb0WemYUXuHwjs0lQ",
@@ -74235,9 +74053,9 @@
     "name": "岩城日本料理",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.045794181231006,
-    "lng": 121.57264104215655,
+    "address": "台北市松山區八德路四段245巷56弄15號",
+    "lat": 25.0508838,
+    "lng": 121.5640513,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -74493,7 +74311,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:02Z",
     "storeUuid": "c60a5a50-66f4-59e9-9851-7b87c23b3495",
-    "coverImage": "assets/images/restaurants/ue-xgpaUGb0WemYUXuHwjs0lQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-xgpaUGb0WemYUXuHwjs0lQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-yYS_hhJ_TRGAwNdp2EOKUA",
@@ -74502,9 +74321,9 @@
     "name": "印度風情印度餐廳 慶城店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.043182498706404,
-    "lng": 121.56794777995377,
+    "address": "No. 6, Lane 16, Qingcheng Street",
+    "lat": 25.0530105,
+    "lng": 121.5454732,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -74778,7 +74597,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:51Z",
     "storeUuid": "c984bf86-127f-4d11-80c0-d769d8438a50",
-    "coverImage": "assets/images/restaurants/ue-yYS_hhJ_TRGAwNdp2EOKUA.jpg"
+    "coverImage": "assets/images/restaurants/ue-yYS_hhJ_TRGAwNdp2EOKUA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-bGOjz9p0THeNmShpDt1WVQ",
@@ -74787,9 +74607,9 @@
     "name": "Kame House",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029628583473418,
-    "lng": 121.55991880008766,
+    "address": "Yixian Road Lane 32 13",
+    "lat": 25.0398925,
+    "lng": 121.56257,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -75064,7 +74884,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:10Z",
     "storeUuid": "6c63a3cf-da74-4c77-8d99-28690edd5655",
-    "coverImage": "assets/images/restaurants/ue-bGOjz9p0THeNmShpDt1WVQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-bGOjz9p0THeNmShpDt1WVQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Beyq9vxxVfKZvetN8GPz2Q",
@@ -75073,9 +74894,9 @@
     "name": "Ma c so yo 築夢韓食",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03177151145583,
-    "lng": 121.56636167440492,
+    "address": "台北市中山區中山北路一段121巷15號",
+    "lat": 25.0511412,
+    "lng": 121.5238109,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -75342,7 +75163,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:55:47Z",
     "storeUuid": "05ecaaf6-fc71-55f2-99bd-eb4df063f3d9",
-    "coverImage": "assets/images/restaurants/ue-Beyq9vxxVfKZvetN8GPz2Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-Beyq9vxxVfKZvetN8GPz2Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-vFHvuOR7UYWlDjLrX9chlw",
@@ -75351,9 +75173,9 @@
     "name": "北投紅茶 虎林店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.049592136414812,
-    "lng": 121.5686682535169,
+    "address": "虎林街82巷3號",
+    "lat": 25.0432993,
+    "lng": 121.5769714,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -75609,7 +75431,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:52Z",
     "storeUuid": "bc51efb8-e47b-5185-a50e-32eb5fd72197",
-    "coverImage": "assets/images/restaurants/ue-vFHvuOR7UYWlDjLrX9chlw.jpg"
+    "coverImage": "assets/images/restaurants/ue-vFHvuOR7UYWlDjLrX9chlw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-lFLdzDq4Vye7L1nEo9SyyA",
@@ -75618,9 +75441,9 @@
     "name": "陶板屋 台北光復南店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04261325586584,
-    "lng": 121.5750556776955,
+    "address": "台北市大安區光復南路286號B1 Taipei",
+    "lat": 25.03952023182112,
+    "lng": 121.5574436764787,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -75873,7 +75696,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:17Z",
     "storeUuid": "9452ddcc-3ab8-5727-bb2f-59c4a3d4b2c8",
-    "coverImage": "assets/images/restaurants/ue-lFLdzDq4Vye7L1nEo9SyyA.jpg"
+    "coverImage": "assets/images/restaurants/ue-lFLdzDq4Vye7L1nEo9SyyA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GKU7SpWQWEiEUK6VPQorhA",
@@ -75882,9 +75706,9 @@
     "name": "凨餐酒 x 凨商午",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.034938328135148,
-    "lng": 121.57113018346209,
+    "address": "台北市大安區仁愛路四段345巷4弄12號",
+    "lat": 25.0389139,
+    "lng": 121.5534256,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -76147,7 +75971,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:56:58Z",
     "storeUuid": "18a53b4a-9590-5848-8450-ae953d0a2b84",
-    "coverImage": "assets/images/restaurants/ue-GKU7SpWQWEiEUK6VPQorhA.jpg"
+    "coverImage": "assets/images/restaurants/ue-GKU7SpWQWEiEUK6VPQorhA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-IEXDfWfCQkeZbgyrll7X2Q",
@@ -76156,9 +75981,9 @@
     "name": "O卡桑黑白木耳露養生飲專賣 台北民生店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03138641133128,
-    "lng": 121.56297304322776,
+    "address": "台北市松山區民生東路五段14號1樓",
+    "lat": 25.0582725,
+    "lng": 121.55605,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -76433,7 +76258,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:24Z",
     "storeUuid": "2045c37d-67c2-4247-996e-0cab965ed7d9",
-    "coverImage": "assets/images/restaurants/ue-IEXDfWfCQkeZbgyrll7X2Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-IEXDfWfCQkeZbgyrll7X2Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-iTk_U_cVQAqLr2ePwgRY2Q",
@@ -76442,9 +76268,9 @@
     "name": "樂漢堡LOVSS TOGO. 大安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04686681652658,
-    "lng": 121.57829219991235,
+    "address": "台北市大安區大安路一段223號",
+    "lat": 25.0346359,
+    "lng": 121.5459163,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -76718,7 +76544,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:01:59Z",
     "storeUuid": "89393f53-f715-400a-8baf-678fc20458d9",
-    "coverImage": "assets/images/restaurants/ue-iTk_U_cVQAqLr2ePwgRY2Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-iTk_U_cVQAqLr2ePwgRY2Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-flhoQHQfQcyAWZ30Ac-uZw",
@@ -76727,9 +76554,9 @@
     "name": "KEEP FIT健康料理",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029467236419272,
-    "lng": 121.57012408495542,
+    "address": "No. 112號, Rui'an Street, Da’an District, Taipei City, Taiwan 10661",
+    "lat": 25.0297522,
+    "lng": 121.5426935,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -77004,7 +76831,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:02Z",
     "storeUuid": "7e586840-741f-41cc-8059-9df401cfae67",
-    "coverImage": "assets/images/restaurants/ue-flhoQHQfQcyAWZ30Ac-uZw.jpg"
+    "coverImage": "assets/images/restaurants/ue-flhoQHQfQcyAWZ30Ac-uZw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ojiL2NIkWqiA0pKca-uR-Q",
@@ -77013,9 +76841,9 @@
     "name": "肖肖瓶罐米線 雲南非遺米線",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030736539933525,
-    "lng": 121.56808758767392,
+    "address": "台北市松山區饒河街68號(前方攤位)",
+    "lat": 25.05042217665626,
+    "lng": 121.57369341927068,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -77092,7 +76920,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:58:00Z",
     "storeUuid": "a2388bd8-d224-5aa8-80d2-929c6beb91f9",
-    "coverImage": "assets/images/restaurants/ue-ojiL2NIkWqiA0pKca-uR-Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-ojiL2NIkWqiA0pKca-uR-Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-_vCu-XqNWBaa59-CwRTbfg",
@@ -77101,9 +76930,9 @@
     "name": "林心麵食館",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04254897325896,
-    "lng": 121.56800947432194,
+    "address": "台北市松山區南京東路五段250巷3號 Taipei",
+    "lat": 25.050412982519568,
+    "lng": 121.56609924709133,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -77378,7 +77207,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:30Z",
     "storeUuid": "fef0aef9-7a8d-5816-9ae7-df82c114db7e",
-    "coverImage": "assets/images/restaurants/ue-_vCu-XqNWBaa59-CwRTbfg.jpg"
+    "coverImage": "assets/images/restaurants/ue-_vCu-XqNWBaa59-CwRTbfg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-T1Y00dd6Q_euO6aWcrM9og",
@@ -77387,9 +77217,9 @@
     "name": "大苑子 市府夢想旗艦店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041991335739787,
-    "lng": 121.5716874177536,
+    "address": "忠孝東路五段139號",
+    "lat": 25.0412268,
+    "lng": 121.5679164,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -77664,7 +77494,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:06Z",
     "storeUuid": "4f5634d1-d77a-43f7-ae3b-a69672b33da2",
-    "coverImage": "assets/images/restaurants/ue-T1Y00dd6Q_euO6aWcrM9og.jpg"
+    "coverImage": "assets/images/restaurants/ue-T1Y00dd6Q_euO6aWcrM9og.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-HkuZy_2fVtKWmKDxgfWIgw",
@@ -77673,9 +77504,9 @@
     "name": "常常好食 大安仁愛店丨地中海機能餐",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03493481510535,
-    "lng": 121.55785194072166,
+    "address": "172, Sec 1, Da An Rd.",
+    "lat": 25.03658,
+    "lng": 121.54584,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -77945,7 +77776,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:32Z",
     "storeUuid": "1e4b99cb-fd9f-56d2-9698-a0f181f58883",
-    "coverImage": "assets/images/restaurants/ue-HkuZy_2fVtKWmKDxgfWIgw.jpg"
+    "coverImage": "assets/images/restaurants/ue-HkuZy_2fVtKWmKDxgfWIgw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-bs6al4bMQOCQpJppACZ3EA",
@@ -77954,9 +77786,9 @@
     "name": "波 WAVE 鷹嘴豆泥屋專門店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.032676302472325,
-    "lng": 121.5703007974979,
+    "address": "No. 4, Alley 8, Lane 39, Section 2, KeeLung Rd",
+    "lat": 25.030855,
+    "lng": 121.558771,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -78231,7 +78063,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:12Z",
     "storeUuid": "6ece9a97-86cc-40e0-90a4-9a6900267710",
-    "coverImage": "assets/images/restaurants/ue-bs6al4bMQOCQpJppACZ3EA.jpg"
+    "coverImage": "assets/images/restaurants/ue-bs6al4bMQOCQpJppACZ3EA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-N8Zvk_JuWZyDwDSANzmqvg",
@@ -78240,9 +78073,9 @@
     "name": "青山 青茶專業製作 南京三民店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04186484869771,
-    "lng": 121.5634038681025,
+    "address": "臺北市松山區南京東路五段123巷15號 Taipei",
+    "lat": 25.0524007,
+    "lng": 121.5608593,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -78514,7 +78347,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:32Z",
     "storeUuid": "37c66f93-f26e-599c-83c0-34803739aabe",
-    "coverImage": "assets/images/restaurants/ue-N8Zvk_JuWZyDwDSANzmqvg.jpg"
+    "coverImage": "assets/images/restaurants/ue-N8Zvk_JuWZyDwDSANzmqvg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-gXFRyMBEWJyq9U4hDg68HQ",
@@ -78523,9 +78357,9 @@
     "name": "蛋蛋調飲 蛋蜜汁 布丁瓶",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.034464492504814,
-    "lng": 121.56903261448534,
+    "address": "台北市中山區錦州街346號 Taipei",
+    "lat": 25.06013593503142,
+    "lng": 121.53944499392081,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -78783,7 +78617,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:59:32Z",
     "storeUuid": "817151c8-c044-589c-aaf5-4e210e0ebc1d",
-    "coverImage": "assets/images/restaurants/ue-gXFRyMBEWJyq9U4hDg68HQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-gXFRyMBEWJyq9U4hDg68HQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-RqNkNrI3WdOUYE_B-QJpDg",
@@ -78792,9 +78627,9 @@
     "name": "Namaste Indian Restaurant印度餐廳",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.031348764329426,
-    "lng": 121.56830518324932,
+    "address": "台北市松山區南京東路五段278號",
+    "lat": 25.051163,
+    "lng": 121.5669641,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -79049,7 +78884,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:22Z",
     "storeUuid": "46a36436-b237-59d3-9460-4fc1f902690e",
-    "coverImage": "assets/images/restaurants/ue-RqNkNrI3WdOUYE_B-QJpDg.jpg"
+    "coverImage": "assets/images/restaurants/ue-RqNkNrI3WdOUYE_B-QJpDg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-rEjD20MEVHyc6KvMlSzWOQ",
@@ -79058,9 +78894,9 @@
     "name": "日船章魚小丸子 延吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04526422646699,
-    "lng": 121.57223439737665,
+    "address": "台北市大安區延吉街137巷3號 Taipei",
+    "lat": 25.042143924014358,
+    "lng": 121.55474702968341,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -79229,7 +79065,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T13:59:54Z",
     "storeUuid": "ac48c3db-4304-547c-9ce8-abcc952cd639",
-    "coverImage": "assets/images/restaurants/ue-rEjD20MEVHyc6KvMlSzWOQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-rEjD20MEVHyc6KvMlSzWOQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ITrAvXcsUoiu0f1ytp4cqA",
@@ -79238,9 +79075,9 @@
     "name": "今天少澱粉 Low Carbs Today 長安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.028182188862242,
-    "lng": 121.56988235355442,
+    "address": "台北市中山區長安東路二段35巷3號 Taipei",
+    "lat": 25.0488736,
+    "lng": 121.5314071,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -79512,7 +79349,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:40Z",
     "storeUuid": "213ac0bd-772c-5288-aed1-fd72b69e1ca8",
-    "coverImage": "assets/images/restaurants/ue-ITrAvXcsUoiu0f1ytp4cqA.jpg"
+    "coverImage": "assets/images/restaurants/ue-ITrAvXcsUoiu0f1ytp4cqA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-wsAMx49BVU6snDYQOhp3Og",
@@ -79521,9 +79359,9 @@
     "name": "吃·甜甜圈",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033824495636,
-    "lng": 121.57911505627595,
+    "address": "台北市中正區開封街一段2-55號 Taipei",
+    "lat": 25.04607075999171,
+    "lng": 121.51437698219883,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -79751,7 +79589,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:42Z",
     "storeUuid": "c2c00cc7-8f41-554e-ac9c-36103a1a773a",
-    "coverImage": "assets/images/restaurants/ue-wsAMx49BVU6snDYQOhp3Og.jpg"
+    "coverImage": "assets/images/restaurants/ue-wsAMx49BVU6snDYQOhp3Og.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7PdZIIl8Sd-74Y_jWS7teg",
@@ -79760,9 +79599,9 @@
     "name": "阿里巴巴的廚房 台北南京店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.033882144134157,
-    "lng": 121.56315532230451,
+    "address": "台北市中山區南京東路二段56號2樓",
+    "lat": 25.0518806,
+    "lng": 121.5298411,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -80037,7 +79876,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:00:35Z",
     "storeUuid": "ecf75920-897c-49df-bbe1-8fe3592eed7a",
-    "coverImage": "assets/images/restaurants/ue-7PdZIIl8Sd-74Y_jWS7teg.jpg"
+    "coverImage": "assets/images/restaurants/ue-7PdZIIl8Sd-74Y_jWS7teg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-A4j1Q_8MVdGeOSG2JCot3w",
@@ -80046,9 +79886,9 @@
     "name": "LA PASTA義麵屋 內湖店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0458627876563,
-    "lng": 121.57641180092408,
+    "address": "台北市內湖區瑞光路104號 Taipei",
+    "lat": 25.0717645,
+    "lng": 121.5810379,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -80322,7 +80162,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:35Z",
     "storeUuid": "0388f543-ff0c-55d1-9e39-21b6242a2ddf",
-    "coverImage": "assets/images/restaurants/ue-A4j1Q_8MVdGeOSG2JCot3w.jpg"
+    "coverImage": "assets/images/restaurants/ue-A4j1Q_8MVdGeOSG2JCot3w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-oLnXJauPRiiXk7ChuqJZCg",
@@ -80331,9 +80172,9 @@
     "name": "新光三越好好集 信義A4店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03494501816904,
-    "lng": 121.55639303137751,
+    "address": "台北市信義區松高路19號 B2 好好集",
+    "lat": 25.0397352,
+    "lng": 121.5667322,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -80608,7 +80449,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:45Z",
     "storeUuid": "a0b9d725-ab8f-4628-9793-b0a1baa2590a",
-    "coverImage": "assets/images/restaurants/ue-oLnXJauPRiiXk7ChuqJZCg.jpg"
+    "coverImage": "assets/images/restaurants/ue-oLnXJauPRiiXk7ChuqJZCg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-YGiYp0tQQGSLojjRPGgEog",
@@ -80617,9 +80459,9 @@
     "name": "鶴茶樓 鶴頂紅茶商店 大安通化店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04186484869771,
-    "lng": 121.5634038681025,
+    "address": "No. 30, Tonghua Street, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0312344,
+    "lng": 121.5543143,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -80894,7 +80736,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:43Z",
     "storeUuid": "606898a7-4b50-4064-8ba2-38d13c6804a2",
-    "coverImage": "assets/images/restaurants/ue-YGiYp0tQQGSLojjRPGgEog.jpg"
+    "coverImage": "assets/images/restaurants/ue-YGiYp0tQQGSLojjRPGgEog.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-A8wixGMZU_eT_y1tADTcoA",
@@ -80903,9 +80746,9 @@
     "name": "諾崴廚房 原型食物餐盒 Ⅰ 舒肥 紅藜飯 沙拉",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03686656688523,
-    "lng": 121.57873009843873,
+    "address": "台北市松山區長安東路二段219-2號 Taipei",
+    "lat": 25.0483775,
+    "lng": 121.5447413,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -81179,7 +81022,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:46Z",
     "storeUuid": "03cc22c4-6319-53f7-93ff-2d6d0034dca0",
-    "coverImage": "assets/images/restaurants/ue-A8wixGMZU_eT_y1tADTcoA.jpg"
+    "coverImage": "assets/images/restaurants/ue-A8wixGMZU_eT_y1tADTcoA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-x-VkaybUUROuE-sbO-9vjw",
@@ -81188,9 +81032,9 @@
     "name": "鴉片粉圓 興安店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03162800529307,
-    "lng": 121.5775104377567,
+    "address": "Xing An St. 122",
+    "lat": 25.0559624,
+    "lng": 121.5433575,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -81460,7 +81304,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:46Z",
     "storeUuid": "c7e5646b-26d4-5113-ae13-eb1b3bef6f8f",
-    "coverImage": "assets/images/restaurants/ue-x-VkaybUUROuE-sbO-9vjw.jpg"
+    "coverImage": "assets/images/restaurants/ue-x-VkaybUUROuE-sbO-9vjw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-uBygbOeRW4iZbL-M-CTjyw",
@@ -81469,9 +81314,9 @@
     "name": "樂檸漢堡 忠孝敦化門市",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044584907228693,
-    "lng": 121.56599134201477,
+    "address": "Lane 223, Sec 4, Zhong Xiao E. Rd. 47",
+    "lat": 25.0429352,
+    "lng": 121.5529202,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -81746,7 +81591,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:02:37Z",
     "storeUuid": "b81ca06c-e791-5b88-996c-bf8cf824e3cb",
-    "coverImage": "assets/images/restaurants/ue-uBygbOeRW4iZbL-M-CTjyw.jpg"
+    "coverImage": "assets/images/restaurants/ue-uBygbOeRW4iZbL-M-CTjyw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-mVuM854LVAaVbv0UhHoPLg",
@@ -81755,9 +81601,9 @@
     "name": "TRUEWIN初韻 水果/茶專賣 台北饒河店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041483025680108,
-    "lng": 121.57891646511547,
+    "address": "765 Section 4",
+    "lat": 25.0511857,
+    "lng": 121.5779921,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -82030,7 +81876,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:38Z",
     "storeUuid": "995b8cf3-9e0b-5406-956e-fd14847a0f2e",
-    "coverImage": "assets/images/restaurants/ue-mVuM854LVAaVbv0UhHoPLg.jpg"
+    "coverImage": "assets/images/restaurants/ue-mVuM854LVAaVbv0UhHoPLg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-5aG1CzhJRICJlvTOmGTKpw",
@@ -82039,9 +81886,9 @@
     "name": "饗印印度料理 Khanakhazana Indian HALAL Restaurant",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.048313211137756,
-    "lng": 121.5683286464456,
+    "address": "No. 366, Section 1, Keelung Rd",
+    "lat": 25.0353582,
+    "lng": 121.5607017,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -82314,7 +82161,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:03:01Z",
     "storeUuid": "e5a1b50b-3849-4480-8996-f4ce9864caa7",
-    "coverImage": "assets/images/restaurants/ue-5aG1CzhJRICJlvTOmGTKpw.jpg"
+    "coverImage": "assets/images/restaurants/ue-5aG1CzhJRICJlvTOmGTKpw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-xeaUuCVVTHOg9W3fYFYUGw",
@@ -82323,9 +82171,9 @@
     "name": "Butcher Lab by Lanpengyou",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.040095519255026,
-    "lng": 121.56318242501398,
+    "address": "和平東路二段118巷4-1號",
+    "lat": 25.02369493472586,
+    "lng": 121.54281394375634,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -82600,7 +82448,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:49Z",
     "storeUuid": "c5e694b8-2555-4c73-a0f5-6ddf6056141b",
-    "coverImage": "assets/images/restaurants/ue-xeaUuCVVTHOg9W3fYFYUGw.jpg"
+    "coverImage": "assets/images/restaurants/ue-xeaUuCVVTHOg9W3fYFYUGw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-MXi17JEQXEmS9zXsvcTVkg",
@@ -82609,9 +82458,9 @@
     "name": "耶利亞花藝",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039388668665527,
-    "lng": 121.560145030132,
+    "address": "4, Yong Ji Rd.",
+    "lat": 25.0455756,
+    "lng": 121.5675149,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -82886,7 +82735,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:58Z",
     "storeUuid": "3178b5ec-9110-5c49-92f7-35ecbdc4d592",
-    "coverImage": "assets/images/restaurants/ue-MXi17JEQXEmS9zXsvcTVkg.jpg"
+    "coverImage": "assets/images/restaurants/ue-MXi17JEQXEmS9zXsvcTVkg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-T3zJzgNnSw2Sz5Eds86zaQ",
@@ -82895,9 +82745,9 @@
     "name": "麗媽香香鍋 延吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04274286804996,
-    "lng": 121.5665775329565,
+    "address": "台北市松山區八德路三段99巷2號",
+    "lat": 25.048535,
+    "lng": 121.5537114,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -83154,7 +83004,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:02:58Z",
     "storeUuid": "4f7cc9ce-0367-4b0d-92cf-911db3ceb369",
-    "coverImage": "assets/images/restaurants/ue-T3zJzgNnSw2Sz5Eds86zaQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-T3zJzgNnSw2Sz5Eds86zaQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-tNFJRdsHT46Ybu8POpzy4Q",
@@ -83163,9 +83014,9 @@
     "name": "堤諾義大利比薩-台北莊敬門市 TINO’S PIZZA Café",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0371526214021,
-    "lng": 121.56225083689243,
+    "address": "No. 182",
+    "lat": 25.0310135,
+    "lng": 121.5611761,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -83440,7 +83291,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:02Z",
     "storeUuid": "b4d14945-db07-4f8e-986e-ef0f3a9cf2e1",
-    "coverImage": "assets/images/restaurants/ue-tNFJRdsHT46Ybu8POpzy4Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-tNFJRdsHT46Ybu8POpzy4Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Ejx-uay9RWOZ5yB5DQuqSA",
@@ -83449,9 +83301,9 @@
     "name": "嘉義第一名火雞肉飯 北醫店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04096952627155,
-    "lng": 121.5662044368698,
+    "address": "110台湾台北市信義區吳興街253號",
+    "lat": 25.0272268,
+    "lng": 121.5636271,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -83725,7 +83577,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:04Z",
     "storeUuid": "123c7eb9-acbd-4563-99e7-20790d0baa48",
-    "coverImage": "assets/images/restaurants/ue-Ejx-uay9RWOZ5yB5DQuqSA.jpg"
+    "coverImage": "assets/images/restaurants/ue-Ejx-uay9RWOZ5yB5DQuqSA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-6fR-qo-nVi2fdOGe-0HwPA",
@@ -83734,9 +83587,9 @@
     "name": "晴光街商圈 台灣第一香鹹酥雞",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044795072199488,
-    "lng": 121.56365995898815,
+    "address": "Lane 10, Shuang Cheng St. 10-1",
+    "lat": 25.0644037,
+    "lng": 121.5243282,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -83951,7 +83804,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:03:43Z",
     "storeUuid": "e9f47eaa-8fa7-562d-9f74-e19efb41f03c",
-    "coverImage": "assets/images/restaurants/ue-6fR-qo-nVi2fdOGe-0HwPA.jpg"
+    "coverImage": "assets/images/restaurants/ue-6fR-qo-nVi2fdOGe-0HwPA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-byPZn42GXtOw84qlhRu3lw",
@@ -83960,9 +83814,9 @@
     "name": "Le Banh Mi樂粄米越法三明治 敦北門市",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.045989303006113,
-    "lng": 121.55994256459547,
+    "address": "台北市松山區長春路508號",
+    "lat": 25.0544232,
+    "lng": 121.54772,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -84237,7 +84091,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:50Z",
     "storeUuid": "6f23d99f-8d86-5ed3-b0f3-8aa5851bb797",
-    "coverImage": "assets/images/restaurants/ue-byPZn42GXtOw84qlhRu3lw.jpg"
+    "coverImage": "assets/images/restaurants/ue-byPZn42GXtOw84qlhRu3lw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-6GLhY6dAXTyYIlufB94Lqw",
@@ -84246,9 +84101,9 @@
     "name": "Dicos德克士脆皮炸雞 台北小巨蛋店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03609081621326,
-    "lng": 121.57564614341031,
+    "address": "+台北市松山區南京東路四段105號 Taipei",
+    "lat": 25.0517946,
+    "lng": 121.5545177,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -84521,7 +84376,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:06Z",
     "storeUuid": "e862e163-a740-5d3c-9822-5b9f07de0bab",
-    "coverImage": "assets/images/restaurants/ue-6GLhY6dAXTyYIlufB94Lqw.jpg"
+    "coverImage": "assets/images/restaurants/ue-6GLhY6dAXTyYIlufB94Lqw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Kz4DIfFgWPaa9h-FI9zSMg",
@@ -84530,9 +84386,9 @@
     "name": "ONE GOOD烤肉飯 南京復興店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.046384790072015,
-    "lng": 121.56800276164674,
+    "address": "台北市中山區遼寧街141號",
+    "lat": 25.0522813,
+    "lng": 121.5421512,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -84807,7 +84663,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:54Z",
     "storeUuid": "2b3e0321-f160-58f6-9af6-1f8523dcd232",
-    "coverImage": "assets/images/restaurants/ue-Kz4DIfFgWPaa9h-FI9zSMg.jpg"
+    "coverImage": "assets/images/restaurants/ue-Kz4DIfFgWPaa9h-FI9zSMg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-gf9jsVeIUeqMlBMDlrSgJg",
@@ -84816,9 +84673,9 @@
     "name": "享吃無骨鳳爪 蒜辣海螺 Boneles Chicken Paws",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039538349867694,
-    "lng": 121.56444611055352,
+    "address": "台北市松山區饒河街62號 Taipei",
+    "lat": 25.0503,
+    "lng": 121.57352,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -84983,7 +84840,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:04:34Z",
     "storeUuid": "81ff63b1-5788-51ea-8c94-130396b4a026",
-    "coverImage": "assets/images/restaurants/ue-gf9jsVeIUeqMlBMDlrSgJg.jpg"
+    "coverImage": "assets/images/restaurants/ue-gf9jsVeIUeqMlBMDlrSgJg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-jBN1vRmUSg-lp4yEjEP1Yg",
@@ -84992,9 +84850,9 @@
     "name": "清心福全 信義永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03609081621326,
-    "lng": 121.57564614341031,
+    "address": "No. 73之2號, Lane 30, Yongji Road",
+    "lat": 25.0442316,
+    "lng": 121.5688444,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -85269,7 +85127,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:04:38Z",
     "storeUuid": "8c1375bd-1994-4a0f-a5a7-8c848c43f562",
-    "coverImage": "assets/images/restaurants/ue-jBN1vRmUSg-lp4yEjEP1Yg.jpg"
+    "coverImage": "assets/images/restaurants/ue-jBN1vRmUSg-lp4yEjEP1Yg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-teP1hunHQV-fEwFctPbc-g",
@@ -85278,9 +85137,9 @@
     "name": "Burger King漢堡王 松山店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030646462994092,
-    "lng": 121.57249513882469,
+    "address": "No. 133, Section 6, Civic Blvd",
+    "lat": 25.0496488,
+    "lng": 121.5789886,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -85555,7 +85414,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:13:55Z",
     "storeUuid": "b5e3f586-e9c7-415f-9f13-015cb4f6dcfa",
-    "coverImage": "assets/images/restaurants/ue-teP1hunHQV-fEwFctPbc-g.jpg"
+    "coverImage": "assets/images/restaurants/ue-teP1hunHQV-fEwFctPbc-g.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GeweyH3gWvWacgeWKFtTlw",
@@ -85564,9 +85424,9 @@
     "name": "金沙塔小吃店 忠孝店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03494501816904,
-    "lng": 121.55639303137751,
+    "address": "台北市大安區忠孝東路四段216巷40弄4號 Taipei",
+    "lat": 25.0394378,
+    "lng": 121.5527286,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -85835,7 +85695,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:14:04Z",
     "storeUuid": "19ec1ec8-7de0-5af5-9a72-0796285b5397",
-    "coverImage": "assets/images/restaurants/ue-GeweyH3gWvWacgeWKFtTlw.jpg"
+    "coverImage": "assets/images/restaurants/ue-GeweyH3gWvWacgeWKFtTlw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-4DuTfMZ6RsW4mw60DC1EmQ",
@@ -85844,9 +85705,9 @@
     "name": "佐藤咖哩 Sato Curry 復興店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0393427785979,
-    "lng": 121.57596016310758,
+    "address": "No. 92, Section 1, Fuxing South Road, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0434522,
+    "lng": 121.5434311,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -85958,7 +85819,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:38Z",
     "storeUuid": "e03b937c-c67a-46c5-b89b-0eb40c2d4499",
-    "coverImage": "assets/images/restaurants/ue-4DuTfMZ6RsW4mw60DC1EmQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-4DuTfMZ6RsW4mw60DC1EmQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-qLIH3S6HXmalYTTiBIaMKw",
@@ -85967,9 +85829,9 @@
     "name": "小制作茶 通化店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04295304838477,
-    "lng": 121.57260848934827,
+    "address": "台北市大安區通化街133號 Taipei",
+    "lat": 25.029095421411082,
+    "lng": 121.55400188271938,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -86221,7 +86083,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:39Z",
     "storeUuid": "a8b207dd-2e87-5e66-a561-34e204868c2b",
-    "coverImage": "assets/images/restaurants/ue-qLIH3S6HXmalYTTiBIaMKw.jpg"
+    "coverImage": "assets/images/restaurants/ue-qLIH3S6HXmalYTTiBIaMKw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-mlcmgMh2THi2pEs0KbDmfQ",
@@ -86230,9 +86093,9 @@
     "name": "宜品福州乾拌麵",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03494501816904,
-    "lng": 121.55639303137751,
+    "address": "No. 5號, Alley 32, Lane 216, Section 4, Zhongxiao East Road, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0399518,
+    "lng": 121.5525324,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -86506,7 +86369,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:41Z",
     "storeUuid": "9a572680-c876-4c78-b6a4-4b3429b0e67d",
-    "coverImage": "assets/images/restaurants/ue-mlcmgMh2THi2pEs0KbDmfQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-mlcmgMh2THi2pEs0KbDmfQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GEaQCUqRW-WeSDmiPuywFg",
@@ -86515,9 +86379,9 @@
     "name": "21Plus風味館、烤雞炸雞專門店 永吉",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.02988263620485,
-    "lng": 121.57533303661916,
+    "address": "永吉路30巷178弄1號",
+    "lat": 25.0416851,
+    "lng": 121.5686422,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -86792,7 +86656,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:05:40Z",
     "storeUuid": "18469009-4a91-5be5-9e48-39a23eecb016",
-    "coverImage": "assets/images/restaurants/ue-GEaQCUqRW-WeSDmiPuywFg.jpg"
+    "coverImage": "assets/images/restaurants/ue-GEaQCUqRW-WeSDmiPuywFg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-WpfGWwFuUG2FW5XmgdHe6A",
@@ -86801,9 +86666,9 @@
     "name": "Osteria Rialto 雅朵義大利餐館 新光三越信義A4店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.0330582446194,
-    "lng": 121.56122197704957,
+    "address": "台北市信義區松高路19號B1 Taipei",
+    "lat": 25.0397768,
+    "lng": 121.5667329,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -87076,7 +86941,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:13Z",
     "storeUuid": "5a97c65b-016e-506d-855b-95e681d1dee8",
-    "coverImage": "assets/images/restaurants/ue-WpfGWwFuUG2FW5XmgdHe6A.jpg"
+    "coverImage": "assets/images/restaurants/ue-WpfGWwFuUG2FW5XmgdHe6A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-nY2HzGIWSTaqijAT6GlDOA",
@@ -87085,9 +86951,9 @@
     "name": "ONE GOOD 烤肉飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04295304838477,
-    "lng": 121.57260848934827,
+    "address": "No. 34, Lane 17, Guangfu South Road",
+    "lat": 25.0474073,
+    "lng": 121.5593322,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -87361,7 +87227,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:17Z",
     "storeUuid": "9d8d87cc-6216-4936-aa8a-3013e8694338",
-    "coverImage": "assets/images/restaurants/ue-nY2HzGIWSTaqijAT6GlDOA.jpg"
+    "coverImage": "assets/images/restaurants/ue-nY2HzGIWSTaqijAT6GlDOA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-5aF-3y_9WvihCsIBJX3yTQ",
@@ -87370,9 +87237,9 @@
     "name": "正忠排骨飯 永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04661276379515,
-    "lng": 121.56287796338086,
+    "address": "台北市信義區永吉路30巷125號1樓",
+    "lat": 25.0429859,
+    "lng": 121.5686865,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -87625,7 +87492,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:23Z",
     "storeUuid": "e5a17edf-2ffd-5af8-a10a-c201257df24d",
-    "coverImage": "assets/images/restaurants/ue-5aF-3y_9WvihCsIBJX3yTQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-5aF-3y_9WvihCsIBJX3yTQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-U9l60_OCUYCsP-bn-nRF7A",
@@ -87634,9 +87502,9 @@
     "name": "Healthy care 料理所 象山店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044584907228693,
-    "lng": 121.56599134201477,
+    "address": "台北市信義區松仁路215巷2號 Taipei",
+    "lat": 25.0267317,
+    "lng": 121.5686907,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -87908,7 +87776,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:27Z",
     "storeUuid": "53d97ad3-f382-5180-ac3f-e6e7fa7445ec",
-    "coverImage": "assets/images/restaurants/ue-U9l60_OCUYCsP-bn-nRF7A.jpg"
+    "coverImage": "assets/images/restaurants/ue-U9l60_OCUYCsP-bn-nRF7A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Dn87HSQ_XVOWDHq2fSgyBQ",
@@ -87917,9 +87786,9 @@
     "name": "GROUN:D Pizza",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03375253195004,
-    "lng": 121.57163346704351,
+    "address": "台北市信義區信義路五段18號B1",
+    "lat": 25.0327567,
+    "lng": 121.5635522,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -88194,7 +88063,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:58:12Z",
     "storeUuid": "0e7f3b1d-243f-5d53-960c-7ab67d283205",
-    "coverImage": "assets/images/restaurants/ue-Dn87HSQ_XVOWDHq2fSgyBQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-Dn87HSQ_XVOWDHq2fSgyBQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-kGERG4hHTMi4Vb3EecRSBA",
@@ -88203,9 +88073,9 @@
     "name": "沈家魚丸涼麵店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04032014203392,
-    "lng": 121.5734074724312,
+    "address": "台北市信義區忠孝東路五段470號之1",
+    "lat": 25.0405434,
+    "lng": 121.5769856,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -88461,7 +88331,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:06:40Z",
     "storeUuid": "9061111b-8847-4cc8-b855-bdc479c45204",
-    "coverImage": "assets/images/restaurants/ue-kGERG4hHTMi4Vb3EecRSBA.jpg"
+    "coverImage": "assets/images/restaurants/ue-kGERG4hHTMi4Vb3EecRSBA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-sf0gUQfhR-62sbexfhqOCA",
@@ -88470,9 +88341,9 @@
     "name": "Fancy Poké 夏威夷生魚飯",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.040196492715875,
-    "lng": 121.56552575985975,
+    "address": "莊敬路341巷4弄4號",
+    "lat": 25.0282885,
+    "lng": 121.5646645,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -88745,7 +88616,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:31Z",
     "storeUuid": "b1fd2051-07e1-47ee-b6b1-b7b17e1a8e08",
-    "coverImage": "assets/images/restaurants/ue-sf0gUQfhR-62sbexfhqOCA.jpg"
+    "coverImage": "assets/images/restaurants/ue-sf0gUQfhR-62sbexfhqOCA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-PKqnR5BfQ9iZHLGlgvFgEw",
@@ -88754,9 +88626,9 @@
     "name": "TOASTERiA CAFE 吐司利亞 永康店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.040477315976712,
-    "lng": 121.57156637561319,
+    "address": "106台湾台北市大安區信義路二段200號",
+    "lat": 25.0334263,
+    "lng": 121.5303325,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -89031,7 +88903,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:06:57Z",
     "storeUuid": "3caaa747-905f-43d8-991c-b1a582f16013",
-    "coverImage": "assets/images/restaurants/ue-PKqnR5BfQ9iZHLGlgvFgEw.jpg"
+    "coverImage": "assets/images/restaurants/ue-PKqnR5BfQ9iZHLGlgvFgEw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-OEOExE-EWouWKOCykgF1hA",
@@ -89040,9 +88913,9 @@
     "name": "杉盒便當製所 信義店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04254897325896,
-    "lng": 121.56800947432194,
+    "address": "台北市信義區忠孝東路五段524巷14號 Taipei",
+    "lat": 25.0406729,
+    "lng": 121.5798151,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -89317,7 +89190,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:33Z",
     "storeUuid": "384384c4-4f84-5a8b-9628-e0b292017584",
-    "coverImage": "assets/images/restaurants/ue-OEOExE-EWouWKOCykgF1hA.jpg"
+    "coverImage": "assets/images/restaurants/ue-OEOExE-EWouWKOCykgF1hA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-cXbJjUnbSB-oAAW509LcEQ",
@@ -89326,9 +89200,9 @@
     "name": "誠記越南麵食館 THANH-KY Vietnamese Pho",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.047671163360327,
-    "lng": 121.56819554079335,
+    "address": "Yongkang Street Lane 6 6",
+    "lat": 25.0326944,
+    "lng": 121.5295845,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -89603,7 +89477,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:47Z",
     "storeUuid": "7176c98d-49db-481f-a800-05b9d3d2dc11",
-    "coverImage": "assets/images/restaurants/ue-cXbJjUnbSB-oAAW509LcEQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-cXbJjUnbSB-oAAW509LcEQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-sUEOhQJMW5mFMRiV-NH9sg",
@@ -89612,9 +89487,9 @@
     "name": "弈夢紅樓",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03710673133447,
-    "lng": 121.578065969868,
+    "address": "台北市信義區基隆路一段206號 2F Taipei",
+    "lat": 25.0398233,
+    "lng": 121.56331,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -89822,7 +89697,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:41Z",
     "storeUuid": "b1410e85-024c-5b99-8531-1895f8d1fdb2",
-    "coverImage": "assets/images/restaurants/ue-sUEOhQJMW5mFMRiV-NH9sg.jpg"
+    "coverImage": "assets/images/restaurants/ue-sUEOhQJMW5mFMRiV-NH9sg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-fSXVqZZpTfucAC1PIwfZbQ",
@@ -89831,9 +89707,9 @@
     "name": "e91義大利麵屋",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039290652157145,
-    "lng": 121.56509103622449,
+    "address": "Zhongxiao East Road Section 5 508",
+    "lat": 25.0406773,
+    "lng": 121.5785577,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -90088,7 +89964,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:49Z",
     "storeUuid": "7d25d5a9-9669-4dfb-9c00-2d4f2307d96d",
-    "coverImage": "assets/images/restaurants/ue-fSXVqZZpTfucAC1PIwfZbQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-fSXVqZZpTfucAC1PIwfZbQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-q3OJPiNtQT-DUUTU9h4Ttw",
@@ -90097,9 +89974,9 @@
     "name": "佐藤咖哩 和平店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03798366274328,
-    "lng": 121.57466619467088,
+    "address": "No. 9, Lane 228, Section 3, Heping East Road, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0220841,
+    "lng": 121.554265,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -90217,7 +90094,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:51Z",
     "storeUuid": "ab73893e-236d-413f-8351-44d4f61e13b7",
-    "coverImage": "assets/images/restaurants/ue-q3OJPiNtQT-DUUTU9h4Ttw.jpg"
+    "coverImage": "assets/images/restaurants/ue-q3OJPiNtQT-DUUTU9h4Ttw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-QTs-Lx0jXJy1byPbhdBqGQ",
@@ -90226,9 +90104,9 @@
     "name": "爆汁小雞",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029924315921527,
-    "lng": 121.57861860624293,
+    "address": "Lane 51, Sec 1, Da An Rd. 21",
+    "lat": 25.043285549760995,
+    "lng": 121.54716125398029,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -90491,7 +90369,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:07:38Z",
     "storeUuid": "413b3e2f-1d23-5c9c-b56f-23db85d06a19",
-    "coverImage": "assets/images/restaurants/ue-QTs-Lx0jXJy1byPbhdBqGQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-QTs-Lx0jXJy1byPbhdBqGQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Y1O6gWZDWzO10CchitYsjQ",
@@ -90500,9 +90379,9 @@
     "name": "台灣雙醬咖哩 台北小巨蛋店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030110609927984,
-    "lng": 121.57020823835327,
+    "address": "台北市松山區敦化北路120巷7弄15號",
+    "lat": 25.0536776,
+    "lng": 121.5480813,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -90776,7 +90655,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:56Z",
     "storeUuid": "6353ba81-6643-5b33-b5d0-27218ad62c8d",
-    "coverImage": "assets/images/restaurants/ue-Y1O6gWZDWzO10CchitYsjQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-Y1O6gWZDWzO10CchitYsjQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-ybFSZDwJSdOWEwxD_aWLmQ",
@@ -90785,9 +90665,9 @@
     "name": "Bremen 不萊梅義大利麵 忠孝店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03549997153506,
-    "lng": 121.57377549101818,
+    "address": "Zhongxiao East Road Section 4 Lane 216 Alley 19 5",
+    "lat": 25.0403804,
+    "lng": 121.5532961,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -91054,7 +90934,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:47Z",
     "storeUuid": "c9b15264-3c09-49d3-9613-0c43fda58b99",
-    "coverImage": "assets/images/restaurants/ue-ybFSZDwJSdOWEwxD_aWLmQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-ybFSZDwJSdOWEwxD_aWLmQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-AGV9gPx5VG2OaULXUA8URg",
@@ -91063,9 +90944,9 @@
     "name": "Poke Go 波奇走走 夏威夷生魚飯 信義永吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03716473002624,
-    "lng": 121.56295622745694,
+    "address": "永吉路30巷178弄1號",
+    "lat": 25.041719066978967,
+    "lng": 121.56865121722542,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -91119,7 +91000,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:48Z",
     "storeUuid": "00657d80-fc79-546d-8e69-42d7500f1446",
-    "coverImage": "assets/images/restaurants/ue-AGV9gPx5VG2OaULXUA8URg.jpg"
+    "coverImage": "assets/images/restaurants/ue-AGV9gPx5VG2OaULXUA8URg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-HqmwYpmWVqaWecwfqDnqAw",
@@ -91128,9 +91010,9 @@
     "name": "肯德基KFC炸雞廚房",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.031348764329426,
-    "lng": 121.56830518324932,
+    "address": "台北市信義區永吉路229號1、2樓 Taipei",
+    "lat": 25.04569,
+    "lng": 121.57431,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -91405,7 +91287,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:08:20Z",
     "storeUuid": "1ea9b062-9996-56a6-9679-cc1fa839ea03",
-    "coverImage": "assets/images/restaurants/ue-HqmwYpmWVqaWecwfqDnqAw.jpg"
+    "coverImage": "assets/images/restaurants/ue-HqmwYpmWVqaWecwfqDnqAw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-N3qj0Qa3WxeVfmHcpRx4Ug",
@@ -91414,9 +91297,9 @@
     "name": "Pizza Hut必勝客點心專賣店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030646462994092,
-    "lng": 121.57249513882469,
+    "address": "台北市信義區信義路6段88號Taipei",
+    "lat": 25.0355482,
+    "lng": 121.5773085,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -91691,7 +91574,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:50Z",
     "storeUuid": "377aa3d1-06b7-5b17-957e-61dca51c7852",
-    "coverImage": "assets/images/restaurants/ue-N3qj0Qa3WxeVfmHcpRx4Ug.jpg"
+    "coverImage": "assets/images/restaurants/ue-N3qj0Qa3WxeVfmHcpRx4Ug.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-VrBFVpXGQcG7Epi3ly6gyA",
@@ -91700,9 +91584,9 @@
     "name": "1010湘餐盒專門店 松山店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.036671123423424,
-    "lng": 121.56609155521363,
+    "address": "Fuxing North Road 301",
+    "lat": 25.0582219,
+    "lng": 121.5443857,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -91959,7 +91843,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:57:59Z",
     "storeUuid": "56b04556-95c6-41c1-bb12-98b7972ea0c8",
-    "coverImage": "assets/images/restaurants/ue-VrBFVpXGQcG7Epi3ly6gyA.jpg"
+    "coverImage": "assets/images/restaurants/ue-VrBFVpXGQcG7Epi3ly6gyA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-VgppughgVOWwlPvHKum_-Q",
@@ -91968,9 +91853,9 @@
     "name": "新泰村 泰式小吃",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044584907228693,
-    "lng": 121.56599134201477,
+    "address": "台北市大安區和平東路三段224號",
+    "lat": 25.0224365,
+    "lng": 121.5544641,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -92226,7 +92111,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:58:01Z",
     "storeUuid": "560a69ba-0860-54e5-b094-fbc72ae9bff9",
-    "coverImage": "assets/images/restaurants/ue-VgppughgVOWwlPvHKum_-Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-VgppughgVOWwlPvHKum_-Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-9kJJ4M0KW1y1SUm_zovXKw",
@@ -92235,9 +92121,9 @@
     "name": "特好喝 Toptiertea 台北通化店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.041318799099177,
-    "lng": 121.57749515049282,
+    "address": "台北市大安區通化街71號 Taipei",
+    "lat": 25.030373,
+    "lng": 121.5542942,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -92512,7 +92398,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:58:02Z",
     "storeUuid": "f64249e0-cd0a-5b5c-b549-49bfce8bd72b",
-    "coverImage": "assets/images/restaurants/ue-9kJJ4M0KW1y1SUm_zovXKw.jpg"
+    "coverImage": "assets/images/restaurants/ue-9kJJ4M0KW1y1SUm_zovXKw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-UG_jCANJQPmt_nAcFOWFhg",
@@ -92521,9 +92408,9 @@
     "name": "鮮茶道 北市通化店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04631323647288,
-    "lng": 121.57306897379941,
+    "address": "No. 59, Tonghua Street, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0305243,
+    "lng": 121.5543157,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -92798,7 +92685,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:03:54Z",
     "storeUuid": "506fe308-0349-40f9-adfe-701c14e58586",
-    "coverImage": "assets/images/restaurants/ue-UG_jCANJQPmt_nAcFOWFhg.jpg"
+    "coverImage": "assets/images/restaurants/ue-UG_jCANJQPmt_nAcFOWFhg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-7dnJHwODR_uI2jG4Ze1Ckg",
@@ -92807,9 +92695,9 @@
     "name": "林蜀塾川味麵堂 信義店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.042030907495185,
-    "lng": 121.56917838551468,
+    "address": "Yongji Road 257",
+    "lat": 25.0456666,
+    "lng": 121.5750425,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -93082,7 +92970,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:00Z",
     "storeUuid": "edd9c91f-0383-47fb-88da-31b865ed4292",
-    "coverImage": "assets/images/restaurants/ue-7dnJHwODR_uI2jG4Ze1Ckg.jpg"
+    "coverImage": "assets/images/restaurants/ue-7dnJHwODR_uI2jG4Ze1Ckg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-DfFm7wtAV7CvUrw9izcjnQ",
@@ -93091,9 +92980,9 @@
     "name": "和日丼飯所 大安安居店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.044584907228693,
-    "lng": 121.56599134201477,
+    "address": "106台北市大安區安居街46巷9號 Taipei",
+    "lat": 25.020674798104743,
+    "lng": 121.55382083680752,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -93368,7 +93257,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:02Z",
     "storeUuid": "0df166ef-0b40-57b0-af52-bc3d8b37239d",
-    "coverImage": "assets/images/restaurants/ue-DfFm7wtAV7CvUrw9izcjnQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-DfFm7wtAV7CvUrw9izcjnQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-AjuPgN1KXjqGdanO9pZZPg",
@@ -93377,9 +93267,9 @@
     "name": "韓蒔 HAN SHIH",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.042478830793236,
-    "lng": 121.57213822762738,
+    "address": "台北市大安區四維路180號一樓 Taipei",
+    "lat": 25.027776,
+    "lng": 121.5481636,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -93648,7 +93538,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:07Z",
     "storeUuid": "023b8f80-dd4a-5e3a-8675-a9cef696593e",
-    "coverImage": "assets/images/restaurants/ue-AjuPgN1KXjqGdanO9pZZPg.jpg"
+    "coverImage": "assets/images/restaurants/ue-AjuPgN1KXjqGdanO9pZZPg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Jtt_wVmKVhSz__YzSwrnIQ",
@@ -93657,9 +93548,9 @@
     "name": "軟蛋醬 蛋包飯專門製作所 台北信義",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04274286804996,
-    "lng": 121.5665775329565,
+    "address": "台北市信義區莊敬路277號 Taipei",
+    "lat": 25.0290383,
+    "lng": 121.5628239,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -93934,7 +93825,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:09Z",
     "storeUuid": "26db7fc1-598a-5614-b3ff-f6334b0ae721",
-    "coverImage": "assets/images/restaurants/ue-Jtt_wVmKVhSz__YzSwrnIQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-Jtt_wVmKVhSz__YzSwrnIQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-0Du6rWiUV_CjA539xj6Bgw",
@@ -93943,9 +93835,9 @@
     "name": "Nowhere Taipei 墨西哥餐廳",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.035237076608734,
-    "lng": 121.56554213623157,
+    "address": "台北市大同區承德路一段16號",
+    "lat": 25.05036,
+    "lng": 121.51667,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -94196,7 +94088,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:10:13Z",
     "storeUuid": "d03bbaad-6894-57f0-a303-9dfdc63e8183",
-    "coverImage": "assets/images/restaurants/ue-0Du6rWiUV_CjA539xj6Bgw.jpg"
+    "coverImage": "assets/images/restaurants/ue-0Du6rWiUV_CjA539xj6Bgw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-eZ0h-7mjReyieLH1gV9akQ",
@@ -94205,9 +94098,9 @@
     "name": "通化肉圓",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030129286103108,
-    "lng": 121.56784618808543,
+    "address": "No. 7, Lane 39, Tonghua Street, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0309562,
+    "lng": 121.5546315,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -94481,7 +94374,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:53Z",
     "storeUuid": "799d21fb-b9a3-45ec-a278-b1f5815f5a91",
-    "coverImage": "assets/images/restaurants/ue-eZ0h-7mjReyieLH1gV9akQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-eZ0h-7mjReyieLH1gV9akQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-Vsp2q6VsQQq3dev69n7vvQ",
@@ -94490,9 +94384,9 @@
     "name": "佳元蔥油餅舖 南港創始總店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.032408777012,
-    "lng": 121.55918176908636,
+    "address": "No. 111號, Xinghua Road",
+    "lat": 25.0565537,
+    "lng": 121.6055485,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -94767,7 +94661,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:58:15Z",
     "storeUuid": "56ca76ab-a56c-410a-b775-ebfaf67eefbd",
-    "coverImage": "assets/images/restaurants/ue-Vsp2q6VsQQq3dev69n7vvQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-Vsp2q6VsQQq3dev69n7vvQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-cJpY4eDjX2KM5sHq4oHddw",
@@ -94776,9 +94671,9 @@
     "name": "巧主廚咖喱丨南京三民店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03880877917053,
-    "lng": 121.58092197617562,
+    "address": "台北市松山區八德路四段245巷32弄1號 Taipei",
+    "lat": 25.0500443,
+    "lng": 121.5644067,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -95044,7 +94939,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:23Z",
     "storeUuid": "709a58e1-e0e3-5f62-8ce6-c1eae281dd77",
-    "coverImage": "assets/images/restaurants/ue-cJpY4eDjX2KM5sHq4oHddw.jpg"
+    "coverImage": "assets/images/restaurants/ue-cJpY4eDjX2KM5sHq4oHddw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-KPZz0nJnTRSJAY_2lsSQKg",
@@ -95053,9 +94949,9 @@
     "name": "阮小越",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04254897325896,
-    "lng": 121.56800947432194,
+    "address": "中坡北路35",
+    "lat": 25.0456994,
+    "lng": 121.5804878,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -95330,7 +95226,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:56Z",
     "storeUuid": "28f673d2-7267-4d14-8901-8ff696c4902a",
-    "coverImage": "assets/images/restaurants/ue-KPZz0nJnTRSJAY_2lsSQKg.jpg"
+    "coverImage": "assets/images/restaurants/ue-KPZz0nJnTRSJAY_2lsSQKg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-nu-y7AOHWcGdb1RNp11CAA",
@@ -95339,9 +95236,9 @@
     "name": "萃茶風健康餐 信義吳興店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.035516989267347,
-    "lng": 121.56736539816627,
+    "address": "110臺北市信義區吳興街63號 Taipei",
+    "lat": 25.0308698,
+    "lng": 121.5603907,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -95616,7 +95513,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:05:00Z",
     "storeUuid": "9eefb2ec-0387-59c1-9d6f-544da75d4200",
-    "coverImage": "assets/images/restaurants/ue-nu-y7AOHWcGdb1RNp11CAA.jpg"
+    "coverImage": "assets/images/restaurants/ue-nu-y7AOHWcGdb1RNp11CAA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-cTKdol7YWKmNuQ3gJLpn-A",
@@ -95625,9 +95523,9 @@
     "name": "點一碗銷魂鴨肉飯 信義吳興店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.031965391093113,
-    "lng": 121.5684988605289,
+    "address": "台北市信義區吳興街284巷20弄29號 Taipei",
+    "lat": 25.02497,
+    "lng": 121.56293,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -95898,7 +95796,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:26Z",
     "storeUuid": "71329da2-5ed8-58a9-8db9-0de024ba67f8",
-    "coverImage": "assets/images/restaurants/ue-cTKdol7YWKmNuQ3gJLpn-A.jpg"
+    "coverImage": "assets/images/restaurants/ue-cTKdol7YWKmNuQ3gJLpn-A.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-rnnPTt3FRlmOgZFzA8ykMw",
@@ -95907,9 +95806,9 @@
     "name": "粥師傅廣東粥 延吉店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04145099123356,
-    "lng": 121.56077628464604,
+    "address": "106台灣台北市大安區延吉街153-10號",
+    "lat": 25.0399838,
+    "lng": 121.5547953,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -96184,7 +96083,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:05:09Z",
     "storeUuid": "ae79cf4e-ddc5-4659-8e81-917303cca433",
-    "coverImage": "assets/images/restaurants/ue-rnnPTt3FRlmOgZFzA8ykMw.jpg"
+    "coverImage": "assets/images/restaurants/ue-rnnPTt3FRlmOgZFzA8ykMw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-i2Vm1xOIVVu0Rhh6Z6Xvxg",
@@ -96193,9 +96093,9 @@
     "name": "京城烤鴨",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.027187283048384,
-    "lng": 121.56628714825642,
+    "address": "台北市信義區永吉路193號 Taipei",
+    "lat": 25.0457042,
+    "lng": 121.5732276,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -96392,7 +96292,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:04:58Z",
     "storeUuid": "8b6566d7-1388-555b-b446-187a67a5efc6",
-    "coverImage": "assets/images/restaurants/ue-i2Vm1xOIVVu0Rhh6Z6Xvxg.jpg"
+    "coverImage": "assets/images/restaurants/ue-i2Vm1xOIVVu0Rhh6Z6Xvxg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-l87ybLYmRI6im2IXAlNRVA",
@@ -96401,9 +96302,9 @@
     "name": "長廊粵式腸粉",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.04472388854417,
-    "lng": 121.5718493255951,
+    "address": "八德路四段 679",
+    "lat": 25.0503268,
+    "lng": 121.5760237,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -96489,7 +96390,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T04:05:02Z",
     "storeUuid": "97cef26c-b626-448e-a29b-621702535154",
-    "coverImage": "assets/images/restaurants/ue-l87ybLYmRI6im2IXAlNRVA.jpg"
+    "coverImage": "assets/images/restaurants/ue-l87ybLYmRI6im2IXAlNRVA.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-CVtitvq3UHmguXFk_tZTcg",
@@ -96498,9 +96400,9 @@
     "name": "五桐號WooTEA捷運市府店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.037851543550943,
-    "lng": 121.55658439896285,
+    "address": "110台北市信義區忠孝東路五段2號捷運4號出口B1商鋪 Taipei",
+    "lat": 25.04114,
+    "lng": 121.566875,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -96775,7 +96677,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:11:20Z",
     "storeUuid": "095b62b6-fab7-5079-a0b9-7164fed65372",
-    "coverImage": "assets/images/restaurants/ue-CVtitvq3UHmguXFk_tZTcg.jpg"
+    "coverImage": "assets/images/restaurants/ue-CVtitvq3UHmguXFk_tZTcg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-myfzbj7yT62RheLUCyYyjg",
@@ -96784,9 +96687,9 @@
     "name": "潑辣涼麵 熱乾麵",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.042325129227613,
-    "lng": 121.56291130339609,
+    "address": "No. 14, Alley 4, Lane 133, Section 4, Nanjing East Road",
+    "lat": 25.0521562,
+    "lng": 121.5546731,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -97060,7 +96963,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:27Z",
     "storeUuid": "9b27f36e-3ef2-4fad-9185-e2d40b26328e",
-    "coverImage": "assets/images/restaurants/ue-myfzbj7yT62RheLUCyYyjg.jpg"
+    "coverImage": "assets/images/restaurants/ue-myfzbj7yT62RheLUCyYyjg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-xuB7VP6qTBiLamZPf5oU7w",
@@ -97069,9 +96973,9 @@
     "name": "凱琳焗烤坊",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.030701218768993,
-    "lng": 121.56556995784346,
+    "address": "No. 20, Lane 137, Yanji Street, Da’an District, Taipei City, Taiwan",
+    "lat": 25.0419752,
+    "lng": 121.5551578,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -97339,7 +97243,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:41Z",
     "storeUuid": "c6e07b54-feaa-4c18-8b6a-664f7f9a14ef",
-    "coverImage": "assets/images/restaurants/ue-xuB7VP6qTBiLamZPf5oU7w.jpg"
+    "coverImage": "assets/images/restaurants/ue-xuB7VP6qTBiLamZPf5oU7w.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-4KTx0Y-1T5iDR4h6j1f2nQ",
@@ -97348,9 +97253,9 @@
     "name": "TakeOut Burger&Cafe-忠孝新生店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03178743165962,
-    "lng": 121.56353466895669,
+    "address": "No. 6",
+    "lat": 25.0410575,
+    "lng": 121.5322987,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -97610,7 +97515,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:11:34Z",
     "storeUuid": "e0a4f1d1-8fb5-4f98-8347-887a8f57f69d",
-    "coverImage": "assets/images/restaurants/ue-4KTx0Y-1T5iDR4h6j1f2nQ.jpg"
+    "coverImage": "assets/images/restaurants/ue-4KTx0Y-1T5iDR4h6j1f2nQ.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-GaQQmnzeUtyiqyBT8Skg1Q",
@@ -97619,9 +97525,9 @@
     "name": "一分錢一分貨MoneyCake車輪餅 忠孝復興店",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.029527568704655,
-    "lng": 121.56758111336293,
+    "address": "台北市大安區忠孝東路四段17巷20號",
+    "lat": 25.0429392,
+    "lng": 121.5444289,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -97893,7 +97799,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:25Z",
     "storeUuid": "19a4109a-7cde-52dc-a2ab-2053f12920d5",
-    "coverImage": "assets/images/restaurants/ue-GaQQmnzeUtyiqyBT8Skg1Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-GaQQmnzeUtyiqyBT8Skg1Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-dQj2akuHXymGpn_lQw7CRg",
@@ -97902,9 +97809,9 @@
     "name": "日暮咖啡Afterglow Coffee",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.03110502743705,
-    "lng": 121.57483321469401,
+    "address": "台北市大安區安和路二段171巷15號 Taipei",
+    "lat": 25.028124,
+    "lng": 121.550631,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -98179,7 +98086,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:39Z",
     "storeUuid": "7508f66a-4b87-5f29-86a6-7fe5430ec246",
-    "coverImage": "assets/images/restaurants/ue-dQj2akuHXymGpn_lQw7CRg.jpg"
+    "coverImage": "assets/images/restaurants/ue-dQj2akuHXymGpn_lQw7CRg.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-r0mpKWQMWL65HDsvwbhpRw",
@@ -98188,9 +98096,9 @@
     "name": "甜Q甜不辣 奶酪",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.036399880744973,
-    "lng": 121.57502857498604,
+    "address": "台北市信義區永吉路30巷100號 Taipei",
+    "lat": 25.0436591,
+    "lng": 121.5688226,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -98464,7 +98372,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-10T14:11:54Z",
     "storeUuid": "af49a929-640c-58be-b91c-3b2fc1b86947",
-    "coverImage": "assets/images/restaurants/ue-r0mpKWQMWL65HDsvwbhpRw.jpg"
+    "coverImage": "assets/images/restaurants/ue-r0mpKWQMWL65HDsvwbhpRw.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-wBdk14RIUoOEeJdxx3fd0Q",
@@ -98473,9 +98382,9 @@
     "name": "雪坊 SNOW FACTORY 仁愛門市",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.039330669973758,
-    "lng": 121.57525477254308,
+    "address": "台北市大安區仁愛路4段449號1樓 Taipei",
+    "lat": 25.0379892,
+    "lng": 121.5573841,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -98750,7 +98659,8 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:40Z",
     "storeUuid": "c01764d7-8448-5283-8478-9771c777ddd1",
-    "coverImage": "assets/images/restaurants/ue-wBdk14RIUoOEeJdxx3fd0Q.jpg"
+    "coverImage": "assets/images/restaurants/ue-wBdk14RIUoOEeJdxx3fd0Q.jpg",
+    "coordsSource": "api"
   },
   {
     "id": "ue-hi4ZHsQ1UZ6AvxQRe2vttw",
@@ -98759,9 +98669,9 @@
     "name": "謝味食坊 麵疙瘩",
     "category": "美食",
     "emoji": "🍽️",
-    "address": "松仁路7-1號",
-    "lat": 25.034194084443417,
-    "lng": 121.56377351863922,
+    "address": "台北市松山區延吉街23巷3號 Tapiei",
+    "lat": 25.0461486,
+    "lng": 121.5537936,
     "rating": 4.6,
     "deliveryMinutes": 25,
     "deliveryFee": 49,
@@ -99030,6 +98940,7 @@
     "dataSource": "ubereats",
     "scrapedAt": "2026-06-22T05:16:43Z",
     "storeUuid": "862e191e-c435-519e-80bf-14117b6bedb7",
-    "coverImage": "assets/images/restaurants/ue-hi4ZHsQ1UZ6AvxQRe2vttw.jpg"
+    "coverImage": "assets/images/restaurants/ue-hi4ZHsQ1UZ6AvxQRe2vttw.jpg",
+    "coordsSource": "api"
   }
 ]

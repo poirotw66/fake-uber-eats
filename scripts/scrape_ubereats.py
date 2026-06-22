@@ -1228,6 +1228,7 @@ def fetch_store_payload_with_post(
     rate_limiter: ApiRateLimiter | None = None,
 ) -> dict[str, Any]:
     max_retries = int(os.environ.get("UBEREATS_MENU_RETRIES", "8"))
+    empty_retries = int(os.environ.get("UBEREATS_EMPTY_RETRIES", "3"))
     for attempt in range(max_retries):
         payload = post(
             "getStoreV1",
@@ -1241,26 +1242,35 @@ def fetch_store_payload_with_post(
             return payload
 
         message = str((payload.get("data") or {}).get("message", "unknown"))
-        transient = (
-            not payload
-            or message == "unknown"
-            or "too_many_requests" in message
-            or message.startswith("bd.error")
-        )
-        if transient and attempt < max_retries - 1:
-            wait_sec = int(os.environ.get("UBEREATS_RATE_LIMIT_WAIT", "25")) * (attempt + 1)
-            reason = message if message != "unknown" else "empty or transient response"
+        empty_response = not payload or message == "unknown"
+        if empty_response:
+            if attempt >= empty_retries - 1:
+                raise RuntimeError("getStoreV1 failed: empty response (session may be stale)")
+            wait_sec = int(os.environ.get("UBEREATS_EMPTY_RETRY_WAIT", "45"))
             print(
-                f"{log_prefix}rate limited ({reason}) — waiting {wait_sec}s "
+                f"{log_prefix}empty API response — waiting {wait_sec}s "
+                f"(retry {attempt + 2}/{empty_retries})",
+                flush=True,
+            )
+        elif "too_many_requests" in message or message.startswith("bd.error"):
+            if attempt >= max_retries - 1:
+                raise RuntimeError(f"getStoreV1 failed: {message}")
+            wait_sec = min(
+                int(os.environ.get("UBEREATS_RATE_LIMIT_WAIT", "25")) * (attempt + 1),
+                int(os.environ.get("UBEREATS_RATE_LIMIT_WAIT_MAX", "90")),
+            )
+            print(
+                f"{log_prefix}rate limited ({message}) — waiting {wait_sec}s "
                 f"(retry {attempt + 2}/{max_retries})",
                 flush=True,
             )
-            if rate_limiter is not None:
-                rate_limiter.backoff(wait_sec)
-            else:
-                time.sleep(wait_sec)
-            continue
-        raise RuntimeError(f"getStoreV1 failed: {message}")
+        else:
+            raise RuntimeError(f"getStoreV1 failed: {message}")
+
+        if rate_limiter is not None:
+            rate_limiter.backoff(wait_sec)
+        else:
+            time.sleep(wait_sec)
     return {}
 
 
@@ -1804,21 +1814,39 @@ def run_coords_only(max_stores: int, headless: bool) -> int:
 
     print(f"coords-only: updating {len(pending)} / {len(restaurants)} stores", flush=True)
     print(f"parallel coords: {workers} workers, api interval {api_interval}s", flush=True)
+
+    session_refresh_every = int(os.environ.get("UBEREATS_SESSION_REFRESH_EVERY", "35"))
+    retry_rounds = int(os.environ.get("UBEREATS_COORDS_RETRY_ROUNDS", "2"))
     api_template, warmed_map = warm_menu_api_session(feed_url, headless)
     uuid_map.update(warmed_map)
     save_uuid_map(uuid_map)
+    stores_since_refresh = 0
+    consecutive_failures = 0
+    retry_queue: list[dict[str, Any]] = list(pending)
 
-    def apply_result(result: CoordsJobResult, index: int, total: int) -> None:
-        nonlocal updated, failed
+    def refresh_session(reason: str) -> None:
+        nonlocal api_template, stores_since_refresh, consecutive_failures
+        print(f"refreshing API session ({reason})...", flush=True)
+        api_template, warmed = warm_menu_api_session(feed_url, headless)
+        uuid_map.update(warmed)
+        save_uuid_map(uuid_map)
+        stores_since_refresh = 0
+        consecutive_failures = 0
+        rate_limiter.backoff(int(os.environ.get("UBEREATS_SESSION_REFRESH_PAUSE", "15")))
+
+    def apply_result(result: CoordsJobResult, index: int, total: int) -> bool:
+        nonlocal updated, failed, stores_since_refresh, consecutive_failures
         print(f"[{index}/{total}] coords: {result.name}", flush=True)
         if result.error:
             print(f"  warn: {result.error}", flush=True)
             failed += 1
-            return
+            consecutive_failures += 1
+            return False
         if result.lat is None or result.lng is None:
             print("  -> no coordinates", flush=True)
             failed += 1
-            return
+            consecutive_failures += 1
+            return False
 
         with state_lock:
             store_ref = restaurants[restaurant_index[result.store_id]]
@@ -1837,23 +1865,43 @@ def run_coords_only(max_stores: int, headless: bool) -> int:
         print(f"  -> {result.lat:.5f}, {result.lng:.5f}", flush=True)
         if result.address:
             print(f"  -> {result.address[:80]}", flush=True)
+        stores_since_refresh += 1
+        consecutive_failures = 0
+        return True
 
-    total = len(pending)
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = {
-            executor.submit(
-                scrape_coords_job,
+    for round_index in range(1, retry_rounds + 1):
+        if not retry_queue:
+            break
+        if round_index > 1:
+            print(
+                f"coords retry round {round_index}/{retry_rounds} "
+                f"({len(retry_queue)} stores)",
+                flush=True,
+            )
+            refresh_session(f"retry round {round_index}")
+
+        failed_this_round: list[dict[str, Any]] = []
+        total = len(retry_queue)
+        for index, store in enumerate(retry_queue, start=1):
+            if consecutive_failures >= 2:
+                refresh_session("consecutive failures")
+            elif stores_since_refresh >= session_refresh_every:
+                refresh_session(f"every {session_refresh_every} stores")
+
+            result = scrape_coords_job(
                 store,
                 api_template,
                 uuid_map,
                 uuid_lock,
                 rate_limiter,
-            ): (index, store)
-            for index, store in enumerate(pending, start=1)
-        }
-        for future in as_completed(futures):
-            index, _store = futures[future]
-            apply_result(future.result(), index, total)
+            )
+            if not apply_result(result, index, total):
+                failed_this_round.append(store)
+
+        retry_queue = failed_this_round
+        if retry_queue and round_index < retry_rounds:
+            save_json(OUTPUT_PATH, restaurants)
+            save_json(ENRICHED_PATH, restaurants)
 
     save_json(OUTPUT_PATH, restaurants)
     save_json(ENRICHED_PATH, restaurants)
@@ -1867,8 +1915,12 @@ def run_coords_only(max_stores: int, headless: bool) -> int:
             "coordsFailed": failed,
         },
     )
-    print(f"wrote {ENRICHED_PATH} ({updated} stores with real coordinates)", flush=True)
-    return 0 if updated else 1
+    print(
+        f"wrote {ENRICHED_PATH} ({updated} coords this run, {failed} failed, "
+        f"{len(retry_queue)} still pending)",
+        flush=True,
+    )
+    return 0 if not retry_queue else 1
 
 
 @dataclass
