@@ -1,11 +1,12 @@
 const CONFIG = {
+    brandName: "Uber Eats Not!!",
     nominatimUrl: "https://nominatim.openstreetmap.org",
     osrmUrl: "https://router.project-osrm.org/route/v1",
     driverNames: ["王建國", "李志明", "陳俊宇", "張雅婷", "林冠廷"],
     defaultAddress: "松仁路7-1號",
     defaultLat: 25.0382477,
     defaultLng: 121.5691055,
-    deliveryLabel: "立刻",
+    deliveryLabel: "25–35 分鐘",
 };
 
 const VEHICLES = [
@@ -62,10 +63,10 @@ const GENERIC_MENUS = {
 
 const TIMELINE_STEPS = [
     { key: "placed", text: "訂單已確認", sub: "店家已收到你的訂單" },
-    { key: "preparing", text: "店家準備中", sub: "廚房正在料理你的餐點" },
+    { key: "preparing", text: "店家準備中", sub: "餐點正在製作，請稍候" },
     { key: "pickup", text: "外送員取餐中", sub: "外送員已抵達餐廳" },
-    { key: "delivering", text: "外送中", sub: "餐點正在送往你的地址" },
-    { key: "arrived", text: "已送達門口", sub: "請與外送員碰面取餐" },
+    { key: "delivering", text: "外送中", sub: "餐點正在前往你的地址" },
+    { key: "arrived", text: "已送達門口", sub: "請至門口與外送員碰面" },
 ];
 
 const state = {
@@ -87,6 +88,90 @@ const state = {
     driverName: "",
     selectedVehicleId: "motorcycle",
     routeLayer: null,
+    trackingBounds: null,
+    route: "home",
+};
+
+const ROUTE = {
+    HOME: "home",
+    RESTAURANT: "restaurant",
+    CHECKOUT: "checkout",
+    TRACKING: "tracking",
+};
+
+const router = {
+    suppress: false,
+
+    hashFor(route, restaurantId = null) {
+        switch (route) {
+            case ROUTE.RESTAURANT:
+                return `#/restaurant/${encodeURIComponent(restaurantId || "")}`;
+            case ROUTE.CHECKOUT:
+                return "#/checkout";
+            case ROUTE.TRACKING:
+                return "#/tracking";
+            default:
+                return "#/";
+        }
+    },
+
+    parseHash(hash = location.hash) {
+        if (!hash || hash === "#") return { route: ROUTE.HOME, restaurantId: null };
+        const match = hash.match(/^#\/restaurant\/(.+)$/);
+        if (match) {
+            return { route: ROUTE.RESTAURANT, restaurantId: decodeURIComponent(match[1]) };
+        }
+        if (hash === "#/checkout") return { route: ROUTE.CHECKOUT, restaurantId: null };
+        if (hash === "#/tracking") return { route: ROUTE.TRACKING, restaurantId: null };
+        return { route: ROUTE.HOME, restaurantId: null };
+    },
+
+    navigate(route, { restaurantId = null, replace = false } = {}) {
+        const next = { route, restaurantId };
+        const hash = this.hashFor(route, restaurantId);
+        this.suppress = true;
+        if (replace) {
+            history.replaceState(next, "", hash);
+        } else {
+            history.pushState(next, "", hash);
+        }
+        this.apply(next);
+        this.suppress = false;
+    },
+
+    back() {
+        if (history.length > 1) {
+            history.back();
+            return;
+        }
+        this.navigate(ROUTE.HOME, { replace: true });
+    },
+
+    apply(routeState) {
+        state.route = routeState.route;
+        switch (routeState.route) {
+            case ROUTE.HOME:
+                showHomeRoute();
+                break;
+            case ROUTE.RESTAURANT:
+                showRestaurantRoute(routeState.restaurantId);
+                break;
+            case ROUTE.CHECKOUT:
+                showCheckoutRoute();
+                break;
+            case ROUTE.TRACKING:
+                showTrackingRoute();
+                break;
+            default:
+                showHomeRoute();
+        }
+    },
+
+    syncInitial() {
+        const initial = this.parseHash();
+        history.replaceState(initial, "", this.hashFor(initial.route, initial.restaurantId));
+        this.apply(initial);
+    },
 };
 
 const $ = (sel) => document.querySelector(sel);
@@ -95,14 +180,32 @@ function formatPrice(n) {
     return `NT$${n.toLocaleString()}`;
 }
 
-function showToast(msg) {
+function showToast(msg, variant = "") {
     const toast = $("#toast");
     toast.textContent = msg;
+    toast.classList.remove("success");
+    if (variant) toast.classList.add(variant);
     toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 2000);
+    setTimeout(() => toast.classList.remove("show", variant), 2200);
+}
+
+function cleanupTracking() {
+    if (state.driverAnimationId) cancelAnimationFrame(state.driverAnimationId);
+    state.driverAnimationId = null;
+    clearRouteLayer();
+    if (state.trackingMap) {
+        state.trackingMap.remove();
+        state.trackingMap = null;
+    }
+    state.trackingBounds = null;
 }
 
 function showScreen(id) {
+    const wasTracking = $("#screenTracking").classList.contains("screen-active");
+    if (wasTracking && id !== "#screenTracking") {
+        cleanupTracking();
+    }
+
     document.querySelectorAll(".screen").forEach((s) => s.classList.remove("screen-active"));
     $(id).classList.add("screen-active");
     const isTracking = id === "#screenTracking";
@@ -119,6 +222,57 @@ function showScreen(id) {
             state.map?.invalidateSize();
         }, 150);
     }
+}
+
+function showHomeRoute() {
+    state.selectedRestaurant = null;
+    clearCart();
+    showScreen("#screenHome");
+    updateCartBar();
+}
+
+function showRestaurantRoute(restaurantId) {
+    if (!restaurantId) {
+        router.navigate(ROUTE.HOME, { replace: true });
+        return;
+    }
+    if (!state.restaurants.length) return;
+    if (state.selectedRestaurant?.id === restaurantId) {
+        showScreen("#screenRestaurant");
+        updateCartBar();
+        return;
+    }
+    if (!renderRestaurantPage(restaurantId)) {
+        router.navigate(ROUTE.HOME, { replace: true });
+        return;
+    }
+    showScreen("#screenRestaurant");
+    updateCartBar();
+}
+
+function showCheckoutRoute() {
+    if (!state.selectedRestaurant) {
+        router.navigate(ROUTE.HOME, { replace: true });
+        return;
+    }
+    if (!getCartItems().length) {
+        router.navigate(ROUTE.RESTAURANT, {
+            restaurantId: state.selectedRestaurant.id,
+            replace: true,
+        });
+        return;
+    }
+    renderCheckoutPage();
+    showScreen("#screenCheckout");
+    $("#cartBar").classList.remove("visible");
+}
+
+function showTrackingRoute() {
+    if (!state.selectedRestaurant) {
+        router.navigate(ROUTE.HOME, { replace: true });
+        return;
+    }
+    showScreen("#screenTracking");
 }
 
 function getCartItems() {
@@ -187,6 +341,11 @@ function resolveRestaurantLocation(restaurant, anchor = getAnchorLocation()) {
 function decorateRestaurantLocations() {
     const anchor = getAnchorLocation();
     for (const restaurant of state.restaurants) {
+        if (restaurant.coordsSource === "api") {
+            restaurant.mapLat = restaurant.lat;
+            restaurant.mapLng = restaurant.lng;
+            continue;
+        }
         const resolved = resolveRestaurantLocation(restaurant, anchor);
         restaurant.mapLat = resolved.lat;
         restaurant.mapLng = resolved.lng;
@@ -194,6 +353,9 @@ function decorateRestaurantLocations() {
 }
 
 function getRestaurantMapLocation(restaurant) {
+    if (restaurant.coordsSource === "api") {
+        return { lat: restaurant.lat, lng: restaurant.lng };
+    }
     if (restaurant.mapLat != null && restaurant.mapLng != null) {
         return { lat: restaurant.mapLat, lng: restaurant.mapLng };
     }
@@ -235,7 +397,7 @@ function applyRestaurantImages(restaurant) {
 function addToCart(id) {
     const prev = state.cart[id] || 0;
     setCartQty(id, prev + 1);
-    if (state.cart[id] > prev) showToast("已加入購物車");
+    if (state.cart[id] > prev) showToast("已加入購物車", "success");
 }
 
 function setCartQty(id, qty) {
@@ -737,9 +899,17 @@ function openRestaurant(id) {
         openAddressSheet();
         return;
     }
-    state.selectedRestaurant = state.restaurants.find((r) => r.id === id) ?? null;
-    if (!state.selectedRestaurant) return;
-    clearCart();
+    if (!renderRestaurantPage(id)) return;
+    router.navigate(ROUTE.RESTAURANT, { restaurantId: id });
+}
+
+function renderRestaurantPage(id) {
+    const restaurant = state.restaurants.find((r) => r.id === id) ?? null;
+    if (!restaurant) return false;
+
+    const switchingStore = state.selectedRestaurant?.id !== id;
+    state.selectedRestaurant = restaurant;
+    if (switchingStore) clearCart();
 
     const r = applyRestaurantImages(state.selectedRestaurant);
     state.selectedRestaurant = r;
@@ -798,44 +968,71 @@ function openRestaurant(id) {
         });
     });
 
-    showScreen("#screenRestaurant");
-    updateCartBar();
+    return true;
 }
 
-function updateCartBar() {
-    const fees = getFees();
-    const items = getCartItems();
-    const count = items.reduce((s, i) => s + i.qty, 0);
-    $("#cartBar").classList.toggle("visible", count > 0);
-    $("#cartBarText").textContent = `查看購物車 · ${count} 項`;
-    $("#cartBarTotal").textContent = formatPrice(fees.grand);
-    $("#cartBarPreviews").innerHTML = items
-        .slice(0, 4)
-        .map(
-            (i) =>
-                `<span class="cart-preview" title="${i.name}">${renderThumb({ image: i.image, emoji: i.emoji, className: "cart-preview-thumb" })}<span class="cart-preview-qty">${i.qty}</span></span>`
-        )
-        .join("");
-}
-
-function openCheckout() {
+function openCheckout({ historyMode = "push" } = {}) {
     if (!getCartItems().length) return;
+    renderCheckoutPage();
+    if (historyMode === "none") {
+        showScreen("#screenCheckout");
+        $("#cartBar").classList.remove("visible");
+        return;
+    }
+    router.navigate(ROUTE.CHECKOUT, { replace: historyMode === "replace" });
+}
+
+function renderCheckoutPage() {
     const fees = getFees();
+    const restaurant = state.selectedRestaurant;
+    const items = getCartItems();
+    const itemCount = items.reduce((sum, item) => sum + item.qty, 0);
+
     $("#checkoutAddress").textContent = state.addressLine + (state.addressDetail ? ` · ${state.addressDetail}` : "");
     $("#addressDetail").value = state.addressDetail;
 
+    if (restaurant) {
+        $("#checkoutStoreCard").innerHTML = `
+            <div class="checkout-store-thumb">
+                ${renderThumb({ image: restaurant.coverImage, emoji: restaurant.emoji, className: "checkout-store-cover" })}
+            </div>
+            <div class="checkout-store-meta">
+                <div class="checkout-store-name">${restaurant.name}</div>
+                <div class="checkout-store-sub">${itemCount} 項 · 約 ${restaurant.deliveryMinutes} 分鐘</div>
+            </div>`;
+    }
+
     $("#checkoutItems").innerHTML = `
-        <h3>訂單內容 · ${state.selectedRestaurant?.name ?? ""}</h3>
-        ${getCartItems()
-            .map(
-                (i) =>
-                    `<div class="checkout-item">
-                        ${renderThumb({ image: i.image, emoji: i.emoji, className: "checkout-item-thumb" })}
-                        <span class="checkout-item-name"><span class="checkout-item-qty">${i.qty}×</span>${i.name}</span>
-                        <span class="checkout-item-price">${formatPrice(i.price * i.qty)}</span>
-                    </div>`
-            )
-            .join("")}`;
+        <div class="checkout-section-head">
+            <span class="checkout-section-icon">🛍️</span>
+            <h3>你的訂單</h3>
+        </div>
+        <div class="checkout-item-list">
+            ${items
+                .map(
+                    (item) =>
+                        `<div class="checkout-item">
+                            ${renderThumb({ image: item.image, emoji: item.emoji, className: "checkout-item-thumb" })}
+                            <div class="checkout-item-body">
+                                <div class="checkout-item-name">${item.name}</div>
+                                <div class="checkout-item-meta">${item.qty} × ${formatPrice(item.price)}</div>
+                            </div>
+                            <span class="checkout-item-price">${formatPrice(item.price * item.qty)}</span>
+                        </div>`
+                )
+                .join("")}
+        </div>`;
+
+    $("#checkoutSidebarItems").innerHTML = items
+        .map(
+            (item) =>
+                `<div class="checkout-sidebar-line">
+                    <span class="checkout-sidebar-qty">${item.qty}×</span>
+                    <span class="checkout-sidebar-name">${item.name}</span>
+                    <span class="checkout-sidebar-price">${formatPrice(item.price * item.qty)}</span>
+                </div>`
+        )
+        .join("");
 
     $("#feeBreakdown").innerHTML = `
         <div class="fee-line"><span>小計</span><span>${formatPrice(fees.subtotal)}</span></div>
@@ -846,8 +1043,23 @@ function openCheckout() {
 
     $("#checkoutTotal").textContent = formatPrice(fees.grand);
     renderVehiclePicker();
-    showScreen("#screenCheckout");
-    $("#cartBar").classList.remove("visible");
+}
+
+function updateCartBar() {
+    const fees = getFees();
+    const items = getCartItems();
+    const count = items.reduce((s, i) => s + i.qty, 0);
+    $("#cartBar").classList.toggle("visible", count > 0);
+    $("#cartBarText").textContent = "查看購物車";
+    $("#cartBarMeta").textContent = `${count} 項餐點`;
+    $("#cartBarTotal").textContent = formatPrice(fees.grand);
+    $("#cartBarPreviews").innerHTML = items
+        .slice(0, 4)
+        .map(
+            (i) =>
+                `<span class="cart-preview" title="${i.name}">${renderThumb({ image: i.image, emoji: i.emoji, className: "cart-preview-thumb" })}<span class="cart-preview-qty">${i.qty}</span></span>`
+        )
+        .join("");
 }
 
 function getVehicle() {
@@ -900,22 +1112,30 @@ async function processPayment() {
 
     const overlay = $("#paymentOverlay");
     const status = $("#paymentStatus");
+    const spinner = $("#paymentSpinner");
+    const successIcon = $("#paymentSuccessIcon");
     overlay.classList.add("open");
+    spinner.hidden = false;
+    successIcon.hidden = true;
+    overlay.classList.remove("success");
 
     const method = state.paymentMethod === "apple" ? "Apple Pay" : "Visa ···· 4242";
-    status.textContent = "正在處理付款...";
+    status.textContent = `正在透過 ${method} 處理付款...`;
 
-    await delay(1800);
+    await delay(1600);
 
     if (state.paymentMethod === "apple") {
-        status.textContent = "請使用 Touch ID 確認...";
-        await delay(1200);
+        status.textContent = "請使用 Touch ID 確認";
+        await delay(1100);
     }
 
+    spinner.hidden = true;
+    successIcon.hidden = false;
+    overlay.classList.add("success");
     status.textContent = `付款成功 · ${formatPrice(fees.grand)}`;
-    await delay(1000);
+    await delay(900);
 
-    overlay.classList.remove("open");
+    overlay.classList.remove("open", "success");
     startTracking();
 }
 
@@ -938,17 +1158,51 @@ function startTracking() {
     $("#driverName").textContent = state.driverName;
     $("#driverMeta").textContent = `${vehicle.emoji} ${vehicle.name} · ${vehicle.tag}`;
     $("#driverAvatar").textContent = vehicle.emoji;
-    $("#orderPaidBanner").textContent = `已使用 ${state.paymentMethod === "apple" ? "Apple Pay" : "Visa ···· 4242"} 付款 ${formatPrice(state.orderTotal)}`;
+    $("#orderPaidBanner").textContent = `已透過 ${state.paymentMethod === "apple" ? "Apple Pay" : "Visa ···· 4242"} 付款 ${formatPrice(state.orderTotal)}`;
     $("#meetDriverBtn").disabled = true;
+    $("#meetDriverBtn").classList.remove("ready");
+    const arrivedBanner = $("#trackingArrivedBanner");
+    if (arrivedBanner) arrivedBanner.hidden = true;
+    const etaLabel = $("#etaLabel");
+    if (etaLabel) etaLabel.textContent = "預計送達";
 
     const etaBase = restaurant.deliveryMinutes / vehicle.speed;
-    $("#etaTime").textContent = `${Math.max(3, Math.round(etaBase - 3))}–${Math.round(etaBase + 3)}`;
+    const etaMin = Math.max(3, Math.round(etaBase - 3));
+    const etaMax = Math.round(etaBase + 3);
+    $("#etaTime").textContent = `${etaMin}–${etaMax}`;
+    syncTrackingEtaDisplay(`${etaMin}–${etaMax}`);
+
+    const chip = $("#trackingOrderChip");
+    if (chip) {
+        chip.innerHTML = `
+            <span class="tracking-order-emoji">${restaurant.emoji || "🍽️"}</span>
+            <span class="tracking-order-text">${restaurant.name}</span>
+            <span class="tracking-order-badge">進行中</span>`;
+    }
 
     renderTimeline();
     setTimelineStep(0);
-    showScreen("#screenTracking");
+    router.navigate(ROUTE.TRACKING);
 
     setTimeout(() => initTrackingMap(restaurantForMap, destination, vehicle), 400);
+}
+
+function syncTrackingEtaDisplay(value) {
+    $("#etaTime").textContent = value;
+    const floatEl = $("#etaTimeFloat");
+    if (floatEl) {
+        const numeric = String(value).match(/\d+/);
+        floatEl.textContent = numeric ? numeric[0] : value;
+    }
+}
+
+function createMapPinMarker(className, label, emoji = "") {
+    return L.divIcon({
+        className: `map-pin ${className}`,
+        html: `<div class="map-pin-bubble">${emoji || label.slice(0, 1)}</div><div class="map-pin-stem"></div>`,
+        iconSize: [40, 48],
+        iconAnchor: [20, 48],
+    });
 }
 
 function createDriverMarker(vehicle, lat, lng) {
@@ -956,10 +1210,11 @@ function createDriverMarker(vehicle, lat, lng) {
     return L.marker([lat, lng], {
         icon: L.divIcon({
             className: "driver-marker",
-            html: `<div class="driver-marker-inner${flying ? " flying" : ""}" id="driverMarkerInner">${vehicle.emoji}</div>`,
-            iconSize: [36, 36],
-            iconAnchor: [18, 18],
+            html: `<div class="driver-marker-pulse"></div><div class="driver-marker-shell" id="driverMarkerShell"><div class="driver-marker-inner${flying ? " flying" : ""}" id="driverMarkerInner">${vehicle.emoji}</div></div>`,
+            iconSize: [48, 48],
+            iconAnchor: [24, 24],
         }),
+        zIndexOffset: 1000,
     });
 }
 
@@ -977,13 +1232,24 @@ function drawRouteLine(points, vehicle) {
     const latlngs = points.map((p) => [p.lat, p.lng]);
     const isAerial = ["fly", "drift", "arc"].includes(vehicle.movement);
     const isUnder = vehicle.movement === "underground";
+    const color = isUnder ? "#2563eb" : isAerial ? "#7c3aed" : "#06c167";
 
-    state.routeLayer = L.polyline(latlngs, {
-        color: isUnder ? "#2563eb" : isAerial ? "#9333ea" : "#06c167",
-        weight: isUnder ? 3 : 4,
-        opacity: isUnder ? 0.55 : 0.85,
-        dashArray: isUnder ? "4 10" : isAerial ? "10 8" : null,
-    }).addTo(state.trackingMap);
+    state.routeLayer = L.layerGroup().addTo(state.trackingMap);
+    L.polyline(latlngs, {
+        color: "#ffffff",
+        weight: isUnder ? 7 : 9,
+        opacity: 0.95,
+        lineCap: "round",
+        lineJoin: "round",
+    }).addTo(state.routeLayer);
+    L.polyline(latlngs, {
+        color,
+        weight: isUnder ? 4 : 5,
+        opacity: isUnder ? 0.65 : 0.92,
+        dashArray: isUnder ? "6 10" : isAerial ? "10 8" : null,
+        lineCap: "round",
+        lineJoin: "round",
+    }).addTo(state.routeLayer);
 }
 
 async function initTrackingMap(restaurant, destination, vehicle) {
@@ -992,20 +1258,28 @@ async function initTrackingMap(restaurant, destination, vehicle) {
         state.trackingMap = null;
     }
 
-    state.trackingMap = L.map("trackingMap", { zoomControl: false, attributionControl: false }).setView(
-        [restaurant.lat, restaurant.lng],
-        14
-    );
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(state.trackingMap);
+    state.trackingMap = L.map("trackingMap", {
+        zoomControl: false,
+        attributionControl: false,
+    }).setView([restaurant.lat, restaurant.lng], 14);
 
-    L.marker([restaurant.lat, restaurant.lng]).addTo(state.trackingMap).bindPopup(restaurant.name);
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
+        maxZoom: 20,
+        subdomains: "abcd",
+    }).addTo(state.trackingMap);
+
+    L.marker([restaurant.lat, restaurant.lng], {
+        icon: createMapPinMarker("map-pin-store", restaurant.name, restaurant.emoji || "🍽️"),
+    })
+        .addTo(state.trackingMap)
+        .bindPopup(restaurant.name);
 
     L.marker([destination.lat, destination.lng], {
         icon: L.divIcon({
-            className: "home-marker",
-            html: "🏠",
-            iconSize: [32, 32],
-            iconAnchor: [16, 28],
+            className: "map-pin map-pin-home",
+            html: `<div class="map-pin-home-ring"></div><div class="map-pin-home-dot">🏠</div>`,
+            iconSize: [44, 44],
+            iconAnchor: [22, 22],
         }),
     })
         .addTo(state.trackingMap)
@@ -1020,8 +1294,9 @@ async function initTrackingMap(restaurant, destination, vehicle) {
     drawRouteLine(path, vehicle);
 
     state.trackingMap.fitBounds(
-        L.latLngBounds(path.map((p) => [p.lat, p.lng])).pad(0.12)
+        L.latLngBounds(path.map((p) => [p.lat, p.lng])).pad(0.15)
     );
+    state.trackingBounds = L.latLngBounds(path.map((p) => [p.lat, p.lng])).pad(0.08);
 
     setTimeout(() => state.trackingMap?.invalidateSize(), 250);
     runTrackingStages(driverMarker, path, vehicle);
@@ -1107,37 +1382,46 @@ function bearingBetween(a, b) {
 
 async function fetchOsrmRoute(start, end, profile) {
     const url = `${CONFIG.osrmUrl}/${profile}/${start.lng},${start.lat};${end.lng},${end.lat}?overview=full&geometries=geojson`;
-    try {
-        const res = await fetch(url);
-        if (!res.ok) return null;
-        const data = await res.json();
-        const coords = data.routes?.[0]?.geometry?.coordinates;
-        if (!coords?.length) return null;
-        return coords.map(([lng, lat]) => ({ lat, lng }));
-    } catch {
-        return null;
+    for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+            const res = await fetch(url);
+            if (!res.ok) continue;
+            const data = await res.json();
+            const coords = data.routes?.[0]?.geometry?.coordinates;
+            if (!coords?.length) continue;
+            return coords.map(([lng, lat]) => ({ lat, lng }));
+        } catch {
+            // retry once
+        }
     }
+    return null;
 }
 
-function fallbackRoadPath(start, end, segments = 14) {
-    const points = [{ ...start }];
-    const dx = end.lng - start.lng;
-    const dy = end.lat - start.lat;
-    const len = Math.sqrt(dx * dx + dy * dy) || 1;
-    const perpLat = (-dx / len) * 0.00035;
-    const perpLng = (dy / len) * 0.00035;
-
-    for (let i = 1; i < segments; i++) {
-        const t = i / segments;
-        const base = interpolate(start, end, t);
-        const sign = i % 2 === 0 ? 1 : -1;
-        points.push({
-            lat: base.lat + perpLat * sign,
-            lng: base.lng + perpLng * sign,
-        });
+function fallbackRoadPath(start, end, segments = 48) {
+    const points = [];
+    for (let i = 0; i <= segments; i++) {
+        points.push(interpolate(start, end, i / segments));
     }
-    points.push({ ...end });
     return points;
+}
+
+function densifyPath(points, maxSegKm = 0.025) {
+    if (points.length < 2) return points.slice();
+    const dense = [{ ...points[0] }];
+    for (let i = 1; i < points.length; i += 1) {
+        const prev = dense[dense.length - 1];
+        const next = points[i];
+        const segKm = distanceKm(prev, next);
+        if (segKm <= maxSegKm) {
+            dense.push({ ...next });
+            continue;
+        }
+        const steps = Math.ceil(segKm / maxSegKm);
+        for (let step = 1; step <= steps; step += 1) {
+            dense.push(interpolate(prev, next, step / steps));
+        }
+    }
+    return dense;
 }
 
 function buildArcPath(start, end, heightFactor = 0.35) {
@@ -1184,33 +1468,52 @@ function applyWobble(points, amplitude = 0.00012) {
 
 async function buildDeliveryPath(start, end, vehicle) {
     const roadPath = await fetchOsrmRoute(start, end, vehicle.profile || "driving");
+    let path;
 
     switch (vehicle.movement) {
         case "road":
-            return roadPath ?? fallbackRoadPath(start, end);
+            path = roadPath ?? fallbackRoadPath(start, end);
+            break;
         case "wobble": {
             const base = roadPath ?? fallbackRoadPath(start, end);
-            return applyWobble(base);
+            path = applyWobble(base, 0.00004);
+            break;
         }
         case "fly":
-            return buildArcPath(start, end, 0.28);
+            path = buildArcPath(start, end, 0.28);
+            break;
         case "drift":
-            return buildDriftPath(start, end);
+            path = buildDriftPath(start, end);
+            break;
         case "arc":
-            return buildArcPath(start, end, 0.55);
+            path = buildArcPath(start, end, 0.55);
+            break;
         case "underground":
-            return [start, end];
+            path = fallbackRoadPath(start, end, 24);
+            break;
         case "teleport": {
-            const base = roadPath ?? fallbackRoadPath(start, end);
+            const base = densifyPath(roadPath ?? fallbackRoadPath(start, end));
             const jumps = 6;
             const telePoints = [];
+            const total = pathLength(base);
             for (let i = 0; i <= jumps; i++) {
-                telePoints.push(pointAtDistance(base, (pathLength(base) * i) / jumps));
+                telePoints.push(pointAtDistance(base, (total * i) / jumps));
             }
-            return telePoints;
+            path = telePoints;
+            break;
         }
         default:
-            return roadPath ?? fallbackRoadPath(start, end);
+            path = roadPath ?? fallbackRoadPath(start, end);
+    }
+
+    return densifyPath(path);
+}
+
+function keepDriverInView(lat, lng) {
+    if (!state.trackingMap || !state.trackingBounds) return;
+    const point = L.latLng(lat, lng);
+    if (!state.trackingBounds.contains(point)) {
+        state.trackingMap.panTo(point, { animate: true, duration: 0.9 });
     }
 }
 
@@ -1223,39 +1526,47 @@ function animateAlongPath(marker, path, vehicle) {
     const t0 = performance.now();
     setTimelineStep(3);
 
+    const shell = () => document.getElementById("driverMarkerShell");
     const inner = () => document.getElementById("driverMarkerInner");
     const isTeleport = vehicle.movement === "teleport";
-    let lastSegment = -1;
-    let lastPanAt = 0;
+    const isRoadLike = ["road", "wobble"].includes(vehicle.movement);
+    let prevPos = { ...path[0] };
+    let lastViewAt = 0;
 
     function frame(now) {
         const progress = Math.min((now - t0) / duration, 1);
-        const eased = isTeleport ? progress : easeInOut(progress);
+        const eased = isTeleport ? progress : isRoadLike ? progress : easeInOut(progress);
         const pos = pointAtDistance(path, totalKm * eased);
         marker.setLatLng([pos.lat, pos.lng]);
 
-        if (state.trackingMap && now - lastPanAt > 800) {
-            state.trackingMap.panTo([pos.lat, pos.lng], { animate: true, duration: 0.6 });
-            lastPanAt = now;
+        if (state.trackingMap && now - lastViewAt > 1800) {
+            keepDriverInView(pos.lat, pos.lng);
+            lastViewAt = now;
         }
 
-        const segIdx = Math.floor(eased * (path.length - 1));
-        if (segIdx !== lastSegment && segIdx < path.length - 1) {
-            const angle = bearingBetween(path[segIdx], path[segIdx + 1]);
-            const el = inner();
-            if (el && !["fly", "drift", "arc", "underground"].includes(vehicle.movement)) {
-                el.style.transform = `rotate(${angle - 90}deg)`;
+        const movedKm = distanceKm(prevPos, pos);
+        if (movedKm > 0.00002) {
+            const angle = bearingBetween(prevPos, pos);
+            const shellEl = shell();
+            if (shellEl && !["fly", "drift", "arc", "underground"].includes(vehicle.movement)) {
+                shellEl.style.transform = `rotate(${angle - 90}deg)`;
             }
-            if (el && isTeleport) {
-                el.classList.remove("teleporting");
-                void el.offsetWidth;
-                el.classList.add("teleporting");
+            prevPos = { ...pos };
+        }
+
+        const innerEl = inner();
+        if (innerEl && isTeleport && progress > 0 && progress < 1) {
+            const jumpStep = Math.floor(progress * 6);
+            if (jumpStep !== innerEl.dataset.jump) {
+                innerEl.dataset.jump = String(jumpStep);
+                innerEl.classList.remove("teleporting");
+                void innerEl.offsetWidth;
+                innerEl.classList.add("teleporting");
             }
-            lastSegment = segIdx;
         }
 
         const remain = Math.max(0, Math.ceil((1 - progress) * 8 / vehicle.speed));
-        $("#etaTime").textContent = remain > 0 ? String(remain) : "0";
+        syncTrackingEtaDisplay(remain > 0 ? String(remain) : "0");
         $("#timelineSub3").textContent =
             vehicle.movement === "underground"
                 ? `地底全速前進中…還有 ${remain} 分鐘`
@@ -1264,6 +1575,7 @@ function animateAlongPath(marker, path, vehicle) {
         if (progress < 1) {
             state.driverAnimationId = requestAnimationFrame(frame);
         } else {
+            marker.setLatLng([path[path.length - 1].lat, path[path.length - 1].lng]);
             arriveAtDoor(vehicle);
         }
     }
@@ -1274,29 +1586,117 @@ function animateAlongPath(marker, path, vehicle) {
 function arriveAtDoor(vehicle) {
     const v = vehicle ?? getVehicle();
     setTimelineStep(4);
-    $("#timelineSub4").textContent = `${state.driverName} 駕駛${v.emoji}${v.name}在門口等你`;
-    $("#etaTime").textContent = "0";
+    $("#timelineSub4").textContent = `${state.driverName} 駕駛 ${v.emoji} ${v.name} 在門口等你`;
+    $("#etaTime").textContent = "已送達";
+    const etaLabel = $("#etaLabel");
+    if (etaLabel) etaLabel.textContent = "外送員在門口等你";
+    syncTrackingEtaDisplay("0");
     $("#meetDriverBtn").disabled = false;
-    showToast("外送員已抵達");
+    $("#meetDriverBtn").classList.add("ready");
+    const arrivedBanner = $("#trackingArrivedBanner");
+    if (arrivedBanner) arrivedBanner.hidden = false;
+    showToast("外送員已抵達", "success");
+    navigator.vibrate?.([12, 40, 12]);
+}
+
+function spawnConfetti(root, count = 72) {
+    if (!root) return;
+    const colors = ["#06c167", "#111111", "#34d399", "#fbbf24", "#60a5fa", "#f472b6"];
+    for (let i = 0; i < count; i += 1) {
+        const piece = document.createElement("span");
+        piece.className = "confetti-piece";
+        piece.style.left = `${Math.random() * 100}%`;
+        piece.style.background = colors[i % colors.length];
+        piece.style.animationDelay = `${Math.random() * 0.35}s`;
+        piece.style.animationDuration = `${1.6 + Math.random() * 1.4}s`;
+        piece.style.setProperty("--drift", `${(Math.random() - 0.5) * 120}px`);
+        root.appendChild(piece);
+        setTimeout(() => piece.remove(), 3200);
+    }
+}
+
+function bindMeetStars() {
+    const stars = $("#meetStars");
+    if (!stars || stars.dataset.bound) return;
+    stars.dataset.bound = "1";
+    stars.querySelectorAll(".meet-star").forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const rating = Number(btn.dataset.star);
+            stars.querySelectorAll(".meet-star").forEach((star, index) => {
+                star.classList.toggle("active", index < rating);
+                star.classList.toggle("pop", index < rating);
+            });
+            const hint = $("#meetRatingHint");
+            if (hint) {
+                hint.textContent =
+                    rating >= 5 ? "太棒了！感謝你的五星好評 ⭐" : "感謝你的評價，我們會持續改進";
+            }
+            showToast("感謝你的評價！");
+        });
+    });
 }
 
 function showReveal() {
-    $("#revealOrderAmount").textContent = formatPrice(state.orderTotal);
-    $("#revealOverlay").classList.add("open");
+    const restaurant = state.selectedRestaurant;
+    const vehicle = getVehicle();
+    const items = getCartItems();
+    const overlay = $("#revealOverlay");
+
+    $("#meetSubtitle").textContent = `${state.driverName} 已將餐點送到門口`;
+    $("#meetDriverHero").innerHTML = `
+        <div class="meet-driver-avatar-wrap">
+            <div class="meet-driver-avatar-lg">${vehicle.emoji}</div>
+        </div>
+        <div class="meet-driver-copy">
+            <div class="meet-driver-name">${state.driverName}</div>
+            <div class="meet-driver-vehicle">${vehicle.emoji} ${vehicle.name} · ${vehicle.tag}</div>
+            <div class="meet-driver-store">${restaurant?.name || "你的訂單"}</div>
+        </div>`;
+
+    $("#meetOrderItems").innerHTML = items
+        .map(
+            (item) =>
+                `<div class="meet-order-line">
+                    ${renderThumb({ image: item.image, emoji: item.emoji, className: "meet-order-thumb" })}
+                    <div class="meet-order-body">
+                        <span class="meet-order-name">${item.name}</span>
+                        <span class="meet-order-qty">× ${item.qty}</span>
+                    </div>
+                    <span class="meet-order-price">${formatPrice(item.price * item.qty)}</span>
+                </div>`
+        )
+        .join("");
+
+    $("#meetOrderTotal").textContent = formatPrice(state.orderTotal);
+
+    const stars = $("#meetStars");
+    if (stars) {
+        stars.querySelectorAll(".meet-star").forEach((star) => {
+            star.classList.remove("active", "pop");
+        });
+    }
+    const hint = $("#meetRatingHint");
+    if (hint) hint.textContent = "點擊星星分享你的體驗";
+
+    const confettiRoot = $("#revealConfetti");
+    if (confettiRoot) confettiRoot.innerHTML = "";
+
+    overlay.classList.add("open");
+    document.body.classList.add("meet-active");
+    bindMeetStars();
+    requestAnimationFrame(() => spawnConfetti(confettiRoot));
+    navigator.vibrate?.([8, 24, 8]);
 }
 
 function resetApp() {
-    if (state.driverAnimationId) cancelAnimationFrame(state.driverAnimationId);
-    clearRouteLayer();
-    if (state.trackingMap) {
-        state.trackingMap.remove();
-        state.trackingMap = null;
-    }
+    cleanupTracking();
     $("#revealOverlay").classList.remove("open");
+    document.body.classList.remove("meet-active");
+    const confettiRoot = $("#revealConfetti");
+    if (confettiRoot) confettiRoot.innerHTML = "";
     clearCart();
     state.selectedRestaurant = null;
-    showScreen("#screenHome");
-    updateCartBar();
+    router.navigate(ROUTE.HOME, { replace: true });
 }
 
 function bindEvents() {
@@ -1305,15 +1705,14 @@ function bindEvents() {
     $("#saveAddress").addEventListener("click", saveAddress);
     $("#useGps").addEventListener("click", useGps);
 
-    $("#backHome").addEventListener("click", () => {
-        state.selectedRestaurant = null;
-        clearCart();
-        showScreen("#screenHome");
-        updateCartBar();
+    document.querySelector(".ue-logo")?.addEventListener("click", () => {
+        router.navigate(ROUTE.HOME);
     });
 
+    $("#backHome").addEventListener("click", () => router.back());
+    $("#backFromCheckout").addEventListener("click", () => router.back());
+    $("#backFromTracking")?.addEventListener("click", () => router.back());
     $("#cartBar").addEventListener("click", openCheckout);
-    $("#backFromCheckout").addEventListener("click", () => showScreen("#screenRestaurant"));
     $("#placeOrderBtn").addEventListener("click", () => {
         if (!state.addressLine) {
             showToast("請設定外送地址");
@@ -1340,12 +1739,17 @@ function bindEvents() {
             $("#tipRow").querySelectorAll(".tip-btn").forEach((b) => b.classList.remove("active"));
             btn.classList.add("active");
             state.tip = Number(btn.dataset.tip);
-            openCheckout();
+            openCheckout({ historyMode: "replace" });
         });
     });
 
     $("#meetDriverBtn").addEventListener("click", showReveal);
     $("#orderAgain").addEventListener("click", resetApp);
+
+    window.addEventListener("popstate", () => {
+        if (router.suppress) return;
+        router.apply(history.state || router.parseHash());
+    });
 }
 
 function onViewportResize() {
@@ -1362,6 +1766,7 @@ async function init() {
     initMap();
     await refreshRestaurants();
     updateAddressDisplay();
+    router.syncInitial();
     window.addEventListener("resize", onViewportResize);
 }
 
