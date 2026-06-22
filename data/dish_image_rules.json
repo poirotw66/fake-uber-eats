@@ -1,0 +1,304 @@
+{
+  "rules": [
+    {
+      "keywords": ["小籠包", "蟹粉"],
+      "images": [
+        "https://images.pexels.com/photos/7282337/pexels-photo-7282337.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["豆沙", "冰品"],
+      "images": [
+        "https://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["抄手", "燕餃", "餃"],
+      "images": [
+        "https://www.themealdb.com/images/media/meals/uyqrrv1511553350.jpg",
+        "https://www.themealdb.com/images/media/meals/1525876468.jpg"
+      ]
+    },
+    {
+      "keywords": ["燒賣", "蝦仁"],
+      "images": [
+        "https://images.pexels.com/photos/1907248/pexels-photo-1907248.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/1529445434.jpg"
+      ]
+    },
+    {
+      "keywords": ["炒飯", "排骨"],
+      "images": [
+        "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/wuyd2h1765655837.jpg"
+      ]
+    },
+    {
+      "keywords": ["雞湯", "湯"],
+      "images": [
+        "https://images.pexels.com/photos/691114/pexels-photo-691114.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/7kb44y1763589084.jpg"
+      ]
+    },
+    {
+      "keywords": ["大麥克", "雙層吉士", "吉士堡", "漢堡", "香雞堡", "雞腿堡", "起司堡", "雙享餐"],
+      "images": [
+        "https://images.pexels.com/photos/1633578/pexels-photo-1633578.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://images.pexels.com/photos/1639558/pexels-photo-1639558.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["麥香雞", "咔啦", "勁辣", "勁脆"],
+      "images": [
+        "https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["麥香魚", "魚塊", "魚排"],
+      "images": [
+        "https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["雞塊", "雞米花", "無骨"],
+      "images": [
+        "https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/4hzyvq1763792564.jpg"
+      ]
+    },
+    {
+      "keywords": ["原味雞", "香香雞", "炸雞", "雞柳", "雞胗", "雞排"],
+      "images": [
+        "https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/40r49m1763197022.jpg"
+      ]
+    },
+    {
+      "keywords": ["薯條", "薯餅"],
+      "images": [
+        "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["蘋果派", "蛋塔"],
+      "images": [
+        "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/zy4fs51777540384.jpg"
+      ]
+    },
+    {
+      "keywords": ["可樂", "紅茶", "冰紅茶", "檸檬紅茶"],
+      "images": [
+        "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["冰炫風", "冰淇淋"],
+      "images": [
+        "https://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["珍珠奶茶", "波霸", "仙草", "阿華田", "奶茶", "鮮奶"],
+      "images": [
+        "https://images.pexels.com/photos/3026810/pexels-photo-3026810.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["四季春", "青茶", "綠茶", "純茶", "多多", "蜂蜜綠", "檸檬綠", "葡萄柚"],
+      "images": [
+        "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://images.pexels.com/photos/1541167760496/pexels-photo-1541167760496-1628856ab772.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["布丁"],
+      "images": [
+        "https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/rsqwus1511640214.jpg"
+      ]
+    },
+    {
+      "keywords": ["地瓜", "甘梅"],
+      "images": [
+        "https://images.pexels.com/photos/143133/pexels-photo-143133.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["起司球", "起司条", "起司"],
+      "images": [
+        "https://images.pexels.com/photos/773253/pexels-photo-773253.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/7i6csk1780094394.jpg"
+      ]
+    },
+    {
+      "keywords": ["洋蔥圈"],
+      "images": [
+        "https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["拉麵", "豚骨", "醬油拉麵", "替玉", "加麵"],
+      "images": [
+        "https://www.themealdb.com/images/media/meals/ip5xtp1769779958.jpg",
+        "https://images.pexels.com/photos/6544370/pexels-photo-6544370.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://images.pexels.com/photos/2638026/pexels-photo-2638026.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["半熟蛋", "溏心"],
+      "images": [
+        "https://images.pexels.com/photos/162712/egg-white-food-protein-162712.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/1529446137.jpg"
+      ]
+    },
+    {
+      "keywords": ["叉燒"],
+      "images": [
+        "https://www.themealdb.com/images/media/meals/lwsnkl1604181187.jpg",
+        "https://images.pexels.com/photos/1546833999/pexels-photo-1546833999-b9f581a1996d.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["海苔"],
+      "images": [
+        "https://images.pexels.com/photos/357756/pexels-photo-357756.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["高菜", "泡菜"],
+      "images": [
+        "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["啤酒"],
+      "images": [
+        "https://images.pexels.com/photos/1552630/pexels-photo-1552630.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["桂花茶", "枸杞"],
+      "images": [
+        "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["披薩"],
+      "images": [
+        "https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/x0lk931587671540.jpg",
+        "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=640&q=80"
+      ]
+    },
+    {
+      "keywords": ["雞翅", "烤雞"],
+      "images": [
+        "https://www.themealdb.com/images/media/meals/4hzyvq1763792564.jpg"
+      ]
+    },
+    {
+      "keywords": ["拼盤", "薯條拼"],
+      "images": [
+        "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["布朗尼", "可可", "巧克力"],
+      "images": [
+        "https://images.pexels.com/photos/45202/brownie-dessert-cake-sweet-45202.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/yypvst1511386427.jpg"
+      ]
+    },
+    {
+      "keywords": ["蒜香麵包", "面包"],
+      "images": [
+        "https://images.pexels.com/photos/1775043/pexels-photo-1775043.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["玉米濃湯", "玉米"],
+      "images": [
+        "https://images.pexels.com/photos/547755/pexels-photo-547755.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["馬鈴薯泥"],
+      "images": [
+        "https://www.themealdb.com/images/media/meals/b5ft861583188991.jpg"
+      ]
+    },
+    {
+      "keywords": ["那堤", "拿鐵", "美式咖啡", "咖啡", "瑪奇朵", "摩卡"],
+      "images": [
+        "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["星冰樂"],
+      "images": [
+        "https://images.pexels.com/photos/1366942/pexels-photo-1366942.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["抹茶"],
+      "images": [
+        "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["檸檬茶", "果茶"],
+      "images": [
+        "https://images.pexels.com/photos/1417945/pexels-photo-1417945.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["蛋糕", "提拉米蘇", "馬芬"],
+      "images": [
+        "https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=640",
+        "https://www.themealdb.com/images/media/meals/swttys1511385853.jpg"
+      ]
+    },
+    {
+      "keywords": ["可頌", "烘焙"],
+      "images": [
+        "https://images.pexels.com/photos/2135/food-france-morning-breakfast.jpg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["套餐", "桶餐", "特餐", "限定"],
+      "images": [
+        "https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["開胃", "涼拌", "沙拉"],
+      "images": [
+        "https://images.pexels.com/photos/5938/food-salad-healthy-lunch.jpg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["白飯", "米飯"],
+      "images": [
+        "https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    },
+    {
+      "keywords": ["飲品", "飲料"],
+      "images": [
+        "https://images.pexels.com/photos/50593/coca-cola-cold-drink-soft-drink-coke-50593.jpeg?auto=compress&cs=tinysrgb&w=640"
+      ]
+    }
+  ],
+  "mcd_scene7": {
+    "大麥克": "https://s7d1.scene7.com/is/image/mcdonalds/big-mac_832x822_2:nutrition-calculator-tile",
+    "雙層吉士堡": "https://s7d1.scene7.com/is/image/mcdonalds/double-cheese-burger_832x822:nutrition-calculator-tile",
+    "麥香雞": "https://s7d1.scene7.com/is/image/mcdonalds/mcchicken_832x822:nutrition-calculator-tile",
+    "麥香魚": "https://s7d1.scene7.com/is/image/mcdonalds/filet-o-fish_832x822:nutrition-calculator-tile",
+    "薯條": "https://s7d1.scene7.com/is/image/mcdonalds/french-fries-small_832x822:nutrition-calculator-tile",
+    "蘋果派": "https://s7d1.scene7.com/is/image/mcdonalds/apple-pie_832x822:nutrition-calculator-tile"
+  }
+}

@@ -1,0 +1,38 @@
+name: Scrape Uber Eats data
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt
+          playwright install chromium
+
+      - name: Scrape feed and menus
+        env:
+          UBEREATS_EMAIL: ${{ secrets.UBEREATS_EMAIL }}
+          UBEREATS_PASSWORD: ${{ secrets.UBEREATS_PASSWORD }}
+          UBEREATS_MAX_STORES: "12"
+          UBEREATS_MAX_MENU_ITEMS: "16"
+        run: python scripts/scrape_ubereats.py
+
+      - name: Commit scraped data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/restaurants.json data/restaurants.enriched.json data/scrape_meta.json assets/images
+          git diff --staged --quiet || git commit -m "chore: refresh Uber Eats scraped data"
+          git push

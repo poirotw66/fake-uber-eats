@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Eats</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="ue-logo">
+                <span class="ue-logo-uber">Uber</span>
+                <span class="ue-logo-eats">Eats</span>
+            </div>
+            <button class="address-chip" id="addressChip" type="button">
+                <span class="address-chip-icon">📍</span>
+                <span class="address-chip-body">
+                    <span class="address-chip-label">外送至</span>
+                    <span class="address-chip-text" id="addressDisplay">設定外送地址</span>
+                </span>
+                <span class="address-chip-chevron">▾</span>
+            </button>
+            <div class="header-actions">
+                <button class="btn-ghost" id="locateBtn" type="button">使用目前位置</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="app">
+        <!-- Home -->
+        <div class="screen screen-active" id="screenHome">
+            <div class="page-container">
+                <div class="page-toolbar">
+                    <div class="delivery-tabs">
+                        <button class="delivery-tab active" type="button">外送</button>
+                        <button class="delivery-tab disabled" type="button">自取</button>
+                    </div>
+                    <div class="ue-search">搜尋餐廳或料理</div>
+                </div>
+
+                <div class="home-layout">
+                    <aside class="home-map-panel card">
+                        <h2 class="panel-title">配送範圍</h2>
+                        <div class="map-wrap">
+                            <div id="map"></div>
+                        </div>
+                    </aside>
+
+                    <section class="home-list-panel">
+                        <h2 class="section-label">附近餐廳</h2>
+                        <div class="restaurant-list" id="restaurantList"></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- Restaurant -->
+        <div class="screen" id="screenRestaurant">
+            <div class="restaurant-banner-wrap">
+                <div class="restaurant-banner" id="restaurantHero">
+                    <div class="restaurant-hero-emoji">🍽️</div>
+                </div>
+                <button class="restaurant-back-btn" id="backHome" type="button" aria-label="返回">←</button>
+            </div>
+            <div class="page-container restaurant-page">
+                <header class="restaurant-page-header">
+                    <h1 id="restaurantName">餐廳</h1>
+                    <p class="restaurant-stats" id="restaurantStats"></p>
+                    <p class="restaurant-address" id="restaurantAddress"></p>
+                    <div class="restaurant-promo-row" id="restaurantPromos"></div>
+                </header>
+                <nav class="menu-nav" id="menuNav" aria-label="菜單分類"></nav>
+                <section class="featured-block" id="featuredBlock">
+                    <h2 class="featured-heading">人氣必點 <span class="featured-sub">大家都在點這些</span></h2>
+                    <div class="featured-track" id="featuredItems"></div>
+                </section>
+                <div class="menu-catalog" id="menuList"></div>
+            </div>
+        </div>
+
+        <!-- Checkout -->
+        <div class="screen" id="screenCheckout">
+            <div class="page-container">
+                <nav class="breadcrumb">
+                    <button class="back-link" id="backFromCheckout" type="button">← 返回菜單</button>
+                </nav>
+
+                <div class="checkout-layout">
+                    <div class="checkout-main">
+                        <div class="card checkout-block">
+                            <h3>外送地址</h3>
+                            <p class="checkout-address" id="checkoutAddress"></p>
+                            <input type="text" class="ue-input" id="addressDetail" placeholder="樓層 / 房號 / 備註（例：3F，按門鈴 302）">
+                        </div>
+
+                        <div class="card checkout-block" id="checkoutItems"></div>
+
+                        <div class="card checkout-block">
+                            <h3>外送載具</h3>
+                            <p class="section-hint">正常載具會沿街道配送；選奇怪的…請自行負責</p>
+                            <div class="vehicle-grid" id="vehicleGrid"></div>
+                        </div>
+
+                        <div class="card checkout-block">
+                            <h3>付款方式</h3>
+                            <div class="payment-card selected" data-method="visa">
+                                <span class="payment-icon">💳</span>
+                                <div>
+                                    <div class="payment-title">Visa ···· 4242</div>
+                                    <div class="payment-sub">預設付款方式</div>
+                                </div>
+                                <span class="payment-check">✓</span>
+                            </div>
+                            <div class="payment-card" data-method="apple">
+                                <span class="payment-icon"></span>
+                                <div>
+                                    <div class="payment-title">Apple Pay</div>
+                                    <div class="payment-sub">Touch ID 驗證</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card checkout-block">
+                            <h3>給外送員小費</h3>
+                            <div class="tip-row" id="tipRow">
+                                <button class="tip-btn" data-tip="0" type="button">$0</button>
+                                <button class="tip-btn active" data-tip="30" type="button">$30</button>
+                                <button class="tip-btn" data-tip="50" type="button">$50</button>
+                                <button class="tip-btn" data-tip="80" type="button">$80</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <aside class="checkout-sidebar card">
+                        <h3>訂單摘要</h3>
+                        <div class="fee-breakdown" id="feeBreakdown"></div>
+                        <button class="place-order-btn" id="placeOrderBtn" type="button">
+                            下單 · <span id="checkoutTotal">NT$0</span>
+                        </button>
+                    </aside>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracking -->
+        <div class="screen screen-full" id="screenTracking">
+            <div class="tracking-layout">
+                <div class="tracking-map-wrap">
+                    <div class="tracking-map" id="trackingMap"></div>
+                </div>
+                <aside class="tracking-panel card">
+                    <div class="eta-row">
+                        <div class="eta-time" id="etaTime">25–35</div>
+                        <div class="eta-label">預計送達（分鐘）</div>
+                    </div>
+                    <div class="timeline" id="timeline"></div>
+                    <div class="driver-card">
+                        <div class="driver-avatar" id="driverAvatar">🛵</div>
+                        <div class="driver-info">
+                            <div class="driver-name" id="driverName">—</div>
+                            <div class="driver-meta" id="driverMeta">—</div>
+                        </div>
+                        <button class="driver-call" type="button">📞</button>
+                    </div>
+                    <div class="order-paid" id="orderPaidBanner"></div>
+                    <button class="meet-driver-btn" id="meetDriverBtn" type="button" disabled>與外送員碰面</button>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer-inner">
+            <p>© 2026 Uber Eats 風格示範頁 · 餐點不會來 · 不會扣款</p>
+        </div>
+    </footer>
+
+    <div class="cart-bar" id="cartBar">
+        <div class="cart-bar-previews" id="cartBarPreviews"></div>
+        <div class="cart-bar-main">
+            <span id="cartBarText">查看購物車</span>
+            <span id="cartBarTotal">NT$0</span>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+    <div class="modal" id="addressSheet" role="dialog" aria-labelledby="addressModalTitle">
+        <h3 id="addressModalTitle">外送地址</h3>
+        <p class="modal-desc">輸入地址或透過 GPS 定位，以顯示附近餐廳與配送路線。</p>
+        <input type="text" class="ue-input" id="addressLine" placeholder="街道地址">
+        <div class="modal-actions">
+            <button class="ue-btn-primary" id="saveAddress" type="button">確認地址</button>
+            <button class="ue-btn-secondary" id="useGps" type="button">使用目前位置</button>
+        </div>
+    </div>
+
+    <div class="payment-overlay" id="paymentOverlay">
+        <div class="payment-spinner"></div>
+        <p id="paymentStatus">正在處理付款...</p>
+    </div>
+
+    <div class="reveal-overlay" id="revealOverlay">
+        <div class="reveal-card">
+            <div class="reveal-bag">🥡</div>
+            <h2>袋子是空的。</h2>
+            <p class="reveal-lead">外送體驗完整跑完，但餐點不會來，你也沒有被扣款。</p>
+            <div class="reveal-receipt">
+                <div class="reveal-row">
+                    <span>訂單金額</span>
+                    <span id="revealOrderAmount" class="struck">NT$0</span>
+                </div>
+                <div class="reveal-row reveal-actual">
+                    <span>實際扣款</span>
+                    <span>NT$0</span>
+                </div>
+            </div>
+            <p class="reveal-note">多巴胺補給完畢。胃：？</p>
+            <button class="ue-btn-primary" id="orderAgain" type="button">再點一次</button>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="dish_images.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

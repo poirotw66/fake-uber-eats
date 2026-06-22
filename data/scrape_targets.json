@@ -1,0 +1,168 @@
+{
+  "seed-mcd-xinyi": {
+    "source": "mcdonalds_tw",
+    "cover_image": "https://s7d1.scene7.com/is/image/mcdonalds/big-mac_832x822_2:nutrition-calculator-tile",
+    "menu_urls": [
+      "https://www.mcdonalds.com/tw/zh-tw/full-menu/extra-value-meals.html",
+      "https://www.mcdonalds.com/tw/zh-tw/full-menu/snacks.html"
+    ],
+    "curated_products": [
+      {
+        "name": "大麥克",
+        "img": "https://s7d1.scene7.com/is/image/mcdonalds/big-mac_832x822_2:nutrition-calculator-tile",
+        "href": "https://www.mcdonalds.com/tw/zh-tw/product/big-mac.html"
+      },
+      {
+        "name": "雙層吉士堡",
+        "img": "https://s7d1.scene7.com/is/image/mcdonalds/double-cheese-burger_832x822:nutrition-calculator-tile",
+        "href": "https://www.mcdonalds.com/tw/zh-tw/product/double-cheese-burger.html"
+      },
+      {
+        "name": "麥香雞",
+        "img": "https://s7d1.scene7.com/is/image/mcdonalds/mcchicken_832x822:nutrition-calculator-tile",
+        "href": "https://www.mcdonalds.com/tw/zh-tw/product/mcchicken.html"
+      },
+      {
+        "name": "麥香魚",
+        "img": "https://s7d1.scene7.com/is/image/mcdonalds/filet-o-fish_832x822:nutrition-calculator-tile",
+        "href": "https://www.mcdonalds.com/tw/zh-tw/product/filet-o-fish.html"
+      },
+      {
+        "name": "薯條（大）",
+        "img": "https://s7d1.scene7.com/is/image/mcdonalds/french-fries-small_832x822:nutrition-calculator-tile",
+        "href": "https://www.mcdonalds.com/tw/zh-tw/product/french-fries-small.html"
+      },
+      {
+        "name": "蘋果派",
+        "img": "https://s7d1.scene7.com/is/image/mcdonalds/apple-pie_832x822:nutrition-calculator-tile",
+        "href": "https://www.mcdonalds.com/tw/zh-tw/product/apple-pie.html"
+      }
+    ]
+  },
+  "seed-dingtaifung-xinyi": {
+    "source": "wikimedia",
+    "cover_image": "https://foodish-api.com/images/biryani/biryani1.jpg",
+    "cover_query": "Din Tai Fung restaurant",
+    "curated_menu_images": {
+      "小籠包（6 顆）": "https://foodish-api.com/images/samosa/samosa1.jpg",
+      "蟹粉小籠包（6 顆）": "https://foodish-api.com/images/samosa/samosa2.jpg",
+      "紅油抄手": "https://foodish-api.com/images/samosa/samosa3.jpg",
+      "蝦仁燒賣（4 顆）": "https://foodish-api.com/images/samosa/samosa5.jpg",
+      "炸排骨蛋炒飯": "https://foodish-api.com/images/rice/rice1.jpg",
+      "菜肉燕餃": "https://foodish-api.com/images/samosa/samosa6.jpg",
+      "清燉雞湯": "https://foodish-api.com/images/biryani/biryani2.jpg",
+      "豆沙小籠包（3 顆）": "https://foodish-api.com/images/dessert/dessert5.jpg"
+    },
+    "menu_queries": {
+      "小籠包（6 顆）": "xiaolongbao soup dumplings",
+      "蟹粉小籠包（6 顆）": "crab soup dumplings",
+      "紅油抄手": "wonton chili oil",
+      "蝦仁燒賣（4 顆）": "shrimp shumai dim sum",
+      "炸排骨蛋炒飯": "fried rice pork chop",
+      "菜肉燕餃": "wonton dumplings",
+      "清燉雞湯": "chicken soup bowl",
+      "豆沙小籠包（3 顆）": "red bean bun dessert"
+    }
+  },
+  "seed-50lan-gongguan": {
+    "source": "pexels",
+    "cover_image": "https://images.pexels.com/photos/3026810/pexels-photo-3026810.jpeg?auto=compress&cs=tinysrgb&w=1200",
+    "cover_query": "bubble tea taiwan milk tea",
+    "curated_menu_images": {
+      "四季春珍波椰（大）": "https://images.pexels.com/photos/3026810/pexels-photo-3026810.jpeg?auto=compress&cs=tinysrgb&w=640",
+      "波霸奶茶（大）": "https://images.pexels.com/photos/3026810/pexels-photo-3026810.jpeg?auto=compress&cs=tinysrgb&w=640",
+      "珍珠奶茶（大）": "https://images.pexels.com/photos/5063533/pexels-photo-5063533.jpeg?auto=compress&cs=tinysrgb&w=640",
+      "8冰綠（大）": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=640&q=80",
+      "冰淇淋紅茶（大）": "https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg?auto=compress&cs=tinysrgb&w=640"
+    },
+    "menu_queries": {
+      "四季春珍波椰（大）": "bubble tea pearl coconut taiwan",
+      "波霸奶茶（大）": "boba milk tea taiwan",
+      "珍珠奶茶（大）": "pearl milk tea bubble tea",
+      "8冰綠（大）": "citrus green tea taiwan",
+      "四季春青茶（中）": "oolong tea cup drink",
+      "檸檬綠（大）": "lemon green tea drink",
+      "葡萄柚青茶（大）": "grapefruit tea drink",
+      "多多綠茶（大）": "yakult green tea drink",
+      "冬瓜檸檬（大）": "winter melon lemon tea",
+      "阿華田（大）": "ovaltine chocolate milk drink",
+      "紅茶拿鐵（大）": "milk tea latte drink",
+      "冰淇淋紅茶（大）": "ice cream milk tea float"
+    }
+  },
+  "seed-jg-chicken": {
+    "source": "wikimedia",
+    "cover_image": "https://foodish-api.com/images/butter-chicken/butter-chicken1.jpg",
+    "cover_query": "taiwan fried chicken",
+    "curated_menu_images": {
+      "香香雞（大）": "https://foodish-api.com/images/butter-chicken/butter-chicken4.jpg",
+      "香香雞（中）": "https://foodish-api.com/images/butter-chicken/butter-chicken3.jpg",
+      "雞柳條": "https://foodish-api.com/images/butter-chicken/butter-chicken2.jpg",
+      "香酥雞胗": "https://foodish-api.com/images/butter-chicken/butter-chicken5.jpg",
+      "三角薯餅": "https://foodish-api.com/images/samosa/samosa4.jpg",
+      "甘梅地瓜": "https://foodish-api.com/images/dessert/dessert3.jpg",
+      "黃金魚塊": "https://foodish-api.com/images/biryani/biryani4.jpg",
+      "泰式酸辣雞排": "https://foodish-api.com/images/butter-chicken/butter-chicken6.jpg"
+    },
+    "menu_queries": {
+      "香香雞（大）": "taiwan popcorn chicken",
+      "香香雞（中）": "fried chicken taiwan",
+      "雞柳條": "chicken strips fried",
+      "香酥雞胗": "fried chicken gizzard",
+      "三角薯餅": "hash brown triangle",
+      "甘梅地瓜": "sweet potato fries",
+      "黃金魚塊": "fried fish sticks",
+      "泰式酸辣雞排": "thai fried chicken"
+    }
+  },
+  "seed-ramen": {
+    "source": "wikimedia",
+    "cover_image": "https://foodish-api.com/images/pasta/pasta5.jpg",
+    "cover_query": "tonkotsu ramen bowl",
+    "curated_menu_images": {
+      "天然豚骨拉麵": "https://foodish-api.com/images/pasta/pasta5.jpg",
+      "天然豚骨拉麵（加叉燒）": "https://foodish-api.com/images/pasta/pasta6.jpg",
+      "替玉（加麵）": "https://foodish-api.com/images/pasta/pasta2.jpg",
+      "半熟蛋": "https://foodish-api.com/images/dessert/dessert1.jpg",
+      "叉燒（加量）": "https://foodish-api.com/images/biryani/biryani3.jpg",
+      "海苔": "https://foodish-api.com/images/rice/rice3.jpg",
+      "辛子高菜": "https://foodish-api.com/images/rice/rice4.jpg",
+      "一蘭布丁": "https://foodish-api.com/images/dessert/dessert4.jpg"
+    },
+    "menu_queries": {
+      "天然豚骨拉麵": "tonkotsu ramen",
+      "天然豚骨拉麵（加叉燒）": "ramen chashu pork",
+      "替玉（加麵）": "ramen noodles",
+      "半熟蛋": "ajitama ramen egg",
+      "叉燒（加量）": "chashu pork ramen",
+      "海苔": "nori seaweed",
+      "辛子高菜": "japanese pickled mustard",
+      "一蘭布丁": "caramel pudding"
+    }
+  },
+  "seed-pizza": {
+    "source": "wikimedia",
+    "cover_image": "https://foodish-api.com/images/pizza/pizza1.jpg",
+    "cover_query": "pizza delivery box",
+    "curated_menu_images": {
+      "夏威夷披薩（大）": "https://foodish-api.com/images/pizza/pizza2.jpg",
+      "燒烤牛肉披薩": "https://foodish-api.com/images/pizza/pizza4.jpg",
+      "雙層美式臘腸": "https://foodish-api.com/images/pizza/pizza6.jpg",
+      "瑪格麗特披薩": "https://foodish-api.com/images/pizza/pizza3.jpg",
+      "黃金起司条": "https://foodish-api.com/images/dessert/dessert4.jpg",
+      "烤雞翅（8 支）": "https://foodish-api.com/images/butter-chicken/butter-chicken7.jpg",
+      "雞肉薯條拼盤": "https://foodish-api.com/images/burger/burger4.jpg",
+      "可可布朗尼": "https://foodish-api.com/images/dessert/dessert10.jpg"
+    },
+    "menu_queries": {
+      "夏威夷披薩（大）": "hawaiian pizza",
+      "燒烤牛肉披薩": "beef pizza",
+      "雙層美式臘腸": "pepperoni pizza",
+      "瑪格麗特披薩": "margherita pizza",
+      "黃金起司条": "cheese sticks mozzarella",
+      "烤雞翅（8 支）": "bbq chicken wings",
+      "雞肉薯條拼盤": "chicken fries combo",
+      "可可布朗尼": "chocolate brownie"
+    }
+  }
+}

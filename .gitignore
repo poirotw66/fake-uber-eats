@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+data/.ubereats-auth.json
+data/store_uuid_map.json
+data/debug-*.png
+.DS_Store
