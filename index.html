@@ -28,7 +28,9 @@
                 </span>
                 <span class="address-chip-chevron">▾</span>
             </button>
-            <div class="header-search ue-search" role="search">搜尋餐廳或料理</div>
+            <div class="header-search-wrap">
+                <input type="search" class="ue-search" id="headerSearch" placeholder="搜尋餐廳或料理" autocomplete="off" aria-label="搜尋餐廳或料理">
+            </div>
             <div class="header-actions">
                 <button class="btn-ghost" type="button">登入</button>
                 <button class="btn-ghost btn-signup" type="button">註冊</button>
@@ -57,7 +59,7 @@
                         <button class="delivery-tab active" type="button">外送</button>
                         <button class="delivery-tab disabled" type="button" title="此區域暫不提供自取">自取</button>
                     </div>
-                    <div class="ue-search ue-search-mobile" role="search">搜尋餐廳或料理</div>
+                    <input type="search" class="ue-search ue-search-mobile" id="headerSearchMobile" placeholder="搜尋餐廳或料理" autocomplete="off" aria-label="搜尋餐廳或料理">
                 </div>
                 <div class="feed-categories" id="feedCategories" aria-label="餐廳分類"></div>
                 <p class="feed-subtitle" id="feedSubtitle">附近餐廳</p>

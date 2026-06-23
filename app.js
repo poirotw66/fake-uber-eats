@@ -1,6 +1,7 @@
 const CONFIG = {
     brandName: "Uber Eats Not!!",
     nominatimUrl: "https://nominatim.openstreetmap.org",
+    photonUrl: "https://photon.komoot.io/api",
     osrmUrl: "https://router.project-osrm.org/route/v1",
     driverNames: ["王建國", "李志明", "陳俊宇", "張雅婷", "林冠廷"],
     defaultAddress: "松仁路7-1號",
@@ -8,6 +9,8 @@ const CONFIG = {
     defaultLng: 121.5691055,
     deliveryLabel: "25–35 分鐘",
 };
+
+const LOCATION_STORAGE_KEY = "ue_demo_location";
 
 const VEHICLES = [
     { id: "motorcycle", name: "機車", emoji: "🛵", tag: "沿街道", weird: false, movement: "road", profile: "driving", speed: 1.0, headingOffset: 90, headingMirror: true },
@@ -92,6 +95,8 @@ const state = {
     routePath: null,
     routeStyle: null,
     deliveryPath: null,
+    searchQuery: "",
+    menuCache: new Map(),
     trackingBounds: null,
     route: "home",
 };
@@ -158,7 +163,7 @@ const router = {
                 showHomeRoute();
                 break;
             case ROUTE.RESTAURANT:
-                showRestaurantRoute(routeState.restaurantId);
+                void showRestaurantRoute(routeState.restaurantId);
                 break;
             case ROUTE.CHECKOUT:
                 showCheckoutRoute();
@@ -179,6 +184,29 @@ const router = {
 };
 
 const $ = (sel) => document.querySelector(sel);
+
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+}
+
+function escapeRegex(text) {
+    return String(text).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function normalizeSearch(text) {
+    return String(text).trim().toLowerCase();
+}
+
+function highlightText(text, query) {
+    const safe = escapeHtml(text);
+    if (!query) return safe;
+    const re = new RegExp(`(${escapeRegex(query)})`, "gi");
+    return safe.replace(re, '<mark class="search-hit">$1</mark>');
+}
 
 function formatPrice(n) {
     return `NT$${n.toLocaleString()}`;
@@ -236,17 +264,24 @@ function showHomeRoute() {
 }
 
 function showRestaurantRoute(restaurantId) {
+    return showRestaurantRouteAsync(restaurantId);
+}
+
+async function showRestaurantRouteAsync(restaurantId) {
     if (!restaurantId) {
         router.navigate(ROUTE.HOME, { replace: true });
         return;
     }
     if (!state.restaurants.length) return;
-    if (state.selectedRestaurant?.id === restaurantId) {
+    if (state.selectedRestaurant?.id === restaurantId && state.selectedRestaurant.menu?.length) {
         showScreen("#screenRestaurant");
         updateCartBar();
+        const q = normalizeSearch(state.searchQuery);
+        if (q) applyMenuSearch(q);
         return;
     }
-    if (!renderRestaurantPage(restaurantId)) {
+    const ok = await renderRestaurantPage(restaurantId);
+    if (!ok) {
         router.navigate(ROUTE.HOME, { replace: true });
         return;
     }
@@ -539,7 +574,26 @@ async function loadSiteConfig() {
     }
 }
 
-async function loadSeedRestaurants() {
+async function loadRestaurantFeed() {
+    try {
+        const res = await fetch("data/restaurants.feed.json");
+        if (res.ok) {
+            const data = await res.json();
+            return data
+                .filter((restaurant) => (restaurant.menuCount || 0) > 0)
+                .map((r) => ({
+                    ...r,
+                    menu: null,
+                    deliveryFee: r.deliveryFee ?? 49,
+                }));
+        }
+    } catch {
+        /* fallback to legacy bundle */
+    }
+    return loadSeedRestaurantsLegacy();
+}
+
+async function loadSeedRestaurantsLegacy() {
     const enrichedRes = await fetch("data/restaurants.enriched.json");
     if (!enrichedRes.ok) {
         throw new Error("restaurant data missing: data/restaurants.enriched.json");
@@ -554,8 +608,32 @@ async function loadSeedRestaurants() {
                 desc: m.desc || "人氣餐點",
                 category: m.category || "精選",
             })),
+            menuCount: (r.menu || []).length,
             deliveryFee: r.deliveryFee ?? 49,
         }));
+}
+
+async function ensureRestaurantMenu(restaurant) {
+    if (restaurant.menu?.length) return restaurant.menu;
+
+    const cached = state.menuCache.get(restaurant.id);
+    if (cached) {
+        restaurant.menu = cached;
+        return cached;
+    }
+
+    const res = await fetch(`data/menus/${encodeURIComponent(restaurant.id)}.json`);
+    if (!res.ok) {
+        throw new Error(`menu missing for ${restaurant.id}`);
+    }
+    restaurant.menu = await res.json();
+    applyRestaurantImages(restaurant);
+    state.menuCache.set(restaurant.id, restaurant.menu);
+    return restaurant.menu;
+}
+
+async function loadSeedRestaurants() {
+    return loadRestaurantFeed();
 }
 
 function groupMenuByCategory(menu) {
@@ -606,7 +684,7 @@ function renderMenuCard(item) {
     const qty = state.cart[item.id] || 0;
     const sold = item.soldCount ? `<span class="menu-sold">${item.soldCount}+ 人點過</span>` : "";
     return `
-        <article class="menu-card" data-id="${item.id}" id="menu-item-${item.id}">
+        <article class="menu-card" data-id="${item.id}" data-item-name="${encodeURIComponent(item.name)}" id="menu-item-${item.id}">
             <div class="menu-card-media">
                 ${renderThumb({ image: item.image, emoji: item.emoji, className: "menu-card-thumb" })}
             </div>
@@ -626,7 +704,7 @@ function renderMenuCard(item) {
 
 function renderFeaturedCard(item) {
     return `
-        <article class="featured-card" data-id="${item.id}">
+        <article class="featured-card" data-id="${item.id}" data-item-name="${encodeURIComponent(item.name)}">
             <div class="featured-card-media">
                 ${renderThumb({ image: item.image, emoji: item.emoji, className: "featured-thumb" })}
             </div>
@@ -730,14 +808,39 @@ function getFeedCategories() {
     return ["全部", ...sorted];
 }
 
-function applyCategoryFilter() {
-    if (state.activeCategory === "全部") {
-        state.filteredRestaurants = state.restaurants;
-        return;
+function applyFeedFilters() {
+    let list = state.restaurants;
+    if (state.activeCategory !== "全部") {
+        list = list.filter((restaurant) => inferFeedCategory(restaurant) === state.activeCategory);
     }
-    state.filteredRestaurants = state.restaurants.filter(
-        (restaurant) => inferFeedCategory(restaurant) === state.activeCategory
-    );
+    const query = normalizeSearch(state.searchQuery);
+    if (query) {
+        list = list.filter((restaurant) => restaurantMatchesSearch(restaurant, query));
+    }
+    state.filteredRestaurants = list;
+}
+
+function restaurantMatchesSearch(restaurant, query) {
+    if ((restaurant.searchText || "").includes(query)) return true;
+    if (inferFeedCategory(restaurant).toLowerCase().includes(query)) return true;
+    if ((restaurant.name || "").toLowerCase().includes(query)) return true;
+    if ((restaurant.category || "").toLowerCase().includes(query)) return true;
+    return false;
+}
+
+function getSearchMenuHint(restaurant, query) {
+    if (!query) return "";
+    if ((restaurant.name || "").toLowerCase().includes(query)) return "";
+    if (inferFeedCategory(restaurant).toLowerCase().includes(query)) return "";
+    const names = restaurant.menuNames || (restaurant.previewItems || []).map((item) => item.name);
+    const hit = names.find((name) => (name || "").toLowerCase().includes(query));
+    if (hit) return `符合餐點：${hit}`;
+    if ((restaurant.searchText || "").includes(query)) return "符合菜單內容";
+    return "";
+}
+
+function applyCategoryFilter() {
+    applyFeedFilters();
 }
 
 function renderFeedCategories() {
@@ -766,16 +869,33 @@ function renderFeedCategories() {
 }
 
 async function refreshRestaurants() {
-    const seed = await loadSeedRestaurants();
+    showFeedSkeleton();
+    const seed = await loadRestaurantFeed();
     state.restaurants = seed.map(applyRestaurantImages);
+    refreshLocationDependentUi();
+    renderFeedCategories();
+}
+
+function refreshLocationDependentUi() {
     decorateRestaurantLocations();
     applyCategoryFilter();
-    renderFeedCategories();
     renderRestaurantList();
     updateMapMarkers();
     const subtitle = $("#feedSubtitle");
     if (subtitle) {
         subtitle.textContent = `${state.addressLine || CONFIG.defaultAddress} · ${state.restaurants.length} 家餐廳`;
+    }
+    if (state.selectedRestaurant && state.route === ROUTE.RESTAURANT) {
+        const updated = state.restaurants.find((r) => r.id === state.selectedRestaurant.id);
+        if (updated) {
+            state.selectedRestaurant.deliveryMinutes = updated.deliveryMinutes;
+            const stats = $("#restaurantStats");
+            if (stats) {
+                const fee = updated.deliveryFee ?? 49;
+                const count = state.selectedRestaurant.menu?.length ?? updated.menuCount ?? 0;
+                stats.textContent = `⭐ ${updated.rating} · ${updated.deliveryMinutes} 分鐘 · 外送費 ${formatPrice(fee)} · ${count} 品項`;
+            }
+        }
     }
 }
 
@@ -825,16 +945,129 @@ function updateMapMarkers() {
 
 async function reverseGeocode(lat, lng) {
     try {
-        const url = `${CONFIG.nominatimUrl}/reverse?format=json&lat=${lat}&lon=${lng}&accept-language=zh-TW`;
-        const res = await fetch(url, { headers: { "Accept-Language": "zh-TW" } });
+        const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=zh`;
+        const res = await fetch(url);
         if (!res.ok) return "";
         const data = await res.json();
-        return data.display_name || "";
+        const parts = [data.locality, data.city].filter((part) => part);
+        return parts.join("") || data.principalSubdivision || "";
     } catch {
         return "";
     }
 }
 
+function loadSavedLocation() {
+    try {
+        const raw = localStorage.getItem(LOCATION_STORAGE_KEY);
+        if (!raw) return null;
+        const saved = JSON.parse(raw);
+        if (!saved?.userLocation?.lat || !saved?.userLocation?.lng) return null;
+        return saved;
+    } catch {
+        return null;
+    }
+}
+
+function persistLocation() {
+    if (!state.addressLine || !state.userLocation) return;
+    localStorage.setItem(
+        LOCATION_STORAGE_KEY,
+        JSON.stringify({
+            addressLine: state.addressLine,
+            userLocation: state.userLocation,
+        })
+    );
+}
+
+function normalizeGeocodeQuery(query) {
+    const trimmed = query.trim();
+    if (!trimmed) return [];
+    const lower = trimmed.toLowerCase();
+    const hasTaiwan =
+        lower.includes("台灣") || lower.includes("臺灣") || lower.includes("taiwan");
+    const candidates = new Set([trimmed]);
+
+    const spaced = trimmed.replace(/(路|街|段|巷|弄|大道)(\d+)/, "$1 $2");
+    if (spaced !== trimmed) candidates.add(spaced);
+
+    const simplifiedHouse = trimmed.replace(/(\d+)-\d+(號)?/, "$1$2");
+    if (simplifiedHouse !== trimmed) candidates.add(simplifiedHouse);
+
+    if (!hasTaiwan) {
+        candidates.add(`${trimmed}, 台北市, 台灣`);
+        candidates.add(`${trimmed}, 台灣`);
+        if (!trimmed.includes("台北") && !trimmed.includes("臺北")) {
+            candidates.add(`台北市${trimmed}`);
+        }
+        if (spaced !== trimmed && !trimmed.includes("區")) {
+            candidates.add(`${spaced} 信義區`);
+            candidates.add(`${spaced} 信義區 台北`);
+        }
+    }
+
+    return [...candidates];
+}
+
+function formatPhotonDisplayName(props) {
+    const street = [props.housenumber, props.street].filter(Boolean).join("");
+    const area = [props.district, props.city].filter(Boolean).join("");
+    if (street && area) return `${street}, ${area}`;
+    return props.name || street || area || "";
+}
+
+function pickBestGeocodeFeature(features, anchor) {
+    if (!features.length) return null;
+    const taiwan = features.filter((feature) => (feature.properties?.countrycode || "").toUpperCase() === "TW");
+    const pool = taiwan.length ? taiwan : features;
+    return pool.reduce((best, feature) => {
+        const [lng, lat] = feature.geometry.coordinates;
+        const dist = distanceKm(anchor, { lat, lng });
+        if (!best || dist < best.dist) return { feature, dist };
+        return best;
+    }, null).feature;
+}
+
+async function geocodeWithPhoton(query, anchor) {
+    const params = new URLSearchParams({
+        q: query,
+        limit: "8",
+        lat: String(anchor.lat),
+        lon: String(anchor.lng),
+    });
+    const res = await fetch(`${CONFIG.photonUrl}/?${params}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const feature = pickBestGeocodeFeature(data.features || [], anchor);
+    if (!feature) return null;
+    const [lng, lat] = feature.geometry.coordinates;
+    const props = feature.properties || {};
+    return {
+        lat,
+        lng,
+        displayName: formatPhotonDisplayName(props) || query,
+    };
+}
+
+async function forwardGeocode(query) {
+    const anchor = getAnchorLocation();
+    const candidates = normalizeGeocodeQuery(query);
+
+    for (const candidate of candidates) {
+        try {
+            const hit = await geocodeWithPhoton(candidate, anchor);
+            if (hit) return hit;
+        } catch {
+            /* try next candidate */
+        }
+    }
+
+    return null;
+}
+
+function shortenAddress(line, max = 28) {
+    if (line.length <= max) return line;
+    return `${line.slice(0, max)}…`;
+}
 function updateAddressDisplay() {
     const text = state.addressLine || CONFIG.defaultAddress;
     $("#addressDisplay").textContent = text.length > 22 ? `${text.slice(0, 22)}…` : text;
@@ -852,15 +1085,31 @@ function closeAddressSheet() {
     $("#addressSheet").classList.remove("open");
 }
 
-function saveAddress() {
-    state.addressLine = $("#addressLine").value.trim();
-    if (!state.addressLine) {
+async function saveAddress() {
+    const line = $("#addressLine").value.trim();
+    if (!line) {
         showToast("請輸入地址");
         return;
     }
-    updateAddressDisplay();
-    closeAddressSheet();
-    showToast("地址已更新");
+
+    const btn = $("#saveAddress");
+    if (btn) btn.disabled = true;
+    showToast("正在查詢地址…");
+
+    const geo = await forwardGeocode(line);
+    if (geo) {
+        state.userLocation = { lat: geo.lat, lng: geo.lng };
+        state.addressLine = shortenAddress(geo.displayName || line, 48);
+        updateAddressDisplay();
+        persistLocation();
+        refreshLocationDependentUi();
+        closeAddressSheet();
+        showToast("地址已更新", "success");
+    } else {
+        showToast("無法定位此地址，請加上縣市（例：信義區）或改用 GPS");
+    }
+
+    if (btn) btn.disabled = false;
 }
 
 async function useGps() {
@@ -876,7 +1125,8 @@ async function useGps() {
             state.addressLine = addr || `${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)}`;
             $("#addressLine").value = state.addressLine;
             updateAddressDisplay();
-            await refreshRestaurants();
+            persistLocation();
+            refreshLocationDependentUi();
             closeAddressSheet();
             showToast("已使用目前位置");
         },
@@ -885,12 +1135,124 @@ async function useGps() {
     );
 }
 
+function showFeedSkeleton() {
+    const container = $("#restaurantList");
+    if (!container) return;
+    container.innerHTML = Array.from({ length: 8 }, () => `
+        <article class="store-card store-card-skeleton" aria-hidden="true">
+            <div class="skeleton-block skeleton-cover"></div>
+            <div class="store-card-body">
+                <div class="skeleton-block skeleton-line lg"></div>
+                <div class="skeleton-block skeleton-line"></div>
+                <div class="skeleton-block skeleton-line sm"></div>
+            </div>
+        </article>`).join("");
+}
+
+function showMenuSkeleton() {
+    $("#menuList").innerHTML = `
+        <div class="menu-skeleton-grid" aria-hidden="true">
+            ${Array.from({ length: 6 }, () => `
+                <div class="menu-skeleton-card">
+                    <div class="skeleton-block skeleton-thumb"></div>
+                    <div class="skeleton-block skeleton-line lg"></div>
+                    <div class="skeleton-block skeleton-line"></div>
+                </div>`).join("")}
+        </div>`;
+    $("#featuredItems").innerHTML = "";
+    $("#featuredBlock").style.display = "none";
+    $("#menuNav").innerHTML = "";
+}
+
+function scrollToFirstSearchHit() {
+    const q = normalizeSearch(state.searchQuery);
+    if (!q) return;
+    requestAnimationFrame(() => {
+        document.querySelector(".store-card:not(.store-card-skeleton)")?.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+        });
+    });
+}
+
+function applyMenuSearch(query) {
+    const featured = document.querySelectorAll("#featuredItems .featured-card");
+    let firstHit = null;
+
+    featured.forEach((card) => {
+        const name = decodeURIComponent(card.dataset.itemName || "");
+        const match = !query || name.toLowerCase().includes(query);
+        card.classList.toggle("search-hidden", !match);
+        if (match && query && !firstHit) firstHit = card;
+    });
+
+    document.querySelectorAll(".menu-section").forEach((section) => {
+        let sectionVisible = false;
+        section.querySelectorAll(".menu-card").forEach((card) => {
+            const name = decodeURIComponent(card.dataset.itemName || "");
+            const match = !query || name.toLowerCase().includes(query);
+            card.classList.toggle("search-hidden", !match);
+            const nameEl = card.querySelector(".menu-card-name");
+            if (nameEl) {
+                const badge = nameEl.querySelector(".menu-badge");
+                const badgeHtml = badge ? badge.outerHTML : "";
+                nameEl.innerHTML = `${highlightText(name, query)} ${badgeHtml}`.trim();
+            }
+            if (match) {
+                sectionVisible = true;
+                if (query && !firstHit) firstHit = card;
+            }
+        });
+        section.classList.toggle("search-hidden", Boolean(query) && !sectionVisible);
+    });
+
+    if (firstHit) {
+        firstHit.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+}
+
+function bindSearchInputs() {
+    const inputs = [$("#headerSearch"), $("#headerSearchMobile")].filter(Boolean);
+    if (!inputs.length) return;
+
+    let debounceTimer = null;
+    const syncSearch = (value, source) => {
+        state.searchQuery = value;
+        inputs.forEach((input) => {
+            if (input !== source) input.value = value;
+        });
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            const q = normalizeSearch(value);
+            if (state.route === ROUTE.HOME || !state.route) {
+                applyFeedFilters();
+                renderRestaurantList();
+                scrollToFirstSearchHit();
+            } else if (state.route === ROUTE.RESTAURANT) {
+                applyMenuSearch(q);
+            }
+        }, 160);
+    };
+
+    inputs.forEach((input) => {
+        input.addEventListener("input", (e) => syncSearch(e.target.value, e.target));
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                input.value = "";
+                syncSearch("", input);
+            }
+        });
+    });
+}
+
 function renderRestaurantList() {
     const container = $("#restaurantList");
-    const list = state.filteredRestaurants.length ? state.filteredRestaurants : state.restaurants;
+    const query = normalizeSearch(state.searchQuery);
+    const list = state.filteredRestaurants.length || query ? state.filteredRestaurants : state.restaurants;
     if (!list.length) {
-        container.innerHTML =
-            '<p class="feed-empty">尚無餐廳資料。請執行 <code>./scripts/run_scrape.sh</code> 從 Uber Eats 匯入。</p>';
+        container.innerHTML = query
+            ? `<p class="feed-empty">找不到「${escapeHtml(state.searchQuery.trim())}」相關的餐廳或料理</p>`
+            : '<p class="feed-empty">尚無餐廳資料。請執行 <code>./scripts/run_scrape.sh</code> 從 Uber Eats 匯入。</p>';
         return;
     }
 
@@ -901,25 +1263,27 @@ function renderRestaurantList() {
                 ? `${(distanceKm(state.userLocation, loc) * 1000).toFixed(0)} 公尺`
                 : "";
             const fee = r.deliveryFee ?? 49;
-            const previews = (r.menu || [])
-                .filter((m) => m.image)
+            const previews = (r.previewItems || (r.menu || []).filter((m) => m.image).slice(0, 3))
                 .slice(0, 3)
                 .map(
                     (m) =>
                         `<span class="store-preview">${renderThumb({ image: m.image, emoji: m.emoji, className: "store-preview-thumb" })}</span>`
                 )
                 .join("");
+            const menuHint = getSearchMenuHint(r, query);
+            const itemCount = r.menuCount ?? r.menu?.length ?? 0;
             return `
-            <article class="store-card" data-id="${r.id}">
+            <article class="store-card${query ? " store-card-search-hit" : ""}" data-id="${r.id}">
                 <div class="store-card-cover">
                     ${renderThumb({ image: r.coverImage, emoji: r.emoji, className: "store-cover-thumb" })}
                     <span class="store-card-time">${r.deliveryMinutes} 分鐘</span>
                 </div>
                 <div class="store-card-body">
-                    <div class="store-card-name">${r.name}</div>
+                    <div class="store-card-name">${highlightText(r.name, query)}</div>
                     <div class="store-card-meta">⭐ ${r.rating} · ${dist} · 外送 ${formatPrice(fee)}</div>
-                    <div class="store-card-tagline">${r.tagline || r.category}</div>
-                    <div class="store-card-count">${r.menu?.length ?? 0} 品項可點</div>
+                    <div class="store-card-tagline">${highlightText(r.tagline || r.category || "", query)}</div>
+                    ${menuHint ? `<div class="store-card-search-hint">${highlightText(menuHint, query)}</div>` : ""}
+                    <div class="store-card-count">${itemCount} 品項可點</div>
                     ${previews ? `<div class="store-card-previews">${previews}</div>` : ""}
                 </div>
             </article>`;
@@ -931,23 +1295,34 @@ function renderRestaurantList() {
     });
 }
 
-function openRestaurant(id) {
+async function openRestaurant(id) {
     if (!state.addressLine) {
         showToast("請先設定外送地址");
         openAddressSheet();
         return;
     }
-    if (!renderRestaurantPage(id)) return;
+    const ok = await renderRestaurantPage(id);
+    if (!ok) return;
     router.navigate(ROUTE.RESTAURANT, { restaurantId: id });
 }
 
-function renderRestaurantPage(id) {
+async function renderRestaurantPage(id) {
     const restaurant = state.restaurants.find((r) => r.id === id) ?? null;
     if (!restaurant) return false;
 
     const switchingStore = state.selectedRestaurant?.id !== id;
     state.selectedRestaurant = restaurant;
     if (switchingStore) clearCart();
+
+    showScreen("#screenRestaurant");
+    showMenuSkeleton();
+
+    try {
+        await ensureRestaurantMenu(restaurant);
+    } catch {
+        showToast("菜單載入失敗");
+        return false;
+    }
 
     const r = applyRestaurantImages(state.selectedRestaurant);
     state.selectedRestaurant = r;
@@ -1005,6 +1380,9 @@ function renderRestaurantPage(id) {
             addToCart(Number(btn.dataset.id));
         });
     });
+
+    const q = normalizeSearch(state.searchQuery);
+    if (q) applyMenuSearch(q);
 
     return true;
 }
@@ -1366,7 +1744,7 @@ async function initTrackingMap(restaurant, destination, vehicle) {
         }),
     })
         .addTo(state.trackingMap)
-        .bindPopup("你的地址");
+        .bindPopup(state.addressLine || "你的地址");
 
     const driverMarker = createDriverMarker(vehicle, restaurant.lat, restaurant.lng);
     driverMarker.addTo(state.trackingMap);
@@ -1935,11 +2313,19 @@ function onViewportResize() {
 }
 
 async function init() {
+    showFeedSkeleton();
     await loadSiteConfig();
     await loadDishImageRules();
-    state.addressLine = CONFIG.defaultAddress;
-    state.userLocation = { lat: CONFIG.defaultLat, lng: CONFIG.defaultLng };
+    const saved = loadSavedLocation();
+    if (saved) {
+        state.addressLine = saved.addressLine;
+        state.userLocation = saved.userLocation;
+    } else {
+        state.addressLine = CONFIG.defaultAddress;
+        state.userLocation = { lat: CONFIG.defaultLat, lng: CONFIG.defaultLng };
+    }
     bindEvents();
+    bindSearchInputs();
     initMap();
     await refreshRestaurants();
     updateAddressDisplay();

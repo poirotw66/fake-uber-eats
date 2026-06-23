@@ -27,3 +27,4 @@ fi
 
 python -m playwright install chromium
 python scripts/scrape_ubereats.py
+python scripts/build_feed_index.py
