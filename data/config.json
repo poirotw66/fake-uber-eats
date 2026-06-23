@@ -3,6 +3,7 @@
   "defaultLat": 25.0382477,
   "defaultLng": 121.5691055,
   "deliveryLabel": "立刻",
+  "locationIqKey": "",
   "feedSource": "ubereats",
   "referenceFeedUrl": "https://www.ubereats.com/tw/feed?diningMode=DELIVERY&effect=&lat=25.0382477&lng=121.56910549999998&ps=1"
 }

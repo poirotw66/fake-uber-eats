@@ -1,6 +1,6 @@
 const CONFIG = {
     brandName: "Uber Eats Not!!",
-    nominatimUrl: "https://nominatim.openstreetmap.org",
+    arcGisGeocodeUrl: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
     photonUrl: "https://photon.komoot.io/api",
     osrmUrl: "https://router.project-osrm.org/route/v1",
     driverNames: ["王建國", "李志明", "陳俊宇", "張雅婷", "林冠廷"],
@@ -8,9 +8,10 @@ const CONFIG = {
     defaultLat: 25.0382477,
     defaultLng: 121.5691055,
     deliveryLabel: "25–35 分鐘",
+    locationIqKey: "",
 };
 
-const LOCATION_STORAGE_KEY = "ue_demo_location";
+const LOCATION_STORAGE_KEY = "ue_demo_location_v2";
 
 const VEHICLES = [
     { id: "motorcycle", name: "機車", emoji: "🛵", tag: "沿街道", weird: false, movement: "road", profile: "driving", speed: 1.0, headingOffset: 90, headingMirror: true },
@@ -569,6 +570,7 @@ async function loadSiteConfig() {
         CONFIG.defaultLat = config.defaultLat ?? CONFIG.defaultLat;
         CONFIG.defaultLng = config.defaultLng ?? CONFIG.defaultLng;
         CONFIG.deliveryLabel = config.deliveryLabel || CONFIG.deliveryLabel;
+        CONFIG.locationIqKey = config.locationIqKey || CONFIG.locationIqKey;
     } catch {
         /* keep defaults */
     }
@@ -945,12 +947,15 @@ function updateMapMarkers() {
 
 async function reverseGeocode(lat, lng) {
     try {
-        const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lng}&localityLanguage=zh`;
-        const res = await fetch(url);
+        const params = new URLSearchParams({
+            f: "json",
+            location: `${lng},${lat}`,
+            langCode: "zh-TW",
+        });
+        const res = await fetch(`${CONFIG.arcGisGeocodeUrl}/reverseGeocode?${params}`);
         if (!res.ok) return "";
         const data = await res.json();
-        const parts = [data.locality, data.city].filter((part) => part);
-        return parts.join("") || data.principalSubdivision || "";
+        return data.address?.Match_addr || data.address?.LongLabel || "";
     } catch {
         return "";
     }
@@ -982,30 +987,30 @@ function persistLocation() {
 function normalizeGeocodeQuery(query) {
     const trimmed = query.trim();
     if (!trimmed) return [];
-    const lower = trimmed.toLowerCase();
-    const hasTaiwan =
-        lower.includes("台灣") || lower.includes("臺灣") || lower.includes("taiwan");
-    const candidates = new Set([trimmed]);
+    const hasTaipei = /台北|臺北/.test(trimmed);
+    const hasTaiwan = /台灣|臺灣|taiwan/i.test(trimmed);
+    const candidates = [];
+
+    if (!hasTaipei && !hasTaiwan) {
+        candidates.push(`台北市${trimmed}`);
+    }
+    candidates.push(trimmed);
 
     const spaced = trimmed.replace(/(路|街|段|巷|弄|大道)(\d+)/, "$1 $2");
-    if (spaced !== trimmed) candidates.add(spaced);
-
-    const simplifiedHouse = trimmed.replace(/(\d+)-\d+(號)?/, "$1$2");
-    if (simplifiedHouse !== trimmed) candidates.add(simplifiedHouse);
-
-    if (!hasTaiwan) {
-        candidates.add(`${trimmed}, 台北市, 台灣`);
-        candidates.add(`${trimmed}, 台灣`);
-        if (!trimmed.includes("台北") && !trimmed.includes("臺北")) {
-            candidates.add(`台北市${trimmed}`);
-        }
-        if (spaced !== trimmed && !trimmed.includes("區")) {
-            candidates.add(`${spaced} 信義區`);
-            candidates.add(`${spaced} 信義區 台北`);
-        }
+    if (spaced !== trimmed) {
+        candidates.push(!hasTaipei && !hasTaiwan ? `台北市${spaced}` : spaced);
     }
 
-    return [...candidates];
+    const simplifiedHouse = trimmed.replace(/(\d+)-\d+(號)?/, "$1$2");
+    if (simplifiedHouse !== trimmed) {
+        candidates.push(!hasTaipei && !hasTaiwan ? `台北市${simplifiedHouse}` : simplifiedHouse);
+    }
+
+    if (!hasTaiwan) {
+        candidates.push(`${trimmed}, 台灣`);
+    }
+
+    return [...new Set(candidates)];
 }
 
 function formatPhotonDisplayName(props) {
@@ -1015,29 +1020,77 @@ function formatPhotonDisplayName(props) {
     return props.name || street || area || "";
 }
 
-function pickBestGeocodeFeature(features, anchor) {
-    if (!features.length) return null;
-    const taiwan = features.filter((feature) => (feature.properties?.countrycode || "").toUpperCase() === "TW");
-    const pool = taiwan.length ? taiwan : features;
-    return pool.reduce((best, feature) => {
-        const [lng, lat] = feature.geometry.coordinates;
-        const dist = distanceKm(anchor, { lat, lng });
-        if (!best || dist < best.dist) return { feature, dist };
-        return best;
-    }, null).feature;
+function pickTaiwanPhotonFeature(features) {
+    const taiwan = (features || []).filter(
+        (feature) => (feature.properties?.countrycode || "").toUpperCase() === "TW"
+    );
+    return taiwan[0] || features?.[0] || null;
 }
 
-async function geocodeWithPhoton(query, anchor) {
+function isLikelyDefaultAreaSnap(query, lat, lng) {
+    const distDefault = distanceKm(
+        { lat: CONFIG.defaultLat, lng: CONFIG.defaultLng },
+        { lat, lng }
+    );
+    if (distDefault > 0.2) return false;
+    return !/(松仁|國泰|信義|安康)/i.test(query);
+}
+
+async function geocodeWithLocationIq(query, apiKey) {
+    const params = new URLSearchParams({
+        key: apiKey,
+        q: query,
+        format: "json",
+        countrycodes: "tw",
+        limit: "1",
+        "accept-language": "zh-TW",
+    });
+    const res = await fetch(`https://us1.locationiq.com/v1/search?${params}`);
+    if (!res.ok) return null;
+    const results = await res.json();
+    const hit = results?.[0];
+    if (!hit) return null;
+    return {
+        lat: parseFloat(hit.lat),
+        lng: parseFloat(hit.lon),
+        displayName: hit.display_name || query,
+        score: 100,
+    };
+}
+
+async function geocodeWithArcGis(query) {
+    const params = new URLSearchParams({
+        f: "json",
+        countryCode: "TWN",
+        maxLocations: "5",
+        singleLine: query,
+        outFields: "Match_addr,Addr_type,Score",
+        langCode: "zh-TW",
+    });
+    const res = await fetch(`${CONFIG.arcGisGeocodeUrl}/findAddressCandidates?${params}`);
+    if (!res.ok) return null;
+    const data = await res.json();
+    const candidate = (data.candidates || [])
+        .filter((item) => item.score >= 75)
+        .sort((a, b) => b.score - a.score)[0];
+    if (!candidate) return null;
+    return {
+        lat: candidate.location.y,
+        lng: candidate.location.x,
+        displayName: candidate.address || query,
+        score: candidate.score,
+    };
+}
+
+async function geocodeWithPhoton(query) {
     const params = new URLSearchParams({
         q: query,
-        limit: "8",
-        lat: String(anchor.lat),
-        lon: String(anchor.lng),
+        limit: "5",
     });
     const res = await fetch(`${CONFIG.photonUrl}/?${params}`);
     if (!res.ok) return null;
     const data = await res.json();
-    const feature = pickBestGeocodeFeature(data.features || [], anchor);
+    const feature = pickTaiwanPhotonFeature(data.features || []);
     if (!feature) return null;
     const [lng, lat] = feature.geometry.coordinates;
     const props = feature.properties || {};
@@ -1045,20 +1098,39 @@ async function geocodeWithPhoton(query, anchor) {
         lat,
         lng,
         displayName: formatPhotonDisplayName(props) || query,
+        score: 70,
     };
 }
 
+async function tryGeocodeCandidate(query, originalQuery) {
+    const providers = [];
+
+    if (CONFIG.locationIqKey) {
+        providers.push(() => geocodeWithLocationIq(query, CONFIG.locationIqKey));
+    }
+    providers.push(() => geocodeWithArcGis(query));
+    providers.push(() => geocodeWithPhoton(query));
+
+    for (const provider of providers) {
+        try {
+            const hit = await provider();
+            if (!hit) continue;
+            if (isLikelyDefaultAreaSnap(originalQuery, hit.lat, hit.lng)) continue;
+            return hit;
+        } catch {
+            /* try next provider */
+        }
+    }
+
+    return null;
+}
+
 async function forwardGeocode(query) {
-    const anchor = getAnchorLocation();
     const candidates = normalizeGeocodeQuery(query);
 
     for (const candidate of candidates) {
-        try {
-            const hit = await geocodeWithPhoton(candidate, anchor);
-            if (hit) return hit;
-        } catch {
-            /* try next candidate */
-        }
+        const hit = await tryGeocodeCandidate(candidate, query);
+        if (hit) return hit;
     }
 
     return null;
@@ -1104,9 +1176,9 @@ async function saveAddress() {
         persistLocation();
         refreshLocationDependentUi();
         closeAddressSheet();
-        showToast("地址已更新", "success");
+        showToast(`已定位：${state.addressLine}`, "success");
     } else {
-        showToast("無法定位此地址，請加上縣市（例：信義區）或改用 GPS");
+        showToast("無法定位此地址，請輸入完整地址（含縣市、區）或改用 GPS");
     }
 
     if (btn) btn.disabled = false;
@@ -1561,10 +1633,9 @@ function delay(ms) {
 
 function startTracking() {
     const restaurant = state.selectedRestaurant;
-    const destination = state.userLocation || {
-        lat: CONFIG.defaultLat,
-        lng: CONFIG.defaultLng,
-    };
+    const destination = state.userLocation
+        ? { lat: state.userLocation.lat, lng: state.userLocation.lng }
+        : { lat: CONFIG.defaultLat, lng: CONFIG.defaultLng };
     const restaurantLoc = getRestaurantMapLocation(restaurant);
     const restaurantForMap = { ...restaurant, lat: restaurantLoc.lat, lng: restaurantLoc.lng };
     const vehicle = getVehicle();
