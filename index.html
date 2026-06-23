@@ -41,7 +41,8 @@
     <main id="app">
         <!-- Home -->
         <div class="screen screen-active" id="screenHome">
-            <div class="page-container feed-page">
+            <div class="page-container home-layout">
+            <div class="feed-page">
                 <section class="home-hero">
                     <div class="home-hero-copy">
                         <p class="home-hero-kicker">Uber Eats Not!! 官方非授權仿製品</p>
@@ -62,10 +63,36 @@
                     <input type="search" class="ue-search ue-search-mobile" id="headerSearchMobile" placeholder="搜尋餐廳或料理" autocomplete="off" aria-label="搜尋餐廳或料理">
                 </div>
                 <div class="feed-categories" id="feedCategories" aria-label="餐廳分類"></div>
+                <div class="feed-controls" id="feedControls">
+                    <label class="feed-control">
+                        <span class="feed-control-label">排序</span>
+                        <select id="feedSort" class="feed-select" aria-label="排序方式">
+                            <option value="distance">距離最近</option>
+                            <option value="rating">評分最高</option>
+                            <option value="delivery">送達最快</option>
+                            <option value="fee">外送費最低</option>
+                        </select>
+                    </label>
+                    <label class="feed-control">
+                        <span class="feed-control-label">評分</span>
+                        <select id="feedMinRating" class="feed-select" aria-label="最低評分">
+                            <option value="0">全部</option>
+                            <option value="4.5">4.5+</option>
+                            <option value="4">4.0+</option>
+                            <option value="3.5">3.5+</option>
+                        </select>
+                    </label>
+                </div>
                 <p class="feed-subtitle" id="feedSubtitle">附近餐廳</p>
-                <div class="restaurant-grid" id="restaurantList"></div>
+                <div id="restaurantList"></div>
+                <div id="feedLoadSentinel" class="feed-load-sentinel" hidden aria-hidden="true"></div>
             </div>
-            <div id="map" class="visually-hidden-map" aria-hidden="true"></div>
+            <aside class="home-map-panel">
+                <h2 class="home-map-title">外送目的地</h2>
+                <p class="home-map-address" id="homeMapAddress">—</p>
+                <div class="map-wrap"><div id="map"></div></div>
+            </aside>
+            </div>
         </div>
 
         <!-- Restaurant -->
@@ -249,8 +276,13 @@
         <h3 id="addressModalTitle">外送地址</h3>
         <p class="modal-desc">輸入地址或使用 GPS 定位，以顯示附近餐廳與預計送達時間。</p>
         <input type="text" class="ue-input" id="addressLine" placeholder="街道地址">
+        <div class="address-pin-section hidden" id="addressPinSection">
+            <p class="address-pin-hint">拖曳圖釘微調精確送達位置</p>
+            <div class="address-pin-map" id="addressPinMap"></div>
+            <p class="address-pin-resolved" id="addressPinResolved"></p>
+        </div>
         <div class="modal-actions">
-            <button class="ue-btn-primary" id="saveAddress" type="button">確認地址</button>
+            <button class="ue-btn-primary" id="saveAddress" type="button">查詢地址</button>
             <button class="ue-btn-secondary" id="useGps" type="button">使用目前位置</button>
         </div>
     </div>

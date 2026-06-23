@@ -556,10 +556,131 @@ body.no-scroll { overflow: hidden; }
 }
 
 .feed-category-btn.active {
-    background: var(--black);
-    border-color: var(--black);
+    background: var(--text);
     color: #fff;
+    border-color: var(--text);
 }
+
+.feed-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    margin-bottom: 12px;
+    align-items: center;
+}
+
+.feed-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.feed-control-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.feed-select {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.feed-category-section {
+    margin-bottom: 28px;
+}
+
+.feed-section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 14px;
+    scroll-margin-top: 88px;
+}
+
+.feed-section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.feed-load-sentinel {
+    height: 1px;
+    margin-top: 8px;
+}
+
+.feed-load-more {
+    text-align: center;
+    padding: 16px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+}
+
+.home-map-panel {
+    position: sticky;
+    top: 88px;
+}
+
+.home-map-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 16px 16px 6px;
+}
+
+.home-map-address {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin: 0 16px 10px;
+    line-height: 1.4;
+}
+
+.address-pin-section {
+    margin-top: 12px;
+}
+
+.address-pin-hint {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0 0 8px;
+}
+
+.address-pin-map {
+    height: 220px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.address-pin-resolved {
+    font-size: 0.82rem;
+    color: var(--text);
+    margin: 8px 0 0;
+    line-height: 1.4;
+}
+
+.address-pin-marker {
+    background: transparent;
+    border: none;
+}
+
+.address-pin-marker-dot {
+    width: 36px;
+    height: 36px;
+    background: var(--green);
+    border: 3px solid #fff;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px rgba(6, 193, 103, 0.45);
+    margin: 0 auto;
+}
+
+#addressPinMap { width: 100%; height: 100%; }
 
 .feed-subtitle {
     margin: 0 0 20px;
@@ -604,7 +725,7 @@ body.no-scroll { overflow: hidden; }
 
 .home-layout {
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 1fr minmax(280px, 360px);
     gap: 24px;
     align-items: start;
 }
@@ -3221,6 +3342,11 @@ body.tracking-active .site-footer { display: none; }
 @media (max-width: 960px) {
     .home-layout {
         grid-template-columns: 1fr;
+    }
+
+    .home-map-panel {
+        position: static;
+        order: -1;
     }
 
     .home-map-panel .map-wrap {
