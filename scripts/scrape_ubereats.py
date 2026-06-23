@@ -24,6 +24,14 @@ import requests
 from playwright.sync_api import BrowserContext, Page, Response, sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(SCRIPTS_DIR))
+from image_assets import (  # noqa: E402
+    convert_file_to_webp,
+    download_image_as_webp,
+    is_valid_image_asset,
+    is_valid_webp,
+)
 DATA_DIR = ROOT / "data"
 ASSETS_DIR = ROOT / "assets" / "images"
 AUTH_STATE_PATH = DATA_DIR / ".ubereats-auth.json"
@@ -1415,9 +1423,9 @@ def enrich_assets(
     http: requests.Session | None = None,
 ) -> dict[str, Any]:
     restaurant_id = restaurant["id"]
-    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.jpg"
+    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.webp"
     if restaurant.get("coverImageUrl"):
-        if download_image(restaurant["coverImageUrl"], cover_path, http=http):
+        if download_image_as_webp(restaurant["coverImageUrl"], cover_path, http=http):
             restaurant["coverImage"] = to_asset_path(cover_path)
     restaurant.pop("coverImageUrl", None)
 
@@ -1426,8 +1434,8 @@ def enrich_assets(
         menu_item = {**item}
         image_url = menu_item.pop("imageUrl", None)
         if image_url:
-            image_path = ASSETS_DIR / "menu" / f"{restaurant_id}-{menu_item['id']}.jpg"
-            if download_image(image_url, image_path, http=http):
+            image_path = ASSETS_DIR / "menu" / f"{restaurant_id}-{menu_item['id']}.webp"
+            if download_image_as_webp(image_url, image_path, http=http):
                 menu_item["image"] = to_asset_path(image_path)
         updated_menu.append(menu_item)
     restaurant["menu"] = updated_menu
@@ -1441,18 +1449,22 @@ def has_local_cover(restaurant: dict[str, Any]) -> bool:
     if not cover or str(cover).startswith("http"):
         return False
     cover_path = ROOT / str(cover)
-    return is_valid_jpeg(cover_path, min_bytes=4000)
+    return is_valid_image_asset(cover_path, min_bytes=4000)
 
 
 def copy_menu_image_to_cover(restaurant: dict[str, Any], menu_image_path: Path) -> bool:
     restaurant_id = restaurant["id"]
-    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.jpg"
+    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.webp"
     try:
         cover_path.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(menu_image_path, cover_path)
+        if menu_image_path.suffix.lower() == ".webp":
+            shutil.copy2(menu_image_path, cover_path)
+        else:
+            if not convert_file_to_webp(menu_image_path, cover_path, min_bytes=1500):
+                return False
     except OSError:
         return False
-    if not is_valid_jpeg(cover_path, min_bytes=1500):
+    if not is_valid_webp(cover_path, min_bytes=1500):
         cover_path.unlink(missing_ok=True)
         return False
     restaurant["coverImage"] = to_asset_path(cover_path)
@@ -1467,18 +1479,18 @@ def backfill_cover_from_menu(restaurant: dict[str, Any]) -> bool:
         if not image or str(image).startswith("http"):
             continue
         image_path = ROOT / str(image)
-        if is_valid_jpeg(image_path, min_bytes=1500):
+        if is_valid_image_asset(image_path, min_bytes=1500):
             return copy_menu_image_to_cover(restaurant, image_path)
     return False
 
 
 def normalize_restaurant_cover(restaurant: dict[str, Any]) -> bool:
-    """Ensure coverImage points to a valid JPEG under assets/images/restaurants/."""
+    """Ensure coverImage points to a valid WebP under assets/images/restaurants/."""
     cover = restaurant.get("coverImage")
     if cover and not str(cover).startswith("http"):
         cover_path = ROOT / str(cover)
-        if is_valid_jpeg(cover_path, min_bytes=4000):
-            expected = ASSETS_DIR / "restaurants" / f"{restaurant['id']}.jpg"
+        if is_valid_image_asset(cover_path, min_bytes=4000):
+            expected = ASSETS_DIR / "restaurants" / f"{restaurant['id']}.webp"
             if cover_path.resolve() != expected.resolve():
                 return copy_menu_image_to_cover(restaurant, cover_path)
             return True
@@ -1537,9 +1549,9 @@ def enrich_cover_asset(
     http: requests.Session | None = None,
 ) -> dict[str, Any]:
     restaurant_id = restaurant["id"]
-    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.jpg"
+    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.webp"
     cover_url = restaurant.pop("coverImageUrl", None)
-    if cover_url and download_image(str(cover_url), cover_path, http=http):
+    if cover_url and download_image_as_webp(str(cover_url), cover_path, http=http):
         restaurant["coverImage"] = to_asset_path(cover_path)
     elif not has_local_cover(restaurant):
         backfill_cover_from_menu(restaurant)

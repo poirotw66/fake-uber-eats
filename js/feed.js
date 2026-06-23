@@ -577,14 +577,112 @@ function renderStoreCard(r, query) {
         </article>`;
 }
 
-function bindStoreCards(container) {
-    container.querySelectorAll(".store-card").forEach((el) => {
+function bindStoreCards(scope) {
+    const root = scope || App.$("#restaurantList");
+    if (!root) return;
+    root.querySelectorAll(".store-card:not([data-feed-bound])").forEach((el) => {
+        el.dataset.feedBound = "1";
         el.addEventListener("click", () => openRestaurant(el.dataset.id));
         el.addEventListener("mouseenter", () => {
             const restaurant = App.state.restaurants.find((r) => r.id === el.dataset.id);
             if (restaurant) prefetchRestaurantMenu(restaurant);
         });
     });
+}
+
+function updateFeedSubtitle(visibleCount, totalCount) {
+    const subtitle = App.$("#feedSubtitle");
+    if (!subtitle) return;
+    const visible =
+        visibleCount ?? Math.min(App.state.feedRenderedCount, App.state.filteredRestaurants.length);
+    const total = totalCount ?? App.state.filteredRestaurants.length;
+    subtitle.textContent = `${App.state.addressLine || App.CONFIG.defaultAddress} · 顯示 ${visible} / ${total} 家`;
+}
+
+function updateFeedLoadMoreHint() {
+    const container = App.$("#restaurantList");
+    if (!container) return;
+    const total = App.state.filteredRestaurants.length;
+    const remaining = total - App.state.feedRenderedCount;
+    let hint = container.querySelector(".feed-load-more");
+    if (remaining > 0) {
+        if (!hint) {
+            hint = document.createElement("p");
+            hint.className = "feed-load-more";
+            container.appendChild(hint);
+        }
+        hint.textContent = `還有 ${remaining} 家餐廳，繼續捲動載入…`;
+    } else if (hint) {
+        hint.remove();
+    }
+}
+
+function ensureCategorySection(container, cat) {
+    const sectionId = `feed-section-${categorySlug(cat)}`;
+    let section = document.getElementById(sectionId);
+    if (!section) {
+        section = document.createElement("section");
+        section.className = "feed-category-section";
+        section.id = sectionId;
+        section.innerHTML = `<h2 class="feed-section-title">${App.escapeHtml(cat)}</h2><div class="feed-section-grid"></div>`;
+        const hint = container.querySelector(".feed-load-more");
+        container.insertBefore(section, hint);
+    }
+    return section.querySelector(".feed-section-grid");
+}
+
+function ensureFeedGrid(container) {
+    let grid = container.querySelector(":scope > .feed-section-grid");
+    if (!grid) {
+        grid = document.createElement("div");
+        grid.className = "feed-section-grid";
+        const hint = container.querySelector(".feed-load-more");
+        container.insertBefore(grid, hint);
+    }
+    return grid;
+}
+
+function appendFeedBatch(restaurants, query) {
+    const container = App.$("#restaurantList");
+    if (!container || !restaurants.length) return;
+
+    if (shouldGroupFeedByCategory()) {
+        for (const r of restaurants) {
+            const grid = ensureCategorySection(container, inferFeedCategory(r));
+            grid.insertAdjacentHTML("beforeend", renderStoreCard(r, query));
+        }
+    } else {
+        const grid = ensureFeedGrid(container);
+        for (const r of restaurants) {
+            grid.insertAdjacentHTML("beforeend", renderStoreCard(r, query));
+        }
+    }
+    bindStoreCards(container);
+}
+
+function buildFeedListHtml(visible, query, grouped) {
+    let html = "";
+    if (grouped) {
+        let currentCat = null;
+        for (const r of visible) {
+            const cat = inferFeedCategory(r);
+            if (cat !== currentCat) {
+                if (currentCat) html += "</div></section>";
+                currentCat = cat;
+                html += `<section class="feed-category-section" id="feed-section-${categorySlug(cat)}"><h2 class="feed-section-title">${App.escapeHtml(cat)}</h2><div class="feed-section-grid">`;
+            }
+            html += renderStoreCard(r, query);
+        }
+        if (currentCat) html += "</div></section>";
+    } else {
+        html = `<div class="feed-section-grid">${visible.map((r) => renderStoreCard(r, query)).join("")}</div>`;
+    }
+
+    const total = App.state.filteredRestaurants.length;
+    if (App.state.feedRenderedCount < total) {
+        html += `<p class="feed-load-more">還有 ${total - App.state.feedRenderedCount} 家餐廳，繼續捲動載入…</p>`;
+    }
+    return html;
 }
 
 function disconnectFeedObserver() {
@@ -623,8 +721,14 @@ function loadMoreFeed() {
         if (sentinel) sentinel.hidden = true;
         return;
     }
-    App.state.feedRenderedCount = Math.min(App.state.feedRenderedCount + App.FEED_PAGE_SIZE, total);
-    renderRestaurantList();
+    const prevCount = App.state.feedRenderedCount;
+    App.state.feedRenderedCount = Math.min(prevCount + App.FEED_PAGE_SIZE, total);
+    const query = App.normalizeSearch(App.state.searchQuery);
+    const batch = App.state.filteredRestaurants.slice(prevCount, App.state.feedRenderedCount);
+    appendFeedBatch(batch, query);
+    updateFeedSubtitle();
+    updateFeedLoadMoreHint();
+    setupFeedInfiniteScroll();
 }
 
 function renderRestaurantList() {
@@ -642,38 +746,9 @@ function renderRestaurantList() {
     }
 
     const visible = list.slice(0, App.state.feedRenderedCount);
-    const grouped = shouldGroupFeedByCategory();
-    let html = "";
-
-    if (grouped) {
-        let currentCat = null;
-        for (const r of visible) {
-            const cat = inferFeedCategory(r);
-            if (cat !== currentCat) {
-                if (currentCat) html += "</div></section>";
-                currentCat = cat;
-                html += `<section class="feed-category-section" id="feed-section-${categorySlug(cat)}"><h2 class="feed-section-title">${App.escapeHtml(cat)}</h2><div class="feed-section-grid">`;
-            }
-            html += renderStoreCard(r, query);
-        }
-        if (currentCat) html += "</div></section>";
-    } else {
-        html = `<div class="feed-section-grid">${visible.map((r) => renderStoreCard(r, query)).join("")}</div>`;
-    }
-
-    const total = list.length;
-    if (App.state.feedRenderedCount < total) {
-        html += `<p class="feed-load-more">還有 ${total - App.state.feedRenderedCount} 家餐廳，繼續捲動載入…</p>`;
-    }
-
-    container.innerHTML = html;
+    container.innerHTML = buildFeedListHtml(visible, query, shouldGroupFeedByCategory());
     bindStoreCards(container);
-
-    const subtitle = App.$("#feedSubtitle");
-    if (subtitle) {
-        subtitle.textContent = `${App.state.addressLine || App.CONFIG.defaultAddress} · 顯示 ${visible.length} / ${total} 家`;
-    }
-
+    updateFeedSubtitle(visible.length, list.length);
     setupFeedInfiniteScroll();
 }
 

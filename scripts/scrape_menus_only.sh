@@ -31,4 +31,5 @@ if [[ -z "${CONDA_DEFAULT_ENV:-}" ]]; then
 fi
 
 python scripts/scrape_ubereats.py
+python scripts/convert_images_to_webp.py
 python scripts/build_feed_index.py

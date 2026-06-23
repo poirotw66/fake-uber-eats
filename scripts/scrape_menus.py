@@ -16,6 +16,7 @@ import requests
 from playwright.sync_api import sync_playwright
 
 from dish_images import resolve_dish_image
+from image_assets import is_valid_webp, save_bytes_as_webp
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -49,7 +50,7 @@ def normalize_name(name: str) -> str:
 
 
 def download_image(url: str, dest: Path, force: bool = False) -> bool:
-    if not force and dest.exists() and dest.stat().st_size > 5000:
+    if not force and is_valid_webp(dest, min_bytes=5000):
         return True
     headers: dict[str, str] = {}
     if "scene7.com" in url or "mcdonalds.com" in url:
@@ -65,6 +66,8 @@ def download_image(url: str, dest: Path, force: bool = False) -> bool:
         if len(resp.content) < 2000 and b"<html" in resp.content[:256].lower():
             return False
         dest.parent.mkdir(parents=True, exist_ok=True)
+        if dest.suffix.lower() == ".webp":
+            return save_bytes_as_webp(resp.content, dest, min_bytes=5000)
         dest.write_bytes(resp.content)
         return dest.stat().st_size > 5000
     except requests.RequestException:
@@ -192,7 +195,7 @@ def enrich_restaurant(restaurant: dict[str, Any], target: dict[str, Any]) -> dic
                     seen.add(key)
         print(f"  total mcd products {len(scraped_products)}")
 
-    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.jpg"
+    cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.webp"
     if target.get("cover_image") and target.get("source") == "mcdonalds_tw":
         if download_image(target["cover_image"], cover_path, force=True):
             enriched["coverImage"] = to_asset_path(cover_path)
@@ -209,7 +212,7 @@ def enrich_restaurant(restaurant: dict[str, Any], target: dict[str, Any]) -> dic
 
     for item in restaurant.get("menu", []):
         menu_item = {**item}
-        image_path = ASSETS_DIR / "menu" / f"{restaurant_id}-{item['id']}.jpg"
+        image_path = ASSETS_DIR / "menu" / f"{restaurant_id}-{item['id']}.webp"
         image_saved = False
 
         matched_url = resolve_dish_image(item["name"], item["id"], restaurant.get("category", ""))
@@ -230,7 +233,7 @@ def enrich_restaurant(restaurant: dict[str, Any], target: dict[str, Any]) -> dic
                 image_saved = download_image(url, image_path)
             time.sleep(0.3)
 
-        if not image_saved and image_path.exists() and image_path.stat().st_size > 5000:
+        if not image_saved and is_valid_webp(image_path, min_bytes=5000):
             image_saved = True
 
         if image_saved:
@@ -239,7 +242,7 @@ def enrich_restaurant(restaurant: dict[str, Any], target: dict[str, Any]) -> dic
 
     if scraped_products and not enriched.get("coverImage"):
         first = scraped_products[0]
-        cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.jpg"
+        cover_path = ASSETS_DIR / "restaurants" / f"{restaurant_id}.webp"
         if download_image(first["img"], cover_path):
             enriched["coverImage"] = to_asset_path(cover_path)
 

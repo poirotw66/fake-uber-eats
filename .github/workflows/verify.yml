@@ -1,0 +1,27 @@
+name: Verify
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Syntax check js modules
+        run: |
+          for f in js/*.js; do
+            node --check "$f"
+          done
+
+      - name: Smoke test App modules
+        run: node scripts/smoke_test.mjs
