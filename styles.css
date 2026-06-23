@@ -22,9 +22,13 @@
     --header-h: 64px;
     --disclaimer-h: 34px;
     --container: 1280px;
+    --sticky-offset: calc(var(--disclaimer-h) + var(--header-h));
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
@@ -33,6 +37,7 @@ body {
     min-height: 100vh;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
 }
 
 body.no-scroll { overflow: hidden; }
@@ -601,7 +606,7 @@ body.no-scroll { overflow: hidden; }
     font-size: 1.15rem;
     font-weight: 700;
     margin: 0 0 14px;
-    scroll-margin-top: 88px;
+    scroll-margin-top: calc(var(--sticky-offset) + 12px);
 }
 
 .feed-section-grid {
@@ -624,7 +629,7 @@ body.no-scroll { overflow: hidden; }
 
 .home-map-panel {
     position: sticky;
-    top: 88px;
+    top: var(--sticky-offset);
 }
 
 .home-map-title {
@@ -728,6 +733,12 @@ body.no-scroll { overflow: hidden; }
     grid-template-columns: 1fr minmax(280px, 360px);
     gap: 24px;
     align-items: start;
+    min-width: 0;
+}
+
+.feed-page,
+.home-map-panel {
+    min-width: 0;
 }
 
 .home-map-panel .map-wrap {
@@ -1027,7 +1038,7 @@ body.no-scroll { overflow: hidden; }
     padding-bottom: 8px;
     margin-bottom: 20px;
     position: sticky;
-    top: var(--header-h);
+    top: var(--sticky-offset);
     z-index: 10;
     background: #fff;
     padding-top: 8px;
@@ -3344,9 +3355,13 @@ body.tracking-active .site-footer { display: none; }
         grid-template-columns: 1fr;
     }
 
+    .feed-page {
+        order: 0;
+    }
+
     .home-map-panel {
         position: static;
-        order: -1;
+        order: 1;
     }
 
     .home-map-panel .map-wrap {
@@ -3396,7 +3411,11 @@ body.tracking-active .site-footer { display: none; }
 
 /* Mobile */
 @media (max-width: 640px) {
-    :root { --header-h: 56px; --disclaimer-h: 44px; }
+    :root {
+        --header-h: 56px;
+        --disclaimer-h: 44px;
+        --sticky-offset: calc(var(--disclaimer-h) + 96px);
+    }
 
     .site-disclaimer {
         font-size: 0.68rem;
@@ -3404,12 +3423,36 @@ body.tracking-active .site-footer { display: none; }
         line-height: 1.35;
     }
 
-    .home-hero,
-    .page-hero {
-        padding: 20px 18px;
+    .site-disclaimer span:last-child {
+        display: inline-block;
+        max-width: 36rem;
     }
 
-    .home-hero-title { font-size: 1.45rem; }
+    .home-hero,
+    .page-hero {
+        padding: 18px 16px;
+        margin-bottom: 16px;
+    }
+
+    .home-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .home-hero-title { font-size: 1.35rem; }
+
+    .home-hero-desc {
+        font-size: 0.88rem;
+    }
+
+    .home-hero-badges {
+        width: 100%;
+    }
+
+    .hero-badge {
+        white-space: normal;
+        text-align: center;
+    }
 
     .ue-logo-not {
         font-size: 0.62rem;
@@ -3417,30 +3460,53 @@ body.tracking-active .site-footer { display: none; }
     }
 
     .site-header-inner {
-        padding: 0 12px;
-        gap: 8px;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-areas:
+            "menu logo actions"
+            "address address address";
+        gap: 8px 10px;
+        align-items: center;
+        padding: 8px 12px;
         height: auto;
         min-height: var(--header-h);
-        padding-top: 10px;
-        padding-bottom: 10px;
+        flex-wrap: nowrap;
     }
 
-    .ue-logo { font-size: 1.2rem; }
+    .ue-menu-btn { grid-area: menu; }
+
+    .ue-logo {
+        grid-area: logo;
+        font-size: 1.05rem;
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    .header-actions {
+        grid-area: actions;
+        margin-left: 0;
+        gap: 4px;
+    }
+
+    .header-actions .btn-ghost:first-child {
+        display: none;
+    }
 
     .address-chip {
-        order: 3;
-        flex: 1 1 100%;
+        grid-area: address;
+        flex: unset;
+        width: 100%;
         max-width: none;
+        order: unset;
+        padding: 8px 12px;
     }
-
-    .header-actions { margin-left: auto; }
 
     .header-search-wrap { display: none; }
 
     .ue-search-mobile {
         display: block;
         width: 100%;
+        min-width: 0;
     }
 
     .btn-ghost {
@@ -3448,14 +3514,71 @@ body.tracking-active .site-footer { display: none; }
         font-size: 0.78rem;
     }
 
-    .page-container { padding: 16px; }
+    .page-container {
+        padding: 12px;
+    }
+
+    .feed-page {
+        padding-top: 8px;
+        padding-bottom: 88px;
+    }
 
     .page-toolbar {
         flex-direction: column;
         align-items: stretch;
+        gap: 12px;
+        margin-bottom: 14px;
     }
 
-    .delivery-tabs { justify-content: center; }
+    .delivery-tabs {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .delivery-tab {
+        flex: 1;
+        text-align: center;
+        padding: 8px 12px;
+    }
+
+    .feed-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .feed-control {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .feed-select {
+        flex: 1;
+        min-width: 0;
+        max-width: 12rem;
+    }
+
+    .feed-section-grid,
+    .restaurant-grid,
+    .restaurant-list {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .store-card-cover {
+        height: 148px;
+    }
+
+    .home-map-panel .map-wrap {
+        height: 180px;
+        margin: 8px 0 0;
+    }
+
+    .home-map-title,
+    .home-map-address {
+        margin-left: 0;
+        margin-right: 0;
+    }
 
     .restaurant-grid,
     .restaurant-list {
@@ -3468,41 +3591,117 @@ body.tracking-active .site-footer { display: none; }
 
     .restaurant-hero { height: 140px; }
 
+    .restaurant-page-header h1 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+    }
+
+    .restaurant-stats,
+    .restaurant-address {
+        font-size: 0.85rem;
+        word-break: break-word;
+    }
+
+    .menu-nav {
+        top: var(--sticky-offset);
+        margin-left: -4px;
+        margin-right: -4px;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+
+    .menu-card-grid {
+        grid-template-columns: 1fr;
+        padding: 0 0 20px;
+    }
+
+    .menu-card {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .menu-card-thumb {
+        width: 88px;
+        height: 88px;
+    }
+
+    .menu-card-name {
+        font-size: 0.92rem;
+        word-break: break-word;
+    }
+
+    .menu-card-desc {
+        font-size: 0.76rem;
+    }
+
+    .featured-card {
+        flex: 0 0 min(72vw, 200px);
+    }
+
     .vehicle-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .checkout-block {
+        padding: 16px;
+    }
+
+    .checkout-layout {
+        gap: 16px;
+    }
+
+    .checkout-title {
+        font-size: 1.35rem;
     }
 
     .cart-bar {
-        left: 16px;
-        right: 16px;
-        bottom: 16px;
+        left: 12px;
+        right: 12px;
+        bottom: max(12px, env(safe-area-inset-bottom, 0px));
+        width: auto;
         min-width: unset;
         transform: translateY(120%);
+        padding: 8px 10px 8px 12px;
     }
 
     .cart-bar.visible {
         transform: translateY(0);
     }
 
-    .menu-card-grid {
-        grid-template-columns: 1fr;
+    .cart-bar-total {
+        font-size: 0.95rem;
     }
 
-    .restaurant-banner { height: 180px; }
+    .restaurant-banner { height: 160px; }
 
     .modal {
-        width: calc(100% - 24px);
-        padding: 22px;
+        width: calc(100% - 20px);
+        max-height: min(92vh, 720px);
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .address-pin-map {
+        height: 200px;
     }
 
     body.tracking-active .site-header { display: none; }
 
     .tracking-layout {
-        min-height: 100vh;
+        min-height: 100dvh;
     }
 
     .tracking-map-wrap,
     .tracking-map {
-        min-height: 50vh;
+        min-height: 48dvh;
+    }
+
+    .tracking-panel {
+        padding: 16px;
+    }
+
+    .meet-screen {
+        padding: 20px 16px 24px;
     }
 }
