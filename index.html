@@ -264,21 +264,35 @@
     </div>
 
     <div class="meet-overlay" id="revealOverlay" aria-modal="true" role="dialog">
+        <div class="meet-flash" id="meetFlash" aria-hidden="true"></div>
+        <div class="meet-burst" aria-hidden="true"></div>
         <div class="meet-confetti" id="revealConfetti" aria-hidden="true"></div>
+        <div class="meet-emoji-rain" id="meetEmojiRain" aria-hidden="true"></div>
         <div class="meet-screen">
+            <div class="meet-sparkles" aria-hidden="true">✦ ✦ ✦ ✦ ✦ ✦</div>
             <header class="meet-header">
-                <div class="meet-success-ring">
-                    <span class="meet-success-check">✓</span>
+                <div class="meet-success-wrap">
+                    <div class="meet-success-glow"></div>
+                    <div class="meet-success-ring">
+                        <span class="meet-success-check">✓</span>
+                    </div>
                 </div>
                 <p class="meet-brand">Uber Eats Not!!</p>
-                <h2 class="meet-title">餐點已送達！</h2>
+                <h2 class="meet-title">
+                    <span class="meet-title-emoji">🎉</span>
+                    餐點已送達！
+                    <span class="meet-title-emoji">🎊</span>
+                </h2>
                 <p class="meet-subtitle" id="meetSubtitle">外送員在門口等你</p>
+                <p class="meet-cheer" id="meetCheer">準備迎接你的美味時刻</p>
             </header>
+
+            <div class="meet-food-parade" id="meetFoodParade"></div>
 
             <div class="meet-driver-hero card" id="meetDriverHero"></div>
 
             <section class="meet-order-section card">
-                <h3 class="meet-section-label">你的訂單</h3>
+                <h3 class="meet-section-label">你的訂單 · 熱騰騰出爐</h3>
                 <div class="meet-order-list" id="meetOrderItems"></div>
                 <div class="meet-order-total-row">
                     <span>已付款</span>
@@ -287,7 +301,7 @@
             </section>
 
             <section class="meet-rating card">
-                <p class="meet-rating-label">為此次外送評分</p>
+                <p class="meet-rating-label">這次外送超讚？給個五星吧！</p>
                 <div class="meet-stars" id="meetStars" role="group" aria-label="外送評分">
                     <button type="button" class="meet-star" data-star="1" aria-label="1 星">★</button>
                     <button type="button" class="meet-star" data-star="2" aria-label="2 星">★</button>
@@ -298,7 +312,10 @@
                 <p class="meet-rating-hint" id="meetRatingHint">點擊星星分享你的體驗</p>
             </section>
 
-            <button class="meet-done-btn" id="orderAgain" type="button">完成</button>
+            <button class="meet-done-btn" id="orderAgain" type="button">
+                <span>開動吧！</span>
+                <span class="meet-done-emoji">😋</span>
+            </button>
         </div>
     </div>
 
