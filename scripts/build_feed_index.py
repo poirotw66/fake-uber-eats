@@ -31,19 +31,40 @@ FEED_KEYS = (
 )
 
 
-def build_search_text(store: dict, menu: list[dict]) -> str:
+def build_search_text(store: dict) -> str:
+    """Store-level text only; dish names live in menuNames for search."""
     parts = [
         store.get("name", ""),
         store.get("tagline", ""),
         store.get("category", ""),
         store.get("address", ""),
     ]
-    parts.extend(item.get("name", "") for item in menu)
-    parts.extend(item.get("category", "") for item in menu if item.get("category"))
     return " ".join(p for p in parts if p).lower()
 
 
+def slim_feed_only() -> None:
+    if not FEED_OUT.is_file():
+        raise SystemExit(f"Missing {FEED_OUT}")
+
+    feed = json.loads(FEED_OUT.read_text(encoding="utf-8"))
+    for entry in feed:
+        entry["searchText"] = build_search_text(entry)
+
+    FEED_OUT.write_text(
+        json.dumps(feed, ensure_ascii=False, separators=(",", ":")),
+        encoding="utf-8",
+    )
+    feed_kb = FEED_OUT.stat().st_size / 1024
+    print(f"Slimmed searchText for {len(feed)} stores in {FEED_OUT} ({feed_kb:.1f} KB)")
+
+
 def main() -> None:
+    import sys
+
+    if len(sys.argv) > 1 and sys.argv[1] == "--slim-feed-only":
+        slim_feed_only()
+        return
+
     if not ENRICHED.is_file():
         raise SystemExit(f"Missing {ENRICHED}")
 
@@ -60,7 +81,7 @@ def main() -> None:
 
         entry = {key: store[key] for key in FEED_KEYS if key in store}
         entry["menuCount"] = len(menu)
-        entry["searchText"] = build_search_text(store, menu)
+        entry["searchText"] = build_search_text(store)
         entry["menuNames"] = [item.get("name", "") for item in menu if item.get("name")]
         entry["previewItems"] = [
             {

@@ -27,4 +27,6 @@ fi
 
 python -m playwright install chromium
 python scripts/scrape_ubereats.py
+python scripts/convert_images_to_webp.py
+python scripts/generate_image_variants.py
 python scripts/build_feed_index.py

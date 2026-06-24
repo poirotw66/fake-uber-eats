@@ -351,6 +351,8 @@ function restaurantMatchesSearch(restaurant, query) {
     if (inferFeedCategory(restaurant).toLowerCase().includes(query)) return true;
     if ((restaurant.name || "").toLowerCase().includes(query)) return true;
     if ((restaurant.category || "").toLowerCase().includes(query)) return true;
+    const names = restaurant.menuNames || [];
+    if (names.some((name) => (name || "").toLowerCase().includes(query))) return true;
     return false;
 }
 
@@ -365,11 +367,6 @@ function getSearchMenuHint(restaurant, query) {
     if (inferFeedCategory(restaurant).toLowerCase().includes(query)) return "";
     const hit = findSearchMenuMatch(restaurant, query);
     if (hit) return `符合餐點：${hit}`;
-    if ((restaurant.searchText || "").includes(query)) {
-        const names = restaurant.menuNames || [];
-        const loose = names.find((name) => (name || "").toLowerCase().includes(query.slice(0, 2)));
-        return loose ? `符合餐點：${loose}` : "符合菜單內容";
-    }
     return "";
 }
 
