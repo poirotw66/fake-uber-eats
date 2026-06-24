@@ -1,0 +1,13 @@
+{
+    "name": "fake-uber-eats",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "vite": "^6.3.5"
+    }
+}

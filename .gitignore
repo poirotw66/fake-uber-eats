@@ -7,3 +7,5 @@ data/store_uuid_map.json
 data/debug-*.png
 .DS_Store
 _site/
+node_modules/
+js/app.bundle.js

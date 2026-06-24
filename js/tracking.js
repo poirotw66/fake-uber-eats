@@ -1,7 +1,4 @@
-/* js/tracking.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
+import { App } from "./app-ns.js";
 
 function cleanupTracking() {
     if (App.state.driverAnimationId) cancelAnimationFrame(App.state.driverAnimationId);
@@ -780,4 +777,3 @@ Object.assign(App, {
     showReveal,
     resetApp,
 });
-})(window.App);

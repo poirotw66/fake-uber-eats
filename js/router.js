@@ -1,7 +1,4 @@
-/* js/router.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
+import { App } from "./app-ns.js";
 
 const ROUTE = {
     HOME: "home",
@@ -154,4 +151,3 @@ Object.assign(App, {
     showCheckoutRoute,
     showTrackingRoute,
 });
-})(window.App);

@@ -18,19 +18,21 @@ A static Uber Eats–style demo: browse real-looking restaurant feeds, build a c
 
 ## Quick start
 
-Serve the repo root with any static file server:
-
 ```bash
+npm ci
+npm run build
 python -m http.server 8080
 ```
 
-Open `http://localhost:8080`.
+Open `http://localhost:8080`. After editing `js/*.js`, run `npm run build` again.
 
 ## Project layout
 
 | Path | Purpose |
 |------|---------|
 | `index.html` | App shell |
+| `js/app.bundle.js` | Vite-built IIFE bundle (production) |
+| `js/main.js` | ESM entry; imports feature modules |
 | `js/core.js` | Config, state, shared utils |
 | `js/feed.js` | Home feed, search, menus |
 | `js/geocode.js` | Address sheet and geocoding |
@@ -38,6 +40,7 @@ Open `http://localhost:8080`.
 | `js/tracking.js` | Delivery map and celebration |
 | `js/router.js` | Hash routing |
 | `js/app.js` | Init and event wiring |
+| `css/*.css` | Split stylesheets (base, home, restaurant, checkout, tracking, responsive) |
 | `data/restaurants.feed.json` | Lightweight feed index |
 | `data/menus/*.json` | Per-restaurant menus |
 | `assets/images/` | Local WebP covers and menu photos |
@@ -58,11 +61,14 @@ After scraping, images are stored as WebP. `scripts/build_feed_index.py` splits 
 ## Development
 
 ```bash
-node scripts/smoke_test.mjs      # load all js modules, check exports
+npm ci
+npm run build                  # js/app.bundle.js (minified IIFE)
+node scripts/smoke_test.mjs    # verify bundle exports
 bash scripts/prepare_pages_deploy.sh   # build slim _site/ artifact
+node scripts/split_styles.mjs  # re-split styles.css into css/*.css
 ```
 
-CI runs `verify.yml` on push/PR (syntax check + smoke test). `deploy.yml` publishes `_site/` to GitHub Pages.
+CI runs `verify.yml` on push/PR (build + smoke test). `deploy.yml` builds the bundle and publishes `_site/` to GitHub Pages.
 
 ## Disclaimer
 

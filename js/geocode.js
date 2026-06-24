@@ -1,7 +1,4 @@
-/* js/geocode.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
+import { App } from "./app-ns.js";
 
 async function reverseGeocode(lat, lng) {
     try {
@@ -363,4 +360,3 @@ Object.assign(App, {
     useGps,
     commitAddressLocation,
 });
-})(window.App);

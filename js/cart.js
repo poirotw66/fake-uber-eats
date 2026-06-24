@@ -1,7 +1,4 @@
-/* js/cart.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
+import { App } from "./app-ns.js";
 
 function getCartItems() {
     const menu = App.state.selectedRestaurant?.menu ?? [];
@@ -218,4 +215,3 @@ Object.assign(App, {
     renderVehiclePicker,
     processPayment,
 });
-})(window.App);

@@ -16,7 +16,19 @@ rsync -a \
   --exclude '.env' \
   --exclude 'docs/' \
   --exclude 'scripts/' \
-  --exclude 'app.legacy.js' \
+  --exclude 'js/core.js' \
+  --exclude 'js/geocode.js' \
+  --exclude 'js/cart.js' \
+  --exclude 'js/tracking.js' \
+  --exclude 'js/feed.js' \
+  --exclude 'js/router.js' \
+  --exclude 'js/app.js' \
+  --exclude 'js/main.js' \
+  --exclude 'js/app-ns.js' \
+  --exclude 'vite.config.js' \
+  --exclude 'package.json' \
+  --exclude 'package-lock.json' \
+  --exclude 'node_modules/' \
   --exclude 'data/restaurants.json' \
   --exclude 'data/restaurants.enriched.json' \
   --exclude 'data/.ubereats-auth.json' \

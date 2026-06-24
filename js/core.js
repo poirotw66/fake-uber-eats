@@ -1,7 +1,4 @@
-/* js/core.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
+import { App } from "./app-ns.js";
 
 const CONFIG = {
     brandName: "Uber Eats Not!!",
@@ -38,39 +35,6 @@ const VEHICLES = [
     { id: "submarine", name: "潛水艇", emoji: "🫧", tag: "地底直穿", weird: true, movement: "underground", speed: 2.0, headingOffset: 0 },
     { id: "pigeon", name: "信鴿", emoji: "🕊️", tag: "鳥類航線", weird: true, movement: "fly", speed: 1.6, headingOffset: 0 },
 ];
-
-const GENERIC_MENUS = {
-    fast_food: [
-        { name: "經典漢堡套餐", emoji: "🍔", price: 189, category: "套餐", desc: "漢堡 + 薯條 + 飲料", badge: "人氣" },
-        { name: "炸雞桶餐", emoji: "🍗", price: 299, category: "套餐", desc: "6 塊炸雞 + 2 配菜" },
-        { name: "雙層牛肉堡", emoji: "🍔", price: 129, category: "漢堡", desc: "雙層牛肉、起司、特製醬" },
-        { name: "炸雞腿（2 塊）", emoji: "🍗", price: 149, category: "炸雞", desc: "外酥內嫩，現炸供應" },
-        { name: "薯條（大）", emoji: "🍟", price: 65, category: "小食", desc: "金黃現炸薯條" },
-        { name: "洋蔥圈", emoji: "🧅", price: 55, category: "小食", desc: "酥脆洋蔥圈" },
-        { name: "可樂（中）", emoji: "🥤", price: 35, category: "飲料", desc: "冰涼氣泡飲" },
-        { name: "巧克力聖代", emoji: "🍦", price: 45, category: "甜點", desc: "香草冰淇淋 + 巧克力醬" },
-    ],
-    cafe: [
-        { name: "美式咖啡", emoji: "☕", price: 95, category: "咖啡", desc: "中焙熱美式", badge: "人氣" },
-        { name: "拿鐵", emoji: "☕", price: 110, category: "咖啡", desc: "濃縮 + 蒸奶" },
-        { name: "卡布奇諾", emoji: "☕", price: 115, category: "咖啡", desc: "濃縮、蒸奶、奶泡" },
-        { name: "焦糖瑪奇朵", emoji: "☕", price: 135, category: "咖啡", desc: "香草糖漿、焦糖淋面" },
-        { name: "冰搖檸檬茶", emoji: "🍋", price: 105, category: "茶飲", desc: "清爽檸檬茶" },
-        { name: "抹茶那堤", emoji: "🍵", price: 140, category: "茶飲", desc: "宇治抹茶風味" },
-        { name: "可頌", emoji: "🥐", price: 75, category: "烘焙", desc: "法式奶油可頌" },
-        { name: "提拉米蘇", emoji: "🍰", price: 120, category: "甜點", desc: "經典義式甜點" },
-    ],
-    default: [
-        { name: "招牌套餐", emoji: "🍱", price: 198, category: "套餐", desc: "主廚精選組合", badge: "人氣" },
-        { name: "今日特餐", emoji: "🍲", price: 168, category: "主食", desc: "每日現做，限量供應" },
-        { name: "季節限定", emoji: "✨", price: 228, category: "主食", desc: "本週限定菜色", badge: "新品" },
-        { name: "主廚推薦湯品", emoji: "🍲", price: 88, category: "湯品", desc: "慢火熬煮，暖胃首選" },
-        { name: "涼拌開胃菜", emoji: "🥗", price: 78, category: "小菜", desc: "清爽開胃" },
-        { name: "白飯", emoji: "🍚", price: 25, category: "主食", desc: "台灣產米" },
-        { name: "冰涼飲品", emoji: "🥤", price: 45, category: "飲料", desc: "季節水果調製" },
-        { name: "飯後甜點", emoji: "🍮", price: 68, category: "甜點", desc: "每日更換口味" },
-    ],
-};
 
 const TIMELINE_STEPS = [
     { key: "placed", text: "訂單已確認", sub: "店家已收到你的訂單" },
@@ -338,7 +302,6 @@ Object.assign(App, {
     FEED_PAGE_SIZE,
     MENU_CACHE_MAX,
     VEHICLES,
-    GENERIC_MENUS,
     TIMELINE_STEPS,
     FEED_CATEGORY_RULES,
     state,
@@ -364,4 +327,3 @@ Object.assign(App, {
     distanceKm,
     loadSiteConfig,
 });
-})(window.App);

@@ -1,27 +1,4 @@
-/* js/feed.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
-
-function emojiForAmenity(tags) {
-    if (tags.amenity === "cafe") return "☕";
-    if (tags.amenity === "fast_food") return "🍔";
-    const cuisine = tags.cuisine || "";
-    if (cuisine.includes("pizza")) return "🍕";
-    if (cuisine.includes("japanese") || cuisine.includes("sushi")) return "🍣";
-    if (cuisine.includes("chinese")) return "🥟";
-    return "🍽️";
-}
-
-function buildMenuFromTemplate(restaurantId, tags) {
-    const key =
-        tags.amenity === "fast_food" ? "fast_food" : tags.amenity === "cafe" ? "cafe" : "default";
-    return App.GENERIC_MENUS[key].map((item, index) => ({
-        id: restaurantId * 10 + index,
-        soldCount: 120 + (restaurantId + index) * 13,
-        ...item,
-    }));
-}
+import { App } from "./app-ns.js";
 
 function renderThumb({ image, emoji, className }) {
     if (image) {
@@ -235,54 +212,6 @@ function renderFeaturedCard(item) {
                 <button type="button" class="featured-add-btn" data-id="${item.id}">+ 加入</button>
             </div>
         </article>`;
-}
-
-async function fetchOsmRestaurants(lat, lng) {
-    const query = `
-        [out:json][timeout:20];
-        (
-          node["amenity"~"restaurant|fast_food|cafe|food_court"](around:${App.CONFIG.osmSearchRadiusM},${lat},${lng});
-          way["amenity"~"restaurant|fast_food|cafe"](around:${App.CONFIG.osmSearchRadiusM},${lat},${lng});
-        );
-        out center 18;
-    `;
-    try {
-        const res = await fetch(App.CONFIG.overpassUrl, { method: "POST", body: query });
-        if (!res.ok) return [];
-        const data = await res.json();
-        return data.elements
-            .map((el, index) => {
-                const latVal = el.lat ?? el.center?.lat;
-                const lngVal = el.lon ?? el.center?.lon;
-                if (!latVal || !lngVal) return null;
-                const tags = el.tags || {};
-                const name = tags.name || tags["name:zh"] || tags.brand || "附近餐廳";
-                const cuisine = tags.cuisine || "";
-                let category = "中式";
-                if (tags.amenity === "cafe") category = "咖啡";
-                else if (tags.amenity === "fast_food") category = "炸物";
-                else if (cuisine.includes("pizza")) category = "披薩";
-                else if (cuisine.includes("japanese") || cuisine.includes("sushi")) category = "日式";
-                return {
-                    id: `osm-${el.id}-${index}`,
-                    name,
-                    emoji: emojiForAmenity(tags),
-                    category,
-                    tagline: cuisine ? `${cuisine} · 附近人氣餐廳` : "附近人氣餐廳",
-                    address: tags["addr:full"] || tags["addr:street"] || "附近",
-                    lat: latVal,
-                    lng: lngVal,
-                    rating: (4.0 + Math.random() * 0.8).toFixed(1),
-                    deliveryMinutes: 18 + Math.floor(Math.random() * 15),
-                    deliveryFee: 39 + Math.floor(Math.random() * 3) * 10,
-                    source: "osm",
-                    menu: buildMenuFromTemplate(el.id, tags),
-                };
-            })
-            .filter(Boolean);
-    } catch {
-        return [];
-    }
 }
 
 function inferFeedCategory(restaurant) {
@@ -934,8 +863,6 @@ async function showRestaurantRouteAsync(restaurantId) {
 }
 
 Object.assign(App, {
-    emojiForAmenity,
-    buildMenuFromTemplate,
     renderThumb,
     firstLocalMenuImage,
     setRestaurantHero,
@@ -951,7 +878,6 @@ Object.assign(App, {
     bindQtyControl,
     renderMenuCard,
     renderFeaturedCard,
-    fetchOsmRestaurants,
     inferFeedCategory,
     getFeedCategories,
     getRestaurantDistanceKm,
@@ -984,4 +910,3 @@ Object.assign(App, {
     renderRestaurantPage,
     showRestaurantRouteAsync,
 });
-})(window.App);

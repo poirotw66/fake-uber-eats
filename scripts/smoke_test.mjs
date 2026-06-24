@@ -1,15 +1,14 @@
 #!/usr/bin/env node
 /**
- * Load js/* modules in browser-like order and verify App namespace exports.
+ * Load the Vite IIFE bundle and verify App namespace exports.
  */
-import { readFileSync } from "fs";
+import { existsSync, readFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 import vm from "vm";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-
-const MODULE_ORDER = ["core", "geocode", "cart", "tracking", "feed", "router", "app"];
+const BUNDLE_PATH = join(ROOT, "js", "app.bundle.js");
 
 const REQUIRED_EXPORTS = [
     "init",
@@ -74,15 +73,7 @@ function createSandbox() {
         console,
     };
     sandbox.window = sandbox;
-    sandbox.App = sandbox.window.App = {};
     return sandbox;
-}
-
-function loadModules(sandbox) {
-    for (const name of MODULE_ORDER) {
-        const code = readFileSync(join(ROOT, "js", `${name}.js`), "utf8");
-        vm.runInNewContext(code, sandbox, { filename: `js/${name}.js` });
-    }
 }
 
 function assertExports(app) {
@@ -93,16 +84,16 @@ function assertExports(app) {
 }
 
 function main() {
-    for (const name of MODULE_ORDER) {
-        const path = join(ROOT, "js", `${name}.js`);
-        readFileSync(path, "utf8");
+    if (!existsSync(BUNDLE_PATH)) {
+        throw new Error("Missing js/app.bundle.js — run npm run build first");
     }
 
     const sandbox = createSandbox();
-    loadModules(sandbox);
-    assertExports(sandbox.App);
+    const code = readFileSync(BUNDLE_PATH, "utf8");
+    vm.runInNewContext(code, sandbox, { filename: "js/app.bundle.js" });
+    assertExports(sandbox.window.App);
 
-    console.log(`smoke_test OK (${Object.keys(sandbox.App).length} exports)`);
+    console.log(`smoke_test OK (${Object.keys(sandbox.window.App).length} exports)`);
 }
 
 try {

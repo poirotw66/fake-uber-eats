@@ -1,7 +1,4 @@
-/* js/app.js */
-window.App = window.App || {};
-(function (App) {
-"use strict";
+import { App } from "./app-ns.js";
 
 function bindEvents() {
     App.$("#addressChip").addEventListener("click", App.openAddressSheet);
@@ -95,11 +92,9 @@ async function init() {
     window.addEventListener("resize", onViewportResize);
 }
 
-document.addEventListener("DOMContentLoaded", init);
 
 Object.assign(App, {
     bindEvents,
     onViewportResize,
     init,
 });
-})(window.App);
