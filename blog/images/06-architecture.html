@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uber Eats Not!! Architecture</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans CJK TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: linear-gradient(135deg, #f7f8fa 0%, #eef2f7 100%);
+      color: #111;
+      width: 1360px;
+      padding: 28px 32px 32px;
+    }
+    .top-bar { height: 4px; background: linear-gradient(90deg, #06c167, #04a356); margin: -28px -32px 20px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+    .lead { font-size: 14px; color: #5b6472; margin-bottom: 22px; }
+    .lane {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      padding: 16px 18px 18px;
+      margin-bottom: 18px;
+    }
+    .lane-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+    .lane-title { font-size: 16px; font-weight: 700; }
+    .lane-sub { font-size: 12px; color: #5b6472; margin-left: 20px; margin-top: -8px; margin-bottom: 4px; }
+    .row { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; }
+    .arrow { color: #5b6472; font-size: 18px; flex-shrink: 0; }
+    .arrow.green { color: #06c167; }
+    .box {
+      border-radius: 10px;
+      padding: 10px 12px;
+      min-width: 0;
+      text-align: center;
+      border: 1.5px solid transparent;
+    }
+    .box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+    .box span { display: block; font-size: 11px; color: #3d4654; line-height: 1.35; }
+    .box small { display: block; font-size: 10px; color: #6b7280; margin-top: 2px; }
+    .green { background: #ecfdf5; border-color: #06c167; }
+    .green-soft { background: #f0fdf4; border-color: #86efac; }
+    .green-strong { background: #dcfce7; border-color: #06c167; border-width: 2px; }
+    .blue { background: #eff6ff; border-color: #93c5fd; }
+    .blue-strong { background: #dbeafe; border-color: #2563eb; border-width: 2px; }
+    .orange { background: #fff7ed; border-color: #fdba74; }
+    .orange-strong { background: #ffedd5; border-color: #ea580c; border-width: 2px; }
+    .amber { background: #fef3c7; border-color: #f59e0b; }
+    .purple { background: #f5f3ff; border-color: #c4b5fd; }
+    .flow-note {
+      font-size: 11px;
+      color: #2563eb;
+      margin: 6px 0 0 20px;
+    }
+    .flow-note.green { color: #06c167; }
+    .runtime-grid {
+      display: grid;
+      grid-template-columns: 130px 155px 175px 155px 1fr;
+      gap: 8px;
+      align-items: stretch;
+    }
+    .ext-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .ext {
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #7c3aed;
+      background: #f5f3ff;
+      border: 1px solid #c4b5fd;
+      min-width: 120px;
+      text-align: center;
+    }
+    .legend {
+      margin-left: auto;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 10px;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    .legend-line { display: inline-block; width: 28px; height: 0; border-top: 2px solid #5b6472; vertical-align: middle; margin-right: 6px; }
+    .legend-dash { border-top-style: dashed; border-color: #06c167; }
+  </style>
+</head>
+<body>
+  <div class="top-bar"></div>
+  <h1>Uber Eats Not!! 系統架構圖</h1>
+  <p class="lead">靜態前端 + 爬蟲資料管線 + GitHub Pages 部署 · 無後端 · 無真實金流</p>
+
+  <section class="lane">
+    <div class="lane-head">
+      <div class="dot" style="background:#06c167"></div>
+      <div class="lane-title">① 資料管線（開發時 / 手動觸發）</div>
+    </div>
+    <p class="lane-sub">Python + Playwright · 產出靜態 JSON 與 WebP 圖片</p>
+    <div class="row">
+      <div class="box green" style="width:130px">
+        <strong>Uber Eats</strong>
+        <span>公開列表 / 菜單</span>
+        <small>爬蟲資料來源</small>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box green-soft" style="width:155px">
+        <strong>scrape_ubereats.py</strong>
+        <span>Playwright 爬蟲</span>
+        <small>餐廳 + 菜單 + 圖片</small>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box green-soft" style="width:155px">
+        <strong>convert_images_to_webp</strong>
+        <span>JPEG/PNG → WebP</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box green-soft" style="width:165px">
+        <strong>generate_image_variants</strong>
+        <span>封面 560px / 菜單 280px</span>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box green-soft" style="width:155px">
+        <strong>build_feed_index.py</strong>
+        <span>feed 索引 + 分店菜單</span>
+        <small>~700 KB feed JSON</small>
+      </div>
+      <div class="arrow green">→</div>
+      <div class="box green-strong" style="width:155px">
+        <strong>靜態資料產物</strong>
+        <span>restaurants.feed.json</span>
+        <span>data/menus/*.json</span>
+        <span>assets/images/*.webp</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="lane">
+    <div class="lane-head">
+      <div class="dot" style="background:#2563eb"></div>
+      <div class="lane-title">② 建置與部署</div>
+    </div>
+    <p class="lane-sub">Vite 打包 + GitHub Actions + 精簡靜態包</p>
+    <div class="row">
+      <div class="box blue" style="width:200px">
+        <strong>ESM 原始模組 (js/)</strong>
+        <span>core · feed · geocode · cart</span>
+        <span>tracking · router · app</span>
+        <small>main.js → App.init()</small>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box blue-strong" style="width:120px">
+        <strong>Vite</strong>
+        <span>npm run build</span>
+        <small>minify IIFE</small>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box blue" style="width:155px">
+        <strong>app.bundle.js</strong>
+        <span>單一 JS bundle</span>
+        <small>~64 KB · gzip ~20 KB</small>
+      </div>
+      <div class="box blue" style="width:130px">
+        <strong>css/*.css</strong>
+        <span>6 份拆分樣式</span>
+      </div>
+      <div class="box blue-strong" style="width:155px">
+        <strong>GitHub Actions</strong>
+        <span>verify · deploy</span>
+        <small>Node 24 + smoke test</small>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box blue-strong" style="width:155px">
+        <strong>prepare_pages_deploy</strong>
+        <span>_site/ 精簡包 ~100 MB</span>
+        <small>→ GitHub Pages</small>
+      </div>
+    </div>
+    <p class="flow-note green">靜態資料產物（JSON / WebP）納入部署包</p>
+  </section>
+
+  <section class="lane">
+    <div class="lane-head">
+      <div class="dot" style="background:#ea580c"></div>
+      <div class="lane-title">③ 執行時（瀏覽器）</div>
+    </div>
+    <p class="lane-sub">純前端讀取本地靜態資源，必要時呼叫外部地圖 / 路由 API</p>
+    <div class="runtime-grid">
+      <div class="box orange">
+        <strong>使用者瀏覽器</strong>
+        <span>Desktop / Mobile</span>
+      </div>
+      <div class="box orange-strong">
+        <strong>index.html</strong>
+        <span>app.bundle.js + css</span>
+        <span>Leaflet + dish_images.js</span>
+        <small>Hash 路由 #/…</small>
+      </div>
+      <div class="box orange">
+        <strong>window.App</strong>
+        <span>Feed · 菜單懶載入</span>
+        <span>購物車 · 假結帳</span>
+        <span>追蹤 · 收餐慶祝</span>
+      </div>
+      <div class="box orange">
+        <strong>本地靜態讀取</strong>
+        <span>fetch feed / menus</span>
+        <span>WebP 圖片</span>
+        <small>無後端 API</small>
+      </div>
+      <div class="box amber">
+        <strong>使用者流程（假外送）</strong>
+        <span>Feed → 菜單 → 購物車 → 結帳</span>
+        <span>→ OSRM 地圖追蹤 → 收餐慶祝</span>
+        <small>不扣款 · 不送達 · 多巴胺會到</small>
+      </div>
+    </div>
+    <p class="flow-note">GitHub Pages HTTPS 靜態託管 → 瀏覽器</p>
+  </section>
+
+  <section class="lane" style="display:flex;gap:16px;align-items:flex-start">
+    <div style="flex:1">
+      <div class="lane-head">
+        <div class="dot" style="background:#7c3aed"></div>
+        <div class="lane-title">外部服務（執行時按需呼叫）</div>
+      </div>
+      <div class="ext-row">
+        <div class="ext">ArcGIS Geocoding</div>
+        <div class="ext">Photon API</div>
+        <div class="ext">OSRM 路由</div>
+        <div class="ext">OpenStreetMap 圖磚</div>
+        <div class="ext">Leaflet.js</div>
+      </div>
+      <p class="lane-sub" style="margin-top:10px">僅執行時按需呼叫 · 餐廳資料本身存在 repo / Pages</p>
+    </div>
+    <div class="legend">
+      <div><span class="legend-line"></span>建置 / 部署流程</div>
+      <div><span class="legend-line legend-dash"></span>靜態資源流向</div>
+    </div>
+  </section>
+</body>
+</html>
